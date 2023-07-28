@@ -58,9 +58,13 @@ def seed_users():
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.commit()
     db.session.add_all([server1, server2,server3,server4])
+    db.session.commit()
     db.session.add_all([channel1,channel2,channel3,channel4,channel5,channel6])
+    db.session.commit()
     db.session.add_all([message1, message2,message3,message4,message5,message6])
+    db.session.commit()
     db.session.add_all([reaction1, reaction2,reaction3,reaction4,reaction5,reaction6])
     db.session.commit()
 
