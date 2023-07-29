@@ -6,6 +6,8 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Servers from "./components/Servers";
+import SingleServer from "./components/SingleServer";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -22,8 +24,11 @@ function App() {
           <Route path="/login" >
             <LoginFormPage />
           </Route>
-          <Route path="/:userId/servers" >
+          <Route exact path="/:userId/servers" >
             <Servers />
+          </Route>
+          <Route exact path="/:userId/servers/:serverId" >
+            <SingleServer />
           </Route>
           <Route path="/signup">
             <SignupFormPage />

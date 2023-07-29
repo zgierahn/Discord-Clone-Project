@@ -5,6 +5,17 @@ from app.models import db
 
 server_routes = Blueprint('servers', __name__)
 
+@server_routes.route('/<int:id>/<int:serverId>')
+@login_required
+def single_server(id,serverId):
+    servers = Server.query.join(User, Server.user).filter(User.id ==id,Server.id == serverId)
+    """
+    servers = servers[0].to_dict()
+    servers = Server.query.all()
+    Query for all users and returns them in a list of user dictionaries
+    return {'servers': [server.to_dict() for server in servers]}
+    """
+    return [server.to_dict() for server in servers]
 
 @server_routes.route('/<int:id>')
 @login_required
