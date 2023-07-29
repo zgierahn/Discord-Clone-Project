@@ -39,9 +39,9 @@ def seed_users():
     message4 = Message(
         content='This is a test message user 3, channel 2', user_id=3,channel_id=2)
     message5 = Message(
-        content='This is a test message user 4, channel 3', user_id=4,channel_id=3)
+        content='This is a test message user 1, channel 3', user_id=1,channel_id=3)
     message6 = Message(
-        content='This is a test message user 4, channel 4', user_id=4,channel_id=4)
+        content='This is a test message user 1, channel 4', user_id=1,channel_id=4)
     reaction1 = Reaction(
         emoji='😀', user_id=1,messages=[message1])
     reaction2 = Reaction(
