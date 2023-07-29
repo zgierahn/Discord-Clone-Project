@@ -6,6 +6,8 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Servers from "./components/Servers";
+import Chat from "./components/chat-socket";
+import ChannelTest from "./components/create-channel";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +21,14 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path='/chat'>
+            <Chat />
+          </Route>
+          <Route path='/channel-test'>
+            <ChannelTest />
+          </Route>
+
+
           <Route path="/login" >
             <LoginFormPage />
           </Route>
