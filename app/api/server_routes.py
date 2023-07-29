@@ -14,25 +14,26 @@ SessionFactory = sessionmaker(bind=engine)
 session = SessionFactory()
 ############################
 
-@server_routes.route('/<int:id>/<int:serverId>')
+@server_routes.route('/<int:id>/<int:serverId>/<int:channelId>')
 @login_required
-def single_server(id,serverId):
-    servers = db.session.query(User,Channel,Server,).join(User,Server).filter(User.id ==id, Channel.server_id == serverId)
+def single_server(id,serverId,channelId):
+    servers = db.session.query(Message).join(User,Server.user).filter(User.id ==id,Server.id == serverId,Channel.server_id ==serverId,Message.channel_id==channelId)
     # servers = session.query(User).join(Server).filter(User.id == id)
-    # res = []
-    # for server in servers:
-    #     answer = []
-    #     for ele in server:
-    #         answer.append(ele.to_dict())
-    #     res.append(answer)
-    print([server.to_dict() for server in servers])
+    res = []
+    for server in servers:
+        answer = []
+        for ele in server:
+            answer.append(ele.to_dict())
+        res.append(answer)
+    print('------------------------------------------',res)
     """
+    print([server.to_dict() for server in servers])
     print('-----------------this is my servers------------------', servers)
     servers = Server.query.join(User, Server.user).filter(User.id ==id, Server.id == serverId) #Server.id == serverId
     Query for all users and returns them in a list of user dictionaries
     return {'servers': [server.to_dict() for server in servers]}
     """
-    return {"key": "test"}
+    return res
 
 @server_routes.route('/<int:id>')
 @login_required

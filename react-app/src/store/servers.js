@@ -11,8 +11,8 @@ const getSingleServer = (server) => ({
     data:server
 })
 
-export const thunkGetSingleServer = (userId,serverId) => async(dispatch) => {
-    const res = await fetch(`/api/servers/${userId}/${serverId}`)
+export const thunkGetSingleServer = (userId,serverId,channelId) => async(dispatch) => {
+    const res = await fetch(`/api/servers/${userId}/${serverId}/${channelId}`)
     if (res.ok) {
         const data = await res.json()
         dispatch(getSingleServer(data))
