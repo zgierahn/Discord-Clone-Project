@@ -48,6 +48,12 @@ export default function reducer(state = initialState, action) {
             });
             return {...newState}
         }
+        case GET_SINGLE_SERVER:{
+            let newState = {...state, singleServer:{...state.singleServer}}
+            newState.singleServer = {}
+            newState.singleServer = action.data
+            return {...newState}
+        }
         default:
             return state
     }

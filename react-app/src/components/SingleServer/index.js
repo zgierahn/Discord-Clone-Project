@@ -8,10 +8,10 @@ import { useParams } from 'react-router-dom'
 function SingleServer() {
     const dispatch = useDispatch()
     const history = useHistory()
-    const { userId,serverId } = useParams()
+    const { userId, serverId } = useParams()
 
     useEffect(() => {
-        dispatch(thunkGetSingleServer(userId))
+        dispatch(thunkGetSingleServer(userId, serverId))
     }, [dispatch])
 
     const server = useSelector(state => Object.values(state.servers.singleServer))
