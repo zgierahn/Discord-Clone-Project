@@ -17,15 +17,18 @@ session = SessionFactory()
 @server_routes.route('/<int:id>/<int:serverId>/<int:channelId>')
 @login_required
 def single_server(id,serverId,channelId):
-    servers = db.session.query(Message).join(User,Server.user).filter(User.id ==id,Server.id == serverId,Channel.server_id ==serverId,Message.channel_id==channelId)
+    reactions = db.session.query(Reaction).join(User,Server.user).join(Message,Reaction.messages).filter(User.id ==id,Server.id == serverId,Channel.server_id ==serverId,Message.channel_id==channelId)
+    messages = db.session.query(Message).join(User,Server.user).filter(User.id ==id,Server.id == serverId,Channel.server_id ==serverId,Message.channel_id==channelId)
     # servers = session.query(User).join(Server).filter(User.id == id)
-    res = []
-    for server in servers:
-        answer = []
-        for ele in server:
-            answer.append(ele.to_dict())
-        res.append(answer)
-    print('------------------------------------------',res)
+    # res = []
+    # for server in servers:
+    #     answer = []
+    #     for ele in server:
+    #         answer.append(ele.to_dict())
+    #     res.append(answer)
+    # print('------------------------------------------',res)
+    print('--------------------------------',[message.to_dict() for message in messages])
+    print('--------------------------------',[emoji.to_dict() for emoji in reactions])
     """
     print([server.to_dict() for server in servers])
     print('-----------------this is my servers------------------', servers)
@@ -33,7 +36,7 @@ def single_server(id,serverId,channelId):
     Query for all users and returns them in a list of user dictionaries
     return {'servers': [server.to_dict() for server in servers]}
     """
-    return res
+    return [emoji.to_dict() for emoji in reactions]
 
 @server_routes.route('/<int:id>')
 @login_required

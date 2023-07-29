@@ -51,7 +51,9 @@ export default function reducer(state = initialState, action) {
         case GET_SINGLE_SERVER:{
             let newState = {...state, singleServer:{...state.singleServer}}
             newState.singleServer = {}
-            newState.singleServer = action.data
+            action.data.forEach(ele => {
+                newState.singleServer[ele.id]= ele
+            });
             return {...newState}
         }
         default:

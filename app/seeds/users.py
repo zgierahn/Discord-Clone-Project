@@ -51,9 +51,9 @@ def seed_users():
     reaction4 = Reaction(
         emoji='😂',user_id=3,messages=[message1,message4])
     reaction5 = Reaction(
-        emoji='😅', user_id=4,messages=[message1,message4])
+        emoji='😅', user_id=1,messages=[message1,message4])
     reaction6 = Reaction(
-        emoji='😇', user_id=4,messages=[message1])
+        emoji='😇', user_id=1,messages=[message1])
 
     db.session.add(demo)
     db.session.add(marnie)
