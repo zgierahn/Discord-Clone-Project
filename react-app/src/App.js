@@ -8,7 +8,6 @@ import Navigation from "./components/Navigation";
 import Servers from "./components/Servers";
 
 import Chat from "./components/chat-socket";
-import ChannelTest from "./components/create-channel";
 
 import SingleServer from "./components/SingleServer";
 import ServerForm from "./components/ServerForm";
