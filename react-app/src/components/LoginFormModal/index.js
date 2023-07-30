@@ -16,7 +16,7 @@ function LoginFormModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
+    const data = await dispatch(login({email, password}));
     if (data) {
       setErrors(data);
     } else {
@@ -56,9 +56,15 @@ function LoginFormModal() {
       <button className="demo-user" onClick={() => {
           // setErrors({});
           return dispatch(login({ email:'demo@aa.io', password:'password' }))
-          .then(()=>history.push(`/`))
+          .then(()=>history.push(`/1/servers`))
           .then(closeModal)
         }} >Demo User</button>
+        <button className="demo-user" onClick={() => {
+          // setErrors({});
+          return dispatch(login({ email:'marnie@aa.io', password:'password' }))
+          .then(()=>history.push(`/2/servers`))
+          .then(closeModal)
+        }} >Demo User 2</button>
     </>
   );
 }
