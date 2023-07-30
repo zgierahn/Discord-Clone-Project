@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
+import { useHistory } from "react-router-dom";
 import "./LoginForm.css";
 
 function LoginFormModal() {
@@ -10,6 +11,8 @@ function LoginFormModal() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
+  const history = useHistory()
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,6 +53,12 @@ function LoginFormModal() {
         </label>
         <button type="submit">Log In</button>
       </form>
+      <button className="demo-user" onClick={() => {
+          // setErrors({});
+          return dispatch(login({ email:'demo@aa.io', password:'password' }))
+          .then(()=>history.push(`/`))
+          .then(closeModal)
+        }} >Demo User</button>
     </>
   );
 }
