@@ -13,18 +13,26 @@ from .config import Config
 
 
 
+
 # import your socketio object (with the other imports at the
 # top of the file)
 # in this example, the file from the previous step is named socket.py
 from .socketio_test import socketio
 
+# initialize the app with the socket instance
+# you could include this line right after Migrate(app, db)
+
+# at the bottom of the file, use this to run the app
+
+
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
+
+
 
 # Setup login manager
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
-
 
 @login.user_loader
 def load_user(id):
@@ -113,6 +121,8 @@ def react_root(path):
     return app.send_static_file('index.html')
 
 
+
 @app.errorhandler(404)
 def not_found(e):
     return app.send_static_file('index.html')
+

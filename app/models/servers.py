@@ -10,7 +10,7 @@ class Server(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False, unique=True)
-    public = db.Column(db.Boolean, nullable=False)
+    privates = db.Column(db.Boolean, nullable=False)
     picture = db.Column(db.Text)
 
     channels = db.relationship(
@@ -29,6 +29,6 @@ class Server(db.Model, UserMixin):
         return {
             'id': self.id,
             'name': self.name,
-            'public': self.public,
+            'public': self.privates,
             'picture': self.picture
         }

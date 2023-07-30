@@ -11,13 +11,13 @@ def seed_users():
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password')
     server1 = Server(
-        name='zachs place', public=True,user=[demo,marnie])
+        name='zachs place', privates=True,user=[demo,marnie])
     server2 = Server(
-        name='mikes place', public=False,user=[demo])
+        name='mikes place', privates=False,user=[demo])
     server3 = Server(
-        name='emilys place', public=False,user=[marnie])
+        name='emilys place', privates=False,user=[marnie])
     server4 = Server(
-        name='matts place', public=True,user=[demo,marnie])
+        name='matts place', privates=True,user=[demo,marnie])
     channel1 = Channel(
         name='awesome', server_id=1)
     channel2 = Channel(
@@ -51,20 +51,16 @@ def seed_users():
     reaction4 = Reaction(
         emoji='😂',user_id=3,messages=[message1,message4])
     reaction5 = Reaction(
-        emoji='😅', user_id=4,messages=[message1,message4])
+        emoji='😅', user_id=1,messages=[message1,message4])
     reaction6 = Reaction(
-        emoji='😇', user_id=4,messages=[message1])
+        emoji='😇', user_id=1,messages=[message1])
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
-    db.session.commit()
     db.session.add_all([server1, server2,server3,server4])
-    db.session.commit()
     db.session.add_all([channel1,channel2,channel3,channel4,channel5,channel6])
-    db.session.commit()
     db.session.add_all([message1, message2,message3,message4,message5,message6])
-    db.session.commit()
     db.session.add_all([reaction1, reaction2,reaction3,reaction4,reaction5,reaction6])
     db.session.commit()
 
