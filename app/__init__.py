@@ -10,7 +10,7 @@ from .api.auth_routes import auth_routes
 from .api.server_routes import server_routes
 from .seeds import seed_commands
 from .config import Config
-from .websocket import socketio
+
 
 # initialize the app with the socket instance
 # you could include this line right after Migrate(app, db)
@@ -20,7 +20,7 @@ from .websocket import socketio
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
-socketio.init_app(app)
+
 
 # Setup login manager
 login = LoginManager(app)
@@ -101,5 +101,3 @@ def react_root(path):
 def not_found(e):
     return app.send_static_file('index.html')
 
-if __name__ == '__main__':
-    socketio.run(app)

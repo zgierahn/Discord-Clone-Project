@@ -11,13 +11,13 @@ def seed_users():
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password')
     server1 = Server(
-        name='zachs place', public=True,user=[demo,marnie])
+        name='zachs place', privates=True,user=[demo,marnie])
     server2 = Server(
-        name='mikes place', public=False,user=[demo])
+        name='mikes place', privates=False,user=[demo])
     server3 = Server(
-        name='emilys place', public=False,user=[marnie])
+        name='emilys place', privates=False,user=[marnie])
     server4 = Server(
-        name='matts place', public=True,user=[demo,marnie])
+        name='matts place', privates=True,user=[demo,marnie])
     channel1 = Channel(
         name='awesome', server_id=1)
     channel2 = Channel(

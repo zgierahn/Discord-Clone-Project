@@ -1,18 +1,50 @@
-from flask import Blueprint, jsonify
-from flask_login import login_required
+from flask import Blueprint, jsonify, request
+from flask_login import current_user, login_user, logout_user, login_required
 from app.models import Server, User, Channel, Message, Reaction
 from app.models import db
+from app.forms import ServerForm
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+
 server_routes = Blueprint('servers', __name__)
 
-#####test stuff#######
+
 db_url = "sqlite:///dev.db"
 engine = create_engine(db_url)
 SessionFactory = sessionmaker(bind=engine)
 session = SessionFactory()
-############################
+
+@server_routes.route("/delete/<int:serverId>", methods=['GET','POST','DELETE'])
+@login_required
+def delete_post(serverId):
+  server_to_delete = Server.query.get(serverId)
+  db.session.delete(server_to_delete)
+  db.session.commit()
+  return 'deleted'
+
+@server_routes.route('/new', methods=['POST'])
+@login_required
+def create_server():
+    form = ServerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    curr_user = User.query.get(current_user.id)
+    if form.validate_on_submit():
+        if form.data['privates'] == 1:
+            answer = True
+        else:
+            answer = False
+        server = Server(
+            name = form.data['name'],
+            privates = answer,
+            picture = form.data['picture']
+        )
+        server.user.append(curr_user)
+        db.session.commit()
+        db.session.add(server)
+        db.session.commit()
+        return server.to_dict()
+    return {'errors': 'error'}, 401
 
 @server_routes.route('/<int:id>/<int:serverId>/<int:channelId>')
 @login_required

@@ -7,6 +7,8 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Servers from "./components/Servers";
 import SingleServer from "./components/SingleServer";
+import ServerForm from "./components/ServerForm";
+import DeleteServer from "./components/DeleteServer";
 
 
 function App() {
@@ -21,11 +23,17 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/login" >
+          <Route exact path="/login" >
             <LoginFormPage />
           </Route>
           <Route exact path="/:userId/servers" >
             <Servers />
+          </Route>
+          <Route exact path="/:userId/servers/delete/:serverId" >
+            <DeleteServer/>
+          </Route>
+          <Route exact path="/:userId/servers/new" >
+            <ServerForm />
           </Route>
           <Route exact path="/:userId/servers/:serverId/:channelId" >
             <SingleServer />
