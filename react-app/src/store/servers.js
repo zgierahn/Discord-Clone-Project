@@ -2,6 +2,7 @@ const GET_SERVERS = "servers/GET_SERVERS"
 const GET_SINGLE_SERVER = "servers/GET_SINGLE_SERVER"
 const CREATE_SERVER = 'servers/CREATE_SERVER'
 const DELETE_SERVER = 'servers/DELETE_SERVER'
+const EDIT_SERVER = 'servers/EDIT_SERVER'
 
 const getServer = (servers) => ({
     type:GET_SERVERS,
@@ -10,6 +11,11 @@ const getServer = (servers) => ({
 
 const deleteServer = (serverId) => ({
     type:DELETE_SERVER,
+    data:serverId
+})
+
+const editServer = (serverId) => ({
+    type:EDIT_SERVER,
     data:serverId
 })
 
@@ -32,6 +38,24 @@ export const thunkDeleteServer = (serverId) => async (dispatch) => {
             const res = await response.json()
             dispatch(deleteServer(res))
             return res
+        }
+    } catch (error) {
+        const err = await error.json()
+        return {errors:err}
+    }
+}
+
+export const thunkEditGroup = (serverId, data) => async (dispatch) => {
+    try {
+        const response = await fetch(`/api/servers/edit/${serverId}`, {
+            method:'PUT',
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(data)
+        })
+        if (response.ok)    {
+            const server = await response.json()
+            dispatch(editServer(server))
+            return server
         }
     } catch (error) {
         const err = await error.json()
@@ -110,6 +134,11 @@ export default function reducer(state = initialState, action) {
         case DELETE_SERVER: {
             const newState = {...state, allServer:{...state.allServers}}//try this to reshresh {...state,allGroups:{...state.allGroups}}
             delete newState.allServers[action.eventId]
+            return newState
+        }
+        case EDIT_SERVER: {
+            const newState = {...state, singleServer:{...state.singleServer}}
+            newState.singleServer = action.data
             return newState
         }
         default:

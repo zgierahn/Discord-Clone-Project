@@ -46,6 +46,29 @@ def create_server():
         return server.to_dict()
     return {'errors': 'error'}, 401
 
+@server_routes.route('/edit/<int:serverId>', methods=['GET','POST','PUT'])
+@login_required
+def edit_server(serverId):
+    server_form = Server.query.get(serverId)
+    server_form['csrf_token'].data = request.cookies['csrf_token']
+    curr_user = User.query.get(current_user.id)
+    # if form.validate_on_submit():
+    #     if form.data['privates'] == 1:
+    #         answer = True
+    #     else:
+    #         answer = False
+    #     server = Server(
+    #         name = form.data['name'],
+    #         privates = answer,
+    #         picture = form.data['picture']
+    #     )
+    #     server.user.append(curr_user)
+    #     db.session.commit()
+    #     db.session.add(server)
+    #     db.session.commit()
+    return server_form.to_dict()
+    return {'errors': 'error'}, 401
+
 @server_routes.route('/<int:id>/<int:serverId>/<int:channelId>')
 @login_required
 def single_server(id,serverId,channelId):

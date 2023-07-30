@@ -9,6 +9,7 @@ import Servers from "./components/Servers";
 import SingleServer from "./components/SingleServer";
 import ServerForm from "./components/ServerForm";
 import DeleteServer from "./components/DeleteServer";
+import EditServer from "./components/EditServer";
 
 
 function App() {
@@ -26,8 +27,8 @@ function App() {
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>
-          <Route exact path="/:userId/servers" >
-            <Servers />
+          <Route exact path="/:userId/servers/edit/:serverId" >
+            <EditServer />
           </Route>
           <Route exact path="/:userId/servers/delete/:serverId" >
             <DeleteServer/>
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route exact path="/:userId/servers/:serverId/:channelId" >
             <SingleServer />
+          </Route>
+          <Route exact path="/:userId/servers" >
+            <Servers />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
