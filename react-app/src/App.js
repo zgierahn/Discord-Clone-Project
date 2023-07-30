@@ -29,9 +29,9 @@ function App() {
           </Route>
 
 
-          <Route path="/login" >
+          {/* <Route path="/login" >
             <LoginFormPage />
-          </Route>
+          </Route> */}
           <Route path="/:userId/servers" >
             <Servers />
           </Route>
@@ -40,6 +40,9 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Route exact path="/login" >
+            <LoginFormPage />
+          </Route>
     </>
   );
 }
