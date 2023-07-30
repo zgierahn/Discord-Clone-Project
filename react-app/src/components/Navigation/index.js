@@ -1,11 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
+	const history = useHistory();
 
 	return (
 		<ul>
@@ -17,6 +18,7 @@ function Navigation({ isLoaded }){
 					<ProfileButton user={sessionUser} />
 				</li>
 			)}
+						{/* <button class="login" onClick={() => { history.push(`/login`)}}>Log In</button> */}
 		</ul>
 	);
 }
