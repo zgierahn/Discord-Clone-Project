@@ -44,7 +44,7 @@ function App() {
           <Route exact path="/:userId/servers/new" >
             <ServerForm />
           </Route>
-          <Route exact path="/:userId/servers/:serverId/:channelId" >
+          <Route exact path="/:userId/servers/:serverId" >//dont think we need this route its jsut for getting single server to edit
             <SingleServer />
           </Route>
           <Route exact path="/:userId/servers" >
