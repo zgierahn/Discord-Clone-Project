@@ -18,6 +18,23 @@ export const thunkGetServers = (id) => async(dispatch) => {
     }
 }
 
+
+// -----still workin gon this code
+
+// export const thunkGetAllMsg = (id, channelId) => async(dispatch) => {
+//     const res = await fetch (`/api/servers/${id}/${channelId}`)
+//     if (res.ok){
+//         const response = await res.json()
+//         console.log(response, 'it made it to the thunkkkkkkkkk')
+//     } else{
+//         const response = await res.json()
+//         console.log(response)
+//     }
+// }
+
+
+
+
 const initialState = {allServers:{}, singleServer:{}}
 export default function reducer(state = initialState, action) {
     switch (action.type) {

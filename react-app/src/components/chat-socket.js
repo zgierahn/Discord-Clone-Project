@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { io } from 'socket.io-client';
+import { thunkGetAllMsg } from "../store/servers";
 let socket;
 
 const Chat = () => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
+    const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
 
+    const channelId = 1
 
 
     useEffect(() => {
         // open socket connection
         // create websocket
         socket = io();
+
+        // dispatch(thunkGetAllMsg(user.id, channelId))
 
         socket.on("chat", (chat) => {
             setMessages(messages => [...messages, chat])
@@ -30,7 +35,7 @@ const Chat = () => {
 
     const sendChat = (e) => {
         e.preventDefault()
-        socket.emit("chat", { user: user.username, msg: chatInput });
+        socket.emit("chat", {user: user.username, user_id: user.id, content: chatInput });
         setChatInput("")
     }
 
@@ -38,7 +43,7 @@ const Chat = () => {
         <div>
             <div>
                 {messages.map((message, ind) => (
-                    <div key={ind}>{`${message.user}: ${message.msg}`}</div>
+                    <div key={ind}>{`${message.user}: ${message.content}`}</div>
                 ))}
             </div>
             <form onSubmit={sendChat}>

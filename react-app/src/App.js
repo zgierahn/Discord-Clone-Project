@@ -21,11 +21,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path='/chat'>
+
+          <Route exact path='/chat'>
             <Chat />
-          </Route>
-          <Route path='/channel-test'>
-            <ChannelTest />
           </Route>
 
 
