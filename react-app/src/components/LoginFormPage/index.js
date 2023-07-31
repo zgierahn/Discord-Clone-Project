@@ -13,19 +13,16 @@ function LoginFormPage() {
   const [errors, setErrors] = useState([]);
   const history = useHistory();
 
-  // if (sessionUser) return <Redirect to="/" />;
-console.log('--------',sessionUser)
+  if (sessionUser) return <Redirect to="/" />;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login({email, password}))
-    .then(()=>history.push(`/${sessionUser.id}/servers`))
-    console.log('data', data)
+    const data = await dispatch(login({email, password}));
     if (data) {
       setErrors(data);
     }
-    // if (!errors.length)
   };
-  // if (!sessionUser) return null
+
   return (
     <>
       <h1>Log In</h1>
@@ -53,19 +50,13 @@ console.log('--------',sessionUser)
             required
           />
         </label>
-        <button type="submit" >Log In</button>
+        <button type="submit">Log In</button>
         <button className="demo-user" onClick={() => {
           // setErrors({});
           return dispatch(login({ email:'demo@aa.io', password:'password' }))
-          .then(()=>history.push(`/1/servers`))
+          .then(()=>history.push(`/`))
 
         }} >Demo User</button>
-         <button className="demo-user" onClick={() => {
-          // setErrors({});
-
-          return dispatch(login({ email:'marnie@aa.io', password:'password' }))
-          .then(()=>history.push(`/2/servers`))
-        }} >Demo User 2</button>
       </form>
       <button onClick={() => { history.push(`/signup`)}}>Register</button>
     </>
