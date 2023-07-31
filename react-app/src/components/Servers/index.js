@@ -15,7 +15,9 @@ function Servers() {
     const { userId } = useParams()
     const [state, setState] = useState('start')
     const[test,setTest]=useState(false)
-    const[valueServerId,setValueServerId]=useState(serversAll?serversAll[0].id:0)
+    console.log('servesAll',serversAll)
+    const[valueServerId,setValueServerId]=useState(serversAll.length?serversAll[0].id:0)
+
 
     useEffect(() => {
         dispatch(thunkGetServers(userId))

@@ -70,10 +70,7 @@ def edit_server(serverId):
 @login_required
 def single_server(id,serverId):
     server = Server.query.get(serverId)
-<<<<<<< HEAD
-=======
-    print('servers',server.to_dict)
->>>>>>> team1
+
     # reactions = db.session.query(Reaction).join(User,Server.user).join(Message,Reaction.messages).filter(User.id ==id,Server.id == serverId,Channel.server_id ==serverId,Message.channel_id==channelId)
     # messages = db.session.query(Message).join(User,Server.user).filter(User.id ==id,Server.id == serverId,Channel.server_id ==serverId,Message.channel_id==channelId)
     # servers = session.query(User).join(Server).filter(User.id == id)
