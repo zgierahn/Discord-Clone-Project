@@ -16,7 +16,7 @@ msg_routes = Blueprint('messages', __name__)
 # @login_required
 def channel_messages(id, channelId,serverId):
     msg = Message.query.filter(Message.channel_id == channelId).all()
-    # reactions = Reaction.query.join(Message, Reaction.messages).filter()
+    reactions = Reaction.query.join(Message, Reaction.messages).filter()
     reactions = db.session.query(Reaction).join(User,Server.user).join(Message,Reaction.messages).filter(User.id ==id,Server.id == serverId,Channel.server_id ==serverId,Message.channel_id==channelId)
     print('--------------------------------',[each.to_dict() for each in reactions])
 
