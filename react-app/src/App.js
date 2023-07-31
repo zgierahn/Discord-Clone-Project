@@ -64,9 +64,6 @@ function App() {
           </Route>
         </Switch>
       )}
-      <Route exact path="/login" >
-            <LoginFormPage />
-          </Route>
     </>
   );
 }

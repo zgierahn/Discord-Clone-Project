@@ -55,7 +55,7 @@ function LoginFormPage() {
           // setErrors({});
           return dispatch(login({ email:'demo@aa.io', password:'password' }))
           .then(()=>history.push(`/`))
-          
+
         }} >Demo User</button>
       </form>
       <button onClick={() => { history.push(`/signup`)}}>Register</button>
