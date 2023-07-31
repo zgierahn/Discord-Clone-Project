@@ -23,7 +23,7 @@ def delete_post(serverId):
   server_to_delete = Server.query.get(serverId)
   db.session.delete(server_to_delete)
   db.session.commit()
-  return 'deleted'
+  return {'message':'deleted'}
 
 @server_routes.route('/new', methods=['POST'])
 @login_required

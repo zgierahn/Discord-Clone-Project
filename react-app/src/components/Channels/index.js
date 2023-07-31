@@ -1,33 +1,32 @@
-import { thunkGetServers } from "../../store/servers"
+import { thunkGetChannels } from '../../store/channels'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 
-
-
-function Servers() {
+function Channels() {
     const dispatch = useDispatch()
     const history = useHistory()
-    const { userId } = useParams()
-
+    const { userId, serverId } = useParams()
 
     useEffect(() => {
-        dispatch(thunkGetServers(userId))
+        dispatch(thunkGetChannels(userId, serverId))
     }, [dispatch])
 
-    const serversAll = useSelector(state => Object.values(state.servers.allServers))
+    const channelsAll = useSelector(state => Object.values(state.channels.allChannels))
     return (
         <div>
-            {serversAll.map((ele) => {
+            {channelsAll.map((ele) => {
                 return <div key={ele.id}>
-                    <button>{ele.name}</button>
-                    {ele.public ? <p>True</p> : <p>False</p>}
+                    <p>{ele.id}, {ele.name}</p>
+
                 </div>
             })}
+
         </div>
+
     )
 }
 
-export default Servers
+export default Channels

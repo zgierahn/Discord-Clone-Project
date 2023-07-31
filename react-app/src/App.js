@@ -14,6 +14,11 @@ import ServerForm from "./components/ServerForm";
 import DeleteServer from "./components/DeleteServer";
 import EditServer from "./components/EditServer";
 import ChannelTest from "./components/channel-socket";
+import Channels from "./components/Channels";
+import ChannelForm from "./components/ChannelForm";
+import DeleteChannel from "./components/DeleteChannel";
+import EditChannel from "./components/EditChannel";
+import SingleChannel from "./components/SingleChannel";
 
 
 function App() {
@@ -32,7 +37,9 @@ function App() {
           <Route exact path='/channel/:channelId'>
             <ChannelTest />
           </Route>
-
+          <Route exact path='/:userId/servers/:serverId/channels'>
+            <Channels />
+          </Route>
           <Route exact path='/chat'>
             <Chat />
           </Route>
@@ -42,14 +49,26 @@ function App() {
           <Route exact path="/:userId/servers/edit/:serverId" >
             <EditServer />
           </Route>
+          <Route exact path="/:userId/servers/:serverId/channels/edit/:channelId" >
+            <EditChannel />
+          </Route>
           <Route exact path="/:userId/servers/delete/:serverId" >
             <DeleteServer/>
+          </Route>
+          <Route exact path="/:userId/servers/:serverId/channels/delete/:channelId" >
+            <DeleteChannel/>
           </Route>
           <Route exact path="/:userId/servers/new" >
             <ServerForm />
           </Route>
+          <Route exact path="/:userId/servers/:serverId/channels/new" >
+            <ChannelForm />
+          </Route>
           <Route exact path="/:userId/servers/:serverId/:channelId" >
             <SingleServer />
+          </Route>
+          <Route exact path="/:userId/servers/:serverId/channels/:channelId" >
+            <SingleChannel />
           </Route>
           <Route exact path="/:userId/servers" >
             <Servers />
