@@ -13,7 +13,6 @@ import SingleServer from "./components/SingleServer";
 import ServerForm from "./components/ServerForm";
 import DeleteServer from "./components/DeleteServer";
 import EditServer from "./components/EditServer";
-import LandingPage from "./components/LandingPage";
 
 
 function App() {
