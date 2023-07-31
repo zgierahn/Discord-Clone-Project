@@ -1,0 +1,279 @@
+body {
+    margin: 0px;
+}
+
+.ButtonContainer{
+    display: flex;
+    width: 600px;
+    height: 57px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.ImagineContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    row-gap: 40px;
+    padding: 110px 0;
+    background-color: #444def;
+    color: white;
+    justify-content: center;
+    margin-bottom: 45px;
+}
+
+
+.ImagineContainer > img {
+    width: -webkit-fill-available;
+    position: absolute;
+    height: 522px;
+    top: 130px;
+}
+
+.paragraph{
+    display: flex;
+    width: 824px;
+    font-size: 22px;
+    text-align: center;
+    z-index: 99;
+}
+
+
+h1 {
+    font-size: 28px;
+    width: 280px;
+    font-weight: bolder;
+    transform: scale(2.5,2);
+    margin: 10px;
+    z-index: 100;
+}
+
+
+
+.MacButton{
+    font-size: 6px;
+    padding: 0px 13px;
+    height: 17px;
+    border-radius: 25px;
+    border: none;
+    transform: scale(3,3);
+    cursor: pointer;
+}
+
+
+.MacButton:hover{
+    color: #4c55ff;
+    box-shadow: 1px 1px 5px  #343aaf;
+}
+
+
+.BrowserButton{
+    font-size: 6px;
+    padding: 0px 13px;
+    height: 17px;
+    border-radius: 25px;
+    border: none;
+    transform: scale(3,3);
+    color: white;
+    background-color: rgb(27, 26, 26);
+    cursor: pointer;
+}
+
+.BrowserButton:hover {
+    background-color: rgb(44, 44, 44);
+    box-shadow: 0px 2px 5px #343aaf
+}
+
+
+.SecondContainer {
+    height: 650px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.CreateParagraph {
+    width: 350px;
+    padding-right: 70px;
+    padding-top: 85px;
+    margin-top: 50px;
+
+}
+
+.SecondImg{
+    width: 785px;
+    height: 400px;
+    margin-top: 100px;
+
+}
+
+h2 {
+    font-size: xxx-large;
+    margin-bottom: 23px;
+
+}
+
+
+.TextForCont2 {
+    font-size: 20px;
+    line-height: 28px;
+}
+
+
+.HangingParagraph{
+    width: 350px;
+    padding-left: 70px;
+    padding-top: 85px;
+}
+
+.ThirdContainer {
+    height: 550px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(244, 244, 244);
+}
+
+
+.FourthImg{
+    width: 700px;
+    height: 400px;
+    margin-top: 90px;
+    margin-left: 50px;
+}
+
+
+.FifthImg{
+    width: 1100px;
+    margin: auto;
+}
+
+.FifthContainer{
+    height: 1200px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(244, 244, 244);
+    padding-top: 110px;
+    padding-bottom: 65px;
+}
+
+
+.FifthHeading{
+    display: flex;
+    font-size: 49px;
+    font-weight: bold;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+
+
+.FifthText{
+    width: 920px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 20px;
+    line-height: 32px;
+
+}
+
+
+.FifthFooter{
+    display: flex;
+    font-size: xx-large;
+    justify-content: center;
+    font-weight: bold;
+    margin-top: 80px;
+}
+
+.FifthButton{
+    width: 225px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 45px;
+    height: 54px;
+    border: none;
+    border-radius: 30px;
+    background-color: #4c55ff;
+    font-size: larger;
+    color: white;
+    cursor: pointer;
+}
+
+.FifthButton:hover{
+    background-color: #6269eb;
+    box-shadow: 2px 7px 8px rgb(206, 204, 204)
+}
+
+
+.ResourcesContainer{
+    display: flex;
+    height: 360px;
+    padding: 70px 65px 30px 0px;
+    justify-content: space-around;
+    border-bottom: 1px solid #4c55ff;
+    background-color: rgb(35, 35, 35);
+}
+
+
+.ATagContainer{
+    display: flex;
+    flex-direction: column;
+    height: 318px;
+    row-gap: 10px;
+}
+
+.ATagContainer > a{
+    color: white;
+    text-decoration: none;
+}
+
+.LeftResourcesConatainer{
+    width: 220px;
+    padding-top: 45px
+}
+
+
+.LanguageContainer{
+    margin-bottom: 35px;
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+    color: white;
+}
+
+
+.BrandIcons{
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+
+h5 {
+    font-size: medium;
+    color: #3f45c0;
+}
+
+
+
+.FooterNav{
+    background-color: rgb(35, 35, 35);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 75px 60px;
+}
+
+.LanguageContainer > img {
+    height: 20px;
+    width: 25px;
+}
+
+
+.BottomHomeIcon{
+    font-size: x-large;
+    font-family: sans-serif
+}
