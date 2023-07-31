@@ -1,4 +1,4 @@
-import { thunkCreateServer } from "../../store/servers"
+import { thunkEditServer, thunkGetSingleServer } from "../../store/servers"
 import { useEffect,useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom"
@@ -6,17 +6,36 @@ import { NavLink } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 
 function EditServer() {
+    const server = useSelector(state => state.servers.singleServer)
     const dispatch = useDispatch()
     const history = useHistory()
-    const { userId } = useParams()
+    const { serverId,userId} = useParams()
 
-    const [name, setName] = useState('')
-    const [privates, setPrivates] = useState(false)
-    const [picture, setPicture] = useState('')
+    const [name, setName] = useState(server.name)
+    const [privates, setPrivates] = useState(server.privates)
+    const [picture, setPicture] = useState(server.picture)
 
     const onSubmit = async() => {
         let payload = {}
-        const err = await dispatch(thunkCreateServer(name,privates,picture))
+        const err = await dispatch(thunkEditServer(serverId,name,privates,picture))
+    }
+
+    useEffect(() => {
+        const err = async () => {
+            const err = await dispatch(thunkGetSingleServer(userId,serverId))
+            // setErrors(err)
+        }
+        err()
+    },[serverId])
+
+    useEffect(() => {
+        setName(server.name)
+        setPrivates(server.privates)
+        setPicture(server.picture)
+    },[server])
+
+    if (!server) {
+        return null
     }
 
     return (

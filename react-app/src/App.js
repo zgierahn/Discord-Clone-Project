@@ -34,7 +34,7 @@ function App() {
             <LandingPage />
           </Route>
 
-          <Route exact path='/channel/:channelId'>
+          <Route exact path='/channel/:channelId/:serverId'>
             <ChannelTest />
           </Route>
 
@@ -53,7 +53,7 @@ function App() {
           <Route exact path="/:userId/servers/new" >
             <ServerForm />
           </Route>
-          <Route exact path="/:userId/servers/:serverId/:channelId" >
+          <Route exact path="/:userId/servers/:serverId" >//dont think we need this route its jsut for getting single server to edit
             <SingleServer />
           </Route>
           <Route exact path="/:userId/servers" >
@@ -64,9 +64,6 @@ function App() {
           </Route>
         </Switch>
       )}
-      <Route exact path="/login" >
-            <LoginFormPage />
-          </Route>
     </>
   );
 }
