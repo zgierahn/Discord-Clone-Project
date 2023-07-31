@@ -12,9 +12,14 @@ msg_routes = Blueprint('messages', __name__)
 
 
 # -------- still working on this code
-@msg_routes.route('/<int:id>/<int:channelId>/')
+@msg_routes.route('/<int:id>/<int:channelId>/<int:serverId>')
 # @login_required
-def channel_messages(id, channelId):
+def channel_messages(id, channelId,serverId):
     msg = Message.query.filter(Message.channel_id == channelId).all()
-    print('-----------------', msg)
-    return [each.to_dict() for each in msg]
+    reactions = Reaction.query.join(Message, Reaction.messages).filter()
+    reactions = db.session.query(Reaction).join(User,Server.user).join(Message,Reaction.messages).filter(User.id ==id,Server.id == serverId,Channel.server_id ==serverId,Message.channel_id==channelId)
+    print('--------------------------------',[each.to_dict() for each in reactions])
+
+
+    # print('-----------------', msg[0].to_dict())
+    return [each.to_dict() for each in reactions]

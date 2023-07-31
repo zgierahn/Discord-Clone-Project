@@ -34,7 +34,7 @@ function App() {
             <LandingPage />
           </Route>
 
-          <Route exact path='/channel/:channelId'>
+          <Route exact path='/channel/:channelId/:serverId'>
             <ChannelTest />
           </Route>
 
