@@ -22,7 +22,7 @@ function SingleServer() {
     const server = useSelector(state => Object.values(state.servers.singleServer))
     return (
         <div>
-
+            
         </div>
     )
 }
