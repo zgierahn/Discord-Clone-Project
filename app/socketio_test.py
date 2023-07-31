@@ -1,4 +1,4 @@
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit, send, join_room
 import os
 from .models import Message, db
 
@@ -20,11 +20,11 @@ socketio = SocketIO(cors_allowed_origins=origins)
 @socketio.on("chat")
 def handle_chat(data):
     if data:
-        # print(data, '=============')
+        print(data, '=============')
         new_msg = Message(
                 content = data['content'],
                 user_id = data['user_id'],
-                channel_id = 1
+                channel_id = data['channel_Id']
             )
         db.session.add(new_msg)
         db.session.commit()
@@ -32,9 +32,11 @@ def handle_chat(data):
 
 
 
-# @socketio.on('join')
-# def on_join(data):
-#     username = session['username']
-#     room = data['room']
-#     join_room(room)
-#     send(username + ' has entered the room.', to=room)
+@socketio.on('join')
+def on_join(data):
+    print('-------------------- here', data)
+    # username = data['username']
+    room = data['channel']
+    join_room(room)
+    emit('join', data, to=room)
+    # send('has entered the room.', to=room)

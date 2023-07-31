@@ -106,14 +106,6 @@ def servers(id):
 
 
 
-# -------- still working on this code
-# @server_routes.route('/<int:id>/<int:channelId>/')
-# @login_required
-# def channel_messages(id, channelId):
-#     msg = Message.query.filter(Message.channel_id == channelId).all()
-#     print('-----------------', msg)
-#     return [each.to_dict() for each in msg]
-
 
 ###########test stuff#############
 session.close()

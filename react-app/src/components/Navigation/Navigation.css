@@ -5,3 +5,35 @@
 .hidden {
   display: none;
 }
+
+
+.NavBarContainer{
+  display: flex;
+  justify-content: space-around;
+  height: 70px;
+  align-items: center;
+}
+
+.ATagsInNav {
+  display: flex;
+  width: 600px;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+
+.ATagsInNav > a {
+  text-decoration: none;
+}
+
+
+.ATagsInNav > a:hover{
+  text-decoration: underline;
+}
+
+
+.MenuButton{
+  padding: 14px 18px;
+  border-radius: 20px;
+  border: none;
+}
