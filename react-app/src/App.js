@@ -14,6 +14,7 @@ import ServerForm from "./components/ServerForm";
 import DeleteServer from "./components/DeleteServer";
 import EditServer from "./components/EditServer";
 import ChannelTest from "./components/channel-socket";
+import LandingPage from "./components/LandingPage";
 
 
 function App() {
@@ -28,6 +29,10 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+
+          <Route exact path='/'>
+            <LandingPage />
+          </Route>
 
           <Route exact path='/channel/:channelId'>
             <ChannelTest />
