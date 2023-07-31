@@ -45,12 +45,12 @@ export const thunkDeleteServer = (serverId) => async (dispatch) => {
     }
 }
 
-export const thunkEditGroup = (serverId, data) => async (dispatch) => {
+export const thunkEditServer = (serverId, name,privates,picture) => async (dispatch) => {
     try {
         const response = await fetch(`/api/servers/edit/${serverId}`, {
             method:'PUT',
             headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(data)
+            body:JSON.stringify({name,privates,picture})
         })
         if (response.ok)    {
             const server = await response.json()
@@ -81,8 +81,8 @@ export const thunkCreateServer = (name,privates,picture) => async (dispatch) => 
     }
 }
 
-export const thunkGetSingleServer = (userId,serverId,channelId) => async(dispatch) => {
-    const res = await fetch(`/api/servers/${userId}/${serverId}/${channelId}`)
+export const thunkGetSingleServer = (userId,serverId) => async(dispatch) => {
+    const res = await fetch(`/api/servers/${userId}/${serverId}`)
     if (res.ok) {
         const data = await res.json()
         dispatch(getSingleServer(data))
@@ -133,15 +133,13 @@ export default function reducer(state = initialState, action) {
             action.data.forEach(ele => {
                 newState.allServers[ele.id]= ele
             });
-            return {...newState}
+            return newState
         }
         case GET_SINGLE_SERVER:{
             let newState = {...state, singleServer:{...state.singleServer}}
-            newState.singleServer = {}
-            action.data.forEach(ele => {
-                newState.singleServer[ele.id]= ele
-            });
-            return {...newState}
+            // newState.singleServer = {}
+            newState.singleServer=action.data
+            return newState
         }
         case CREATE_SERVER: {
             const newState = {...state}
