@@ -10,15 +10,13 @@ const getMessages = (data) => ({
 
 
 
-export const thunkGetAllMsg = (id, channelId) => async(dispatch) => {
-    const res = await fetch (`/api/messages/${id}/${channelId}`)
+export const thunkGetAllMsg = (id, channelId,serverId) => async(dispatch) => {
+    const res = await fetch (`/api/messages/${id}/${channelId}/${serverId}`)
     if (res.ok){
         const response = await res.json()
-        console.log(response, 'it made it to the thunkkkkkkkkk')
         dispatch(getMessages(response))
     } else{
         const response = await res.json()
-        console.log(response)
     }
 }
 

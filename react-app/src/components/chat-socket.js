@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { io } from 'socket.io-client';
 import { thunkGetAllMsg } from "../store/messages";
+import { useParams } from 'react-router-dom'
 let socket;
 
 const Chat = ({channelId}) => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
+    const { serverId } = useParams()
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
 
@@ -15,17 +17,17 @@ const Chat = ({channelId}) => {
 
     // const channelId = 1
 
-    console.log(socket)
+    // console.log(socket)
 
     useEffect(() => {
         // open socket connection
         // create websocket
         socket = io();
 
-        dispatch(thunkGetAllMsg(user.id, channelId))
+        dispatch(thunkGetAllMsg(user.id, channelId,serverId))
 
         socket.on("chat", (chat) => {
-            let old_msg = dispatch(thunkGetAllMsg(user.id, channelId))
+            let old_msg = dispatch(thunkGetAllMsg(user.id, channelId,serverId))
             old_msg = Object.values(old_msg)
 
             setMessages(messages => [...old_msg])
@@ -62,13 +64,13 @@ const Chat = ({channelId}) => {
             <div>
                 {msg_arr.map((msg) => {
                     return (
-                        <div>{msg.content}</div>
+                        <div key={msg.id}>{msg.content}</div>
                     )
                 })}
             </div>
             <div>
-                {messages.map((message, ind) => (
-                    <div key={ind}>{`${message.user}: ${message.content}`}</div>
+                {messages.map((message) => (
+                    <div key={message.id}>{`${message.user}: ${message.content}`}</div>
                 ))}
             </div>
             <form onSubmit={sendChat}>
