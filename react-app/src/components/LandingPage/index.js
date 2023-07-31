@@ -1,16 +1,16 @@
 import Navigation from "../Navigation"
+import React from 'react'
+import mainShoe from "../../images/main-shoe.jpg"
 
 
 
-
-
-function LandingPage(){
+function LandingPage() {
 
 
 
     return (
         <div>
-            <img src="https://discord.com/assets/e6d57714479874c665b36c7adee76b1d.svg" />
+            <img className="testing" src={mainShoe} alt="alternate" />
         </div>
 
 )
