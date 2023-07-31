@@ -10,7 +10,11 @@ function EditServer() {
     const dispatch = useDispatch()
     const history = useHistory()
     const { serverId,userId} = useParams()
+<<<<<<< HEAD
 
+=======
+    console.log('server',server)
+>>>>>>> team1
     const [name, setName] = useState(server.name)
     const [privates, setPrivates] = useState(server.privates)
     const [picture, setPicture] = useState(server.picture)

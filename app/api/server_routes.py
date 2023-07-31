@@ -23,7 +23,7 @@ def delete_post(serverId):
   server_to_delete = Server.query.get(serverId)
   db.session.delete(server_to_delete)
   db.session.commit()
-  return 'deleted'
+  return {'message':'deleted'}
 
 @server_routes.route('/new', methods=['POST'])
 @login_required
@@ -70,6 +70,10 @@ def edit_server(serverId):
 @login_required
 def single_server(id,serverId):
     server = Server.query.get(serverId)
+<<<<<<< HEAD
+=======
+    print('servers',server.to_dict)
+>>>>>>> team1
     # reactions = db.session.query(Reaction).join(User,Server.user).join(Message,Reaction.messages).filter(User.id ==id,Server.id == serverId,Channel.server_id ==serverId,Message.channel_id==channelId)
     # messages = db.session.query(Message).join(User,Server.user).filter(User.id ==id,Server.id == serverId,Channel.server_id ==serverId,Message.channel_id==channelId)
     # servers = session.query(User).join(Server).filter(User.id == id)

@@ -138,6 +138,7 @@ export default function reducer(state = initialState, action) {
         case GET_SINGLE_SERVER:{
             let newState = {...state, singleServer:{...state.singleServer}}
             // newState.singleServer = {}
+            console.log("server newstate",newState)
             newState.singleServer=action.data
             return newState
         }
