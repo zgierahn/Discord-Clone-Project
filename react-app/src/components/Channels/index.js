@@ -5,10 +5,10 @@ import { useHistory } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 
-function Channels() {
+function Channels({serverId}) {
     const dispatch = useDispatch()
     const history = useHistory()
-    const { userId, serverId } = useParams()
+    const { userId} = useParams()
 
     useEffect(() => {
         dispatch(thunkGetChannels(userId, serverId))

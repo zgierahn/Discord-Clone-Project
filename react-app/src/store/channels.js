@@ -26,6 +26,7 @@ const getSingleChannel = (channel) => ({
 })
 
 export const thunkGetChannels = (id, serverId) => async(dispatch) => {
+    console.log('serverId',serverId)
     const res = await fetch(`/api/channels/${id}/${serverId}`)
     if (res.ok) {
         const data = await res.json()
@@ -72,10 +73,11 @@ export const thunkDeleteChannel = (channelId) => async (dispatch) => {
                 return {errors:err}
             }
 }
-export const thunkGetSingleChannel = (userId,serverId,channelId) => async(dispatch) => {
-    const res = await fetch(`/api/channels/${userId}/${serverId}/${channelId}`)
+export const thunkGetSingleChannel = (channelId) => async(dispatch) => {
+    const res = await fetch(`/api/channels/${channelId}`)
     if (res.ok) {
         const data = await res.json()
+
         dispatch(getSingleChannel(data))
         return data
     }
@@ -85,15 +87,17 @@ export const thunkGetSingleChannel = (userId,serverId,channelId) => async(dispat
     }
 }
 
-export const thunkEditChannel = (channelId, data) => async (dispatch) => {
+export const thunkEditChannel = (channelId,name) => async (dispatch) => {
     try {
+        console.log('are we in the thiunk')
         const response = await fetch(`/api/channels/edit/${channelId}`, {
             method:'PUT',
             headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(data)
+            body:JSON.stringify({name})
         })
         if (response.ok)    {
             const channel = await response.json()
+            console.log('thunk data', channel)
             dispatch(editChannel(channel))
             return channel
         }
@@ -116,11 +120,9 @@ export default function reducer(state = initialState, action) {
         }
         case GET_SINGLE_CHANNEL:{
             let newState = {...state, singleChannel:{...state.singleChannel}}
-            newState.singleChannel = {}
-            action.data.forEach(ele => {
-                newState.singleChannel[ele.id]= ele
-            });
-            return {...newState}
+            console.log('newState', newState)
+            newState.singleChannel=action.data
+            return newState
         }
         case CREATE_CHANNEL: {
             const newState = {...state}

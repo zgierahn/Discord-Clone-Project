@@ -81,8 +81,8 @@ export const thunkCreateServer = (name,privates,picture) => async (dispatch) => 
     }
 }
 
-export const thunkGetSingleServer = (userId,serverId,channelId) => async(dispatch) => {
-    const res = await fetch(`/api/servers/${userId}/${serverId}/${channelId}`)
+export const thunkGetSingleServer = (userId,serverId) => async(dispatch) => {
+    const res = await fetch(`/api/servers/${userId}/${serverId}`)
     if (res.ok) {
         const data = await res.json()
         dispatch(getSingleServer(data))
@@ -133,11 +133,11 @@ export default function reducer(state = initialState, action) {
             action.data.forEach(ele => {
                 newState.allServers[ele.id]= ele
             });
-            return {...newState}
+            return newState
         }
         case GET_SINGLE_SERVER:{
             let newState = {...state, singleServer:{...state.singleServer}}
-            // newState.singleServer = {}
+            console.log("server newstate",newState)
             newState.singleServer=action.data
             return newState
         }

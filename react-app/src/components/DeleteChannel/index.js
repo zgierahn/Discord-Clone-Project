@@ -18,7 +18,7 @@ export default function DeleteChannel () {
             <h2>channel delete</h2>
             <button onClick={(e) => {
                 deleteChannel()
-                .then(()=>history.push(`/${userId}/servers/${serverId}/channels`))
+                .then(()=>history.push(`/${userId}/servers`))
             }}
             >Delete Channel</button>
         </div>

@@ -11,8 +11,6 @@ function ChannelForm() {
     const { userId,serverId } = useParams()
 
     const [name, setName] = useState('')
-    const [privates, setPrivates] = useState(false)
-    const [picture, setPicture] = useState('')
 
     const onSubmit = async() => {
         let payload = {}
@@ -31,7 +29,7 @@ function ChannelForm() {
             <button
                 onClick={(e) => {
                     onSubmit()
-                    .then(()=>history.push(`/${userId}/servers/${serverId}/channels`))
+                    .then(()=>history.push(`/${userId}/servers`))
                 }}
             >submit</button>
         </div>

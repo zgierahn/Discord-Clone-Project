@@ -12,17 +12,18 @@ import { useParams } from 'react-router-dom'
 function SingleChannel() {
     const dispatch = useDispatch()
     const history = useHistory()
-    const { userId, serverId, channelId } = useParams()
+    const { userId,  channelId } = useParams()
 
 
     useEffect(() => {
-        dispatch(thunkGetSingleChannel(userId, serverId, channelId))
+        dispatch(thunkGetSingleChannel(channelId))
     }, [dispatch])
 
-    const channel = useSelector(state => Object.values(state.channels.singleChannel))
+    const channel = useSelector(state => state.channels.singleChannel)
+    console.log('CHANNEL',channel)
     return (
         <div>
-
+            <p>{channel.name}</p>
         </div>
     )
 }

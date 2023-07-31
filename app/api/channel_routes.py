@@ -3,9 +3,15 @@ from flask_login import login_required
 from app.models import Server, User,Channel, Message
 from app.models import db
 from app.forms.channel_form import ChannelForm
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 channel_routes = Blueprint('channels', __name__)
 
+db_url = "sqlite:///dev.db"
+engine = create_engine(db_url)
+SessionFactory = sessionmaker(bind=engine)
+session = SessionFactory()
 
 @channel_routes.route('/<int:id>/<int:serverId>')
 @login_required
@@ -42,15 +48,26 @@ def delete_post(channelId):
 
 @channel_routes.route('/edit/<int:channelId>', methods=['GET','POST','PUT'])
 @login_required
-def edit_channel(channelId,serverId):
-    channel_form = Channel.query.get(channelId)
-    channel_form['csrf_token'].data = request.cookies['csrf_token']
-    return channel_form.to_dict()
-    return {'errors': 'error'}, 401
+def edit_channel(channelId):
+    form = ChannelForm()
+    channel = Channel.query.get(channelId)
+    print('-----------------------formdata----------------',channel)
+    form['csrf_token'].data = request.cookies['csrf_token']
+    channel.name = form.data['name']
+    # channel.server_id=serverId
+    db.session.commit()
+    return channel.to_dict()
+    # return {'errors': 'error'}, 401
 
 
-@channel_routes.route('/<int:id>/<int:serverId>/<int:channelId>')
+@channel_routes.route('/<int:channelId>')
 @login_required
-def single_channel(id,serverId,channelId):
-    channels = db.session.query(Channel).join(User,Server.user).filter(User.id ==id,Server.id == serverId,Channel.server_id ==serverId,Message.channel_id==channelId)
-    return [channel.to_dict() for channel in channels]
+def single_channel(channelId):
+    channel = Channel.query.get(channelId)
+    # channel=Channel.query.all()
+    # print('backend chanel--------------', channel.to_dict())
+    return channel.to_dict()
+
+###########test stuff#############
+session.close()
+engine.dispose()
