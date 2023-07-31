@@ -51,31 +51,27 @@ def create_server():
 @server_routes.route('/edit/<int:serverId>', methods=['GET','POST','PUT'])
 @login_required
 def edit_server(serverId):
-    server_form = Server.query.get(serverId)
-    server_form['csrf_token'].data = request.cookies['csrf_token']
-    curr_user = User.query.get(current_user.id)
-    # if form.validate_on_submit():
-    #     if form.data['privates'] == 1:
-    #         answer = True
-    #     else:
-    #         answer = False
-    #     server = Server(
-    #         name = form.data['name'],
-    #         privates = answer,
-    #         picture = form.data['picture']
-    #     )
-    #     server.user.append(curr_user)
-    #     db.session.commit()
-    #     db.session.add(server)
-    #     db.session.commit()
-    return server_form.to_dict()
+    form = ServerForm()
+    server = Server.query.get(serverId)
+    print('-----------------------formdata----------------',form.data['name'])
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.data['privates'] == 1:
+        answer = False
+    else:
+        answer = True
+    server.name = form.data['name']
+    server.privates = answer
+    server.picture = form.data['picture']
+    db.session.commit()
+    return server.to_dict()
     return {'errors': 'error'}, 401
 
-@server_routes.route('/<int:id>/<int:serverId>/<int:channelId>')
+@server_routes.route('/<int:id>/<int:serverId>') #/<int:id>/<int:serverId>/<int:channelId>
 @login_required
-def single_server(id,serverId,channelId):
-    reactions = db.session.query(Reaction).join(User,Server.user).join(Message,Reaction.messages).filter(User.id ==id,Server.id == serverId,Channel.server_id ==serverId,Message.channel_id==channelId)
-    messages = db.session.query(Message).join(User,Server.user).filter(User.id ==id,Server.id == serverId,Channel.server_id ==serverId,Message.channel_id==channelId)
+def single_server(id,serverId):
+    server = Server.query.get(serverId)
+    # reactions = db.session.query(Reaction).join(User,Server.user).join(Message,Reaction.messages).filter(User.id ==id,Server.id == serverId,Channel.server_id ==serverId,Message.channel_id==channelId)
+    # messages = db.session.query(Message).join(User,Server.user).filter(User.id ==id,Server.id == serverId,Channel.server_id ==serverId,Message.channel_id==channelId)
     # servers = session.query(User).join(Server).filter(User.id == id)
     # res = []
     # for server in servers:
@@ -84,8 +80,8 @@ def single_server(id,serverId,channelId):
     #         answer.append(ele.to_dict())
     #     res.append(answer)
     # print('------------------------------------------',res)
-    print('--------------------------------',[message.to_dict() for message in messages])
-    print('--------------------------------',[emoji.to_dict() for emoji in reactions])
+    # print('--------------------------------',[message.to_dict() for message in messages])
+    # print('--------------------------------',[emoji.to_dict() for emoji in reactions])
     """
     print([server.to_dict() for server in servers])
     print('-----------------this is my servers------------------', servers)
@@ -93,7 +89,7 @@ def single_server(id,serverId,channelId):
     Query for all users and returns them in a list of user dictionaries
     return {'servers': [server.to_dict() for server in servers]}
     """
-    return [emoji.to_dict() for emoji in reactions]
+    return server.to_dict()
 
 @server_routes.route('/<int:id>')
 @login_required
@@ -122,4 +118,3 @@ def servers(id):
 ###########test stuff#############
 session.close()
 engine.dispose()
-
