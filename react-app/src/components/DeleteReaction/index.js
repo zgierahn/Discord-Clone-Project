@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux"
 import { thunkDeleteReaction } from "../../store/messages"
 import {useParams, useHistory} from 'react-router-dom'
 import { useState } from "react"
+import { thunkDeleteReaction } from "../../store/messages"
 
 export default function DeleteReaction () {
     const dispatch = useDispatch()

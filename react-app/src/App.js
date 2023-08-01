@@ -77,20 +77,17 @@ function App() {
           <Route exact path="/:userId/servers/:serverId/:channelId" >
             <SingleServer />
           </Route>
+          <Route exact path="/:userId/servers/:serverId/channels/new" >
+            <ChannelForm/>
+          </Route>
           <Route exact path="/:userId/servers/:serverId/channels/:channelId" >
             <SingleChannel />
           </Route>
           <Route exact path="/:userId/servers" >
             <Servers />
           </Route>
-          <Route exact path="/:userId/servers/:serverId/channels/new" >
-            <ChannelForm/>
-          </Route>
           <Route path="/signup">
             <SignupFormPage />
-          </Route>
-          <Route exact path="/:userId/servers/:serverId/channels/new" >
-            <ChannelForm />
           </Route>
         </Switch>
       )}

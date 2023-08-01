@@ -1,12 +1,13 @@
 import { thunkGetServers } from "../../store/servers"
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 import Channels from "../Channels"
 import addServer from "../../images/server-add.jpg"
 import discoverServer from "../../images/discoverable-servers.jpg"
 import downloadArrow from "../../images/download-arrow.jpg"
+import { logout } from "../../store/session";
 
 import './servers.css'
 
@@ -16,7 +17,7 @@ import './servers.css'
 function Servers() {
     const serversAll = useSelector(state => Object.values(state.servers.allServers))
     const dispatch = useDispatch()
-    // const history = useHistory()
+    const history = useHistory()
     const { userId } = useParams()
     // const [state, setState] = useState('start')
     const[test,setTest]=useState(false)
@@ -31,6 +32,10 @@ function Servers() {
         setTest(true)
     }, [test,valueServerId])
 
+    // const handleLogout = (e) => {
+    //     e.preventDefault();
+    //     dispatch(logout());
+    //   };
 
     return (
         <div className="servers-container">
@@ -48,17 +53,24 @@ function Servers() {
                             {ele.name}
                     </button> */}
                     {ele.public ? <p>True</p> : <p>False</p>}
+                    {ele.id}
                     {/* <Channels serverId={ele.id}/> */}
         </div>
 
 })}
-        
+
             <img className="server-logo" src={addServer} alt='server-logo' />
             <img className="server-logo" src={discoverServer} alt='server-logo' />
             <img className="server-logo" src={downloadArrow} alt='server-logo' />
 {test?<Channels serverId={valueServerId}/>:null}
+{/* <p>User ID:{userId}</p> */}
+    <button onClick={() =>{
+        return dispatch(logout())
+    .then(()=>history.push('/login'))
+    }}>Log Out</button>
         </div>
     )
+
 }
 
 export default Servers
