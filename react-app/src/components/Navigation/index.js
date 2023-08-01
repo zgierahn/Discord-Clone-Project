@@ -24,12 +24,12 @@ function Navigation({ isLoaded }){
 				<a href='#'>Blog</a>
 				<a href='#'>Careers</a>
 			</div>
-			{/* <button className="MenuButton" onClick={() => {history.push('/login')}}>Login</button> */}
-			{isLoaded && (
+			<button className="MenuButton" onClick={() => {history.push('/login')}}>Login</button>
+			{/* {isLoaded && (
 				<div>
 					<ProfileButton user={sessionUser} />
 				</div>
-			)}
+			)} */}
 		</div>
 	);
 }

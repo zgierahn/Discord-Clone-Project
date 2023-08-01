@@ -28,7 +28,7 @@ function LoginFormPage() {
     <>
     <img className="pic-bg" src={backgroundImg} />
     <div className='login'>
-      <form onSubmit={handleSubmit}>
+      <form className="loginForm" onSubmit={handleSubmit}>
         <div className="heading">
       <h3 className='header'>Welcome back!</h3>
       <p>We're so excited to see you again!</p>
@@ -38,7 +38,8 @@ function LoginFormPage() {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
+        <div className="inputs">
+        <label className="login-labels">
           EMAIL
           <input
             type="text"
@@ -47,7 +48,7 @@ function LoginFormPage() {
             required
           />
         </label>
-        <label>
+        <label className="login-labels">
           PASSWORD
           <input
             type="password"
@@ -56,6 +57,7 @@ function LoginFormPage() {
             required
           />
         </label>
+        </div>
         <button type="submit" >Log In</button>
         <button className="demo-user" onClick={() => {
           // setErrors({});
@@ -68,7 +70,7 @@ function LoginFormPage() {
           .then(()=>history.push('/2/servers'))
         }} >Demo User 2</button>
       {/* <button onClick={() => { history.push(`/signup`)}}>Register</button> */}
-      <p>Need an account?</p> <Link to={`/signup`}>Register</Link>
+      <p>Need an account?</p> <Link className="registerLink" to={`/signup`}>Register</Link>
       </form>
       </div>
     </>
