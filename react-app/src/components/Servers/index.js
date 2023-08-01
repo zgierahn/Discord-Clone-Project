@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux'
 // import { useHistory } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 import Channels from "../Channels"
-import addServer from "../../images/server-add.jpg"
-import discoverServer from "../../images/discoverable-servers.jpg"
-import downloadArrow from "../../images/download-arrow.jpg"
-import soloDiscord from "../../images/solo-discord-logo.jpg"
+import addServer from "../../images/server-add.png"
+import discoverServer from "../../images/discoverable-servers.png"
+import downloadArrow from "../../images/download-arrow.png"
+import soloDiscord from "../../images/solo-discord-logo.png"
 
 import './servers.css'
 
@@ -39,12 +39,12 @@ function Servers() {
                 <span className="tooltiptext">Direct Messages</span>
                 <div className="server-logo">
                     <img className="solo-server-discord" src={soloDiscord} alt='server-logo' />
-                </div>
+            </div>
             </div>
             <div class="guildSeparator"></div>
             {serversAll.map((ele) => {
                 return <div  key={ele.id}>
-                    <div className="tooltip" id="logo-container">
+                    <div className="tooltip">
                         <span className="tooltiptext">{ele.name}</span>
                         <img className="server-image" src={ele.picture} alt={ele.name} onClick={(e)=> {
                             setValueServerId(ele.id)

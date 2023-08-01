@@ -1,8 +1,12 @@
 /* server logo */
 #logo-container {
+  display: flex;
   height: 48px;
   width: 48px;
   border-radius: 25px;
+  background-color: green;
+  justify-content: center;
+  align-items: center;
 }
 
 #logo-container:hover {
@@ -13,6 +17,11 @@
   height: 48px;
   width: 48px;
   border-radius: 25px;
+
+}
+
+.server-image:hover {
+  border-radius: 10px;
 }
 
 .tooltip {
