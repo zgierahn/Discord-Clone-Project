@@ -229,6 +229,10 @@ h2 {
     text-decoration: none;
 }
 
+.ATagContainer > a:hover{
+    text-decoration: underline;
+}
+
 .LeftResourcesConatainer{
     width: 220px;
     padding-top: 45px

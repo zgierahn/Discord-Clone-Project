@@ -14,7 +14,8 @@ export const thunkGetAllMsg = (id, channelId,serverId) => async(dispatch) => {
     const res = await fetch (`/api/messages/${id}/${channelId}/${serverId}`)
     if (res.ok){
         const response = await res.json()
-        dispatch(getMessages(response))
+        let resss = dispatch(getMessages(response))
+        return resss
     } else{
         const response = await res.json()
     }
@@ -30,10 +31,12 @@ export default function reducer(state = initialState, action){
         case GET_MESSAGES: {
             let newState = {...state, allMessages:{...state.allMessages}}
             newState.allMessages = {}
-            action.data.forEach(ele => {
+            // newState.allMessages = action.data
+            action.data.messages.forEach(ele => {
                 newState.allMessages[ele.id]= ele
             });
-            return {...newState}
+            return newState
+
         }
         default:
             return state

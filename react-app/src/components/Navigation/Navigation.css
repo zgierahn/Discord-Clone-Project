@@ -12,6 +12,7 @@
   justify-content: space-around;
   height: 70px;
   align-items: center;
+  background-color: #444def;
 }
 
 .ATagsInNav {
@@ -24,6 +25,7 @@
 
 .ATagsInNav > a {
   text-decoration: none;
+  color: white;
 }
 
 

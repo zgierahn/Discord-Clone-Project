@@ -24,14 +24,31 @@ const Chat = ({channelId}) => {
         // create websocket
         socket = io();
 
-        dispatch(thunkGetAllMsg(user.id, channelId,serverId))
+        const func = async() => {
+                let res = await dispatch(thunkGetAllMsg(user.id, channelId,serverId))
+            for (let each in res.data.messages){
+                console.log(res.data)
+            }
+
+        }
+        func()
 
         socket.on("chat", (chat) => {
+            // let arr = ['test']
+            // const func = async() => {
             let old_msg = dispatch(thunkGetAllMsg(user.id, channelId,serverId))
+                // let obj = old_msg.data
+                // for (let msg in obj){
+                //     arr.push('test')
+                // }
+            // arr.push('test')
+            // }
+            // func()
+            // console.log(old_msg)
             old_msg = Object.values(old_msg)
-
+            // console.log('testttttt', old_msg)
             setMessages(messages => [...old_msg])
-            console.log(messages)
+            console.log(messages, '--------------')
         })
         // when component unmounts, disconnect
         return (() => {
@@ -41,7 +58,7 @@ const Chat = ({channelId}) => {
     }, [])
 
 
-    if(msgs === undefined){
+    if(Object.values(msgs).length < 1){
         return <>hi</>
     }
 

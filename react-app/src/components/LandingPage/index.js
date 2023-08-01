@@ -3,6 +3,7 @@ import './LandingPage.css'
 import Navigation from "../Navigation"
 import React from 'react'
 import mainShoe from "../../images/main-shoe.jpg"
+import { NavLink } from 'react-router-dom'
 
 // import Navigation from "../Navigation"
 // import './LandingPage.css'
@@ -117,7 +118,7 @@ function LandingPage() {
 
             </div>
             <div className="FooterNav">
-                <div className="BottomHomeIcon">Discord</div>
+                <NavLink className="BottomHomeIcon" exact to="/"> Discord</NavLink>
                 <div>Sign Up</div>
             </div>
         </div>
