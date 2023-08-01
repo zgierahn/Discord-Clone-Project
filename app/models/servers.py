@@ -29,6 +29,6 @@ class Server(db.Model, UserMixin):
         return {
             'id': self.id,
             'name': self.name,
-            'public': self.privates,
+            'privates': self.privates,
             'picture': self.picture
         }
