@@ -35,14 +35,13 @@ export const thunkDeleteReaction = (userId,messageId,reactionId) => async (dispa
 }
 
 export const thunkDeleteMessage = (messageId) => async (dispatch) => {
-    // try {
         const res = await fetch(`/api/messages/${messageId}/delete`, {
             method:'DELETE'
         })
         if (res.ok)    {
             const data = await res.json()
 
-            dispatch(deleteMessage(data))
+            dispatch(deleteMessage(messageId))
             return data
         }else {
                 const err = await res.json()
@@ -80,7 +79,7 @@ export default function reducer(state = initialState, action){
         }
         case DELETE_MESSAGE: {
             const newState = {...state, allMessages:{...state.allMessages}}
-            delete newState.allMessages[action.messageId]
+            delete newState.allMessages[action.data]
             return newState
         }
         default:

@@ -50,9 +50,9 @@ function App() {
           {/* <Route exact path='/chat'>
             <Chat />
           </Route> */}
-          <Route exact path='/:userId/message/:messageId/delete'>
+          {/* <Route exact path='/:userId/message/:messageId/delete'>
             <DeleteMessage />
-          </Route>
+          </Route> */}
 
           <Route exact path="/login" >
             <LoginFormPage />
