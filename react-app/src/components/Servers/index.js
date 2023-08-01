@@ -56,29 +56,29 @@ function Servers() {
                             setValueServerId(ele.id)
                             setTest(false)}}/>
                     </div>
-                    {/* <button value={ele.id} onClick={(e)=> {
-                        setValueServerId(e.target.value)
-                        setTest(false)}}>
-                            {ele.name}
-                    </button> */}
-                    {ele.public ? <p>True</p> : <p>False</p>}
-                    {/* <Channels serverId={ele.id}/> */}
-        </div>
-
-})}
-
-            <img className="server-logo" src={addServer} alt='server-logo' />
-            <img className="server-logo" src={discoverServer} alt='server-logo' />
-            <img className="server-logo" src={downloadArrow} alt='server-logo' />
-{test?<Channels serverId={valueServerId}/>:null}
-{/* <p>User ID:{userId}</p> */}
-    <button onClick={() =>{
-        return dispatch(logout())
-    .then(()=>history.push('/login'))
-    }}>Log Out</button>
-        </div>
-    )
-
+                    {/* {ele.public ? <p>True</p> : <p>False</p>} */}
+                </div>
+            })}
+            <div className="tooltip" id="logo-container">
+                <span className="tooltiptext">Add a Server</span>
+                <img className="server-logo" src={addServer} alt='server-logo' />
+            </div>
+            <div className="tooltip" id="logo-container">
+                <span className="tooltiptext">Explore Discoverable Servers</span>
+                <img className="server-logo" src={discoverServer} alt='server-logo' />
+            </div>
+            <div class="guildSeparator"></div>
+            <div className="tooltip" id="logo-container">
+                <span className="tooltiptext">Download Apps</span>
+                <img className="server-logo" src={downloadArrow} alt='server-logo' />
+            </div>
+        {test?<Channels serverId={valueServerId}/>:null}
+        <button onClick={() =>{
+                return dispatch(logout())
+            .then(()=>history.push('/login'))
+            }}>Log Out</button>
+                </div>
+            )
 }
 
 export default Servers
