@@ -88,7 +88,7 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE messages SET SCHEMA {SCHEMA};")
     if environment == "production":
-        op.execute(f"ALTER TABLE messages_reactions SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE message_reactions SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
