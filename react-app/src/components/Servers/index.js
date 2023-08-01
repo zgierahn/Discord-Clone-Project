@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 import Channels from "../Channels"
+import './servers.css'
+
 
 
 
@@ -30,13 +32,21 @@ function Servers() {
     return (
         <div>
             {serversAll.map((ele) => {
-                return <div key={ele.id} >
-                    <button value={ele.id} onClick={(e)=> {
+                return <div  key={ele.id}>
+                    <div className="tooltip">
+                    <span className="tooltiptext">{ele.name}</span>
+                     <img className="server-logo" src={ele.picture} alt={ele.name} onClick={(e)=> {
+                         setValueServerId(ele.id)
+                         setTest(false)}}/>
+                    </div>
+                    {/* <button value={ele.id} onClick={(e)=> {
                         setValueServerId(e.target.value)
-                        setTest(false)}}>{ele.name}</button>
+                        setTest(false)}}>
+                            {ele.name}
+                    </button> */}
                     {ele.public ? <p>True</p> : <p>False</p>}
                     {/* <Channels serverId={ele.id}/> */}
-                </div>
+        </div>
 
 })}
 {test?<Channels serverId={valueServerId}/>:null}

@@ -11,13 +11,13 @@ def seed_users():
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password')
     server1 = Server(
-        name='zachs place', privates=True,user=[demo,marnie])
+        name='zachs place', picture= "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Trollface_non-free.png/220px-Trollface_non-free.png", privates=True,user=[demo,marnie])
     server2 = Server(
-        name='mikes place', privates=False,user=[demo])
+        name='mikes place', picture= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPHRvtFUvNT9Rrpz2HE4gu05hPPg8m7DweCg&usqp=CAU" ,  privates=False,user=[demo])
     server3 = Server(
-        name='emilys place', privates=False,user=[marnie])
+        name='emilys place', picture= "https://marketplace.canva.com/EAFauoQSZtY/1/0/1600w/canva-brown-mascot-lion-free-logo-qJptouniZ0A.jpg" ,  privates=False,user=[marnie])
     server4 = Server(
-        name='matts place', privates=True,user=[demo,marnie])
+        name='matts place', picture= "https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg" ,  privates=True,user=[demo,marnie])
     channel1 = Channel(
         name='awesome', server_id=1)
     channel2 = Channel(
