@@ -1,10 +1,13 @@
 import { thunkGetServers } from "../../store/servers"
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from "react-router-dom"
-import { NavLink } from "react-router-dom"
+// import { useHistory } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 import Channels from "../Channels"
+import addServer from "../../images/server-add.jpg"
+import discoverServer from "../../images/discoverable-servers.jpg"
+import downloadArrow from "../../images/download-arrow.jpg"
+
 import './servers.css'
 
 
@@ -13,9 +16,9 @@ import './servers.css'
 function Servers() {
     const serversAll = useSelector(state => Object.values(state.servers.allServers))
     const dispatch = useDispatch()
-    const history = useHistory()
+    // const history = useHistory()
     const { userId } = useParams()
-    const [state, setState] = useState('start')
+    // const [state, setState] = useState('start')
     const[test,setTest]=useState(false)
     console.log('servesAll',serversAll)
     const[valueServerId,setValueServerId]=useState(serversAll.length?serversAll[0].id:0)
@@ -30,7 +33,7 @@ function Servers() {
 
 
     return (
-        <div>
+        <div className="servers-container">
             {serversAll.map((ele) => {
                 return <div  key={ele.id}>
                     <div className="tooltip">
@@ -49,6 +52,10 @@ function Servers() {
         </div>
 
 })}
+        
+            <img className="server-logo" src={addServer} alt='server-logo' />
+            <img className="server-logo" src={discoverServer} alt='server-logo' />
+            <img className="server-logo" src={downloadArrow} alt='server-logo' />
 {test?<Channels serverId={valueServerId}/>:null}
         </div>
     )

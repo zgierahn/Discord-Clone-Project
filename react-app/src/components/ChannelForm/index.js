@@ -1,8 +1,7 @@
 import { thunkCreateChannel } from '../../store/channels'
-import { useEffect,useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom"
-import { NavLink } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 
 function ChannelForm() {
@@ -13,7 +12,7 @@ function ChannelForm() {
     const [name, setName] = useState('')
 
     const onSubmit = async() => {
-        let payload = {}
+        // let payload = {}
         const err = await dispatch(thunkCreateChannel(name,serverId))
     }
 
