@@ -21,6 +21,7 @@ session = SessionFactory()
 @msg_routes.route('/<int:id>/<int:channelId>/<int:serverId>')
 # @login_required
 def channel_messages(id, channelId,serverId):
+
     # msg = Message.query.filter(Message.channel_id == channelId).all()
     # reactions1 = db.session.query(Message,Reaction).join(Reaction, Message.reaction).options(joinedload(Message.reaction))
     # print(reactions1)
@@ -55,3 +56,22 @@ def channel_messages(id, channelId,serverId):
     # print('-----------------', msg[0].to_dict())
     # return [each.to_dict() for each in msg]
     return {'messages': messages}
+
+
+@msg_routes.route('/<int:id>/<int:messageId>/delete', methods=['GET','POST','DELETE'])
+@login_required
+def delete_post(id,messageId):
+  print('------------------------------',messageId)
+  messgae_to_delete = Message.query.get(messageId)
+  db.session.delete(messgae_to_delete)
+  db.session.commit()
+  return {'message':'deleted'}
+
+@msg_routes.route('/<int:id>/<int:messageId>/reaction/<int:reactionId>/delete', methods=['GET','POST','DELETE'])
+@login_required
+def delete_reaction(id,reactionId):
+  print('------------------------------',reactionId)
+  reaction_to_delete = Reaction.query.get(reactionId)
+  db.session.delete(reaction_to_delete)
+  db.session.commit()
+  return {'message':'deleted'}

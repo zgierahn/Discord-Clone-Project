@@ -20,6 +20,8 @@ import ChannelForm from "./components/ChannelForm";
 import DeleteChannel from "./components/DeleteChannel";
 import EditChannel from "./components/EditChannel";
 import SingleChannel from "./components/SingleChannel";
+import DeleteMessage from "./components/DeleteMessage";
+import DeleteReaction from "./components/DeleteReaction";
 
 
 function App() {
@@ -48,6 +50,9 @@ function App() {
           <Route exact path='/chat'>
             <Chat />
           </Route>
+          <Route exact path='/:userId/message/:messageId/delete'>
+            <DeleteMessage />
+          </Route>
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>
@@ -59,6 +64,9 @@ function App() {
           </Route>
           <Route exact path="/:userId/servers/delete/:serverId" >
             <DeleteServer/>
+          </Route>
+          <Route exact path="/:userId/servers/:serverId/message/:messageId/reaction/:reactionId/delete" >
+            <DeleteReaction/>
           </Route>
           <Route exact path="/:userId/servers/:serverId/channels/delete/:channelId" >
             <DeleteChannel/>
@@ -74,6 +82,9 @@ function App() {
           </Route>
           <Route exact path="/:userId/servers" >
             <Servers />
+          </Route>
+          <Route exact path="/:userId/servers/:serverId/channels/new" >
+            <ChannelForm/>
           </Route>
           <Route path="/signup">
             <SignupFormPage />
