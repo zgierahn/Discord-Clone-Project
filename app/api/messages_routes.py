@@ -18,9 +18,9 @@ session = SessionFactory()
 
 
 # -------- still working on this code
-@msg_routes.route('/<int:id>/<int:channelId>/<int:serverId>')
+@msg_routes.route('/<int:id>/<int:channelId>')
 # @login_required
-def channel_messages(id, channelId,serverId):
+def channel_messages(id, channelId):
     # msg = Message.query.filter(Message.channel_id == channelId).all()
     # reactions1 = db.session.query(Message,Reaction).join(Reaction, Message.reaction).options(joinedload(Message.reaction))
     # print(reactions1)

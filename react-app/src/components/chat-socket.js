@@ -5,10 +5,10 @@ import { thunkGetAllMsg } from "../store/messages";
 import { useParams } from 'react-router-dom'
 let socket;
 
-const Chat = ({channelId}) => {
+const Chat = ({ channelId }) => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
-    const { serverId } = useParams()
+    // const { serverId } = useParams()
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
 
@@ -24,23 +24,17 @@ const Chat = ({channelId}) => {
         // create websocket
         socket = io();
 
-        const func = async() => {
-                let res = await dispatch(thunkGetAllMsg(user.id, channelId,serverId))
-            for (let each in res.data.messages){
-                console.log(res.data)
-            }
+        dispatch(thunkGetAllMsg(user.id, channelId))
 
-        }
-        func()
 
         socket.on("chat", (chat) => {
             // let arr = ['test']
             // const func = async() => {
-            let old_msg = dispatch(thunkGetAllMsg(user.id, channelId,serverId))
-                // let obj = old_msg.data
-                // for (let msg in obj){
-                //     arr.push('test')
-                // }
+            let old_msg = dispatch(thunkGetAllMsg(user.id, channelId))
+            // let obj = old_msg.data
+            // for (let msg in obj){
+            //     arr.push('test')
+            // }
             // arr.push('test')
             // }
             // func()
@@ -58,9 +52,13 @@ const Chat = ({channelId}) => {
     }, [])
 
 
-    if(Object.values(msgs).length < 1){
-        return <>hi</>
+    if (Object.values(msgs) == undefined) {
+        return <></>
     }
+
+    // if (Object.values(msgs).length < 1) {
+    //     return <></>
+    // }
 
     let msg_arr = Object.values(msgs)
     console.log(msg_arr)
@@ -72,7 +70,7 @@ const Chat = ({channelId}) => {
 
     const sendChat = (e) => {
         e.preventDefault()
-        socket.emit("chat", {user: user.username, user_id: user.id, content: chatInput, channel_Id: channelId });
+        socket.emit("chat", { user: user.username, user_id: user.id, content: chatInput, channel_Id: channelId });
         setChatInput("")
     }
 
@@ -81,7 +79,10 @@ const Chat = ({channelId}) => {
             <div>
                 {msg_arr.map((msg) => {
                     return (
-                        <div key={msg.id}>{msg.content}</div>
+                        <>
+                            <div key={msg.id}>{msg.content}</div>
+                        </>
+
                     )
                 })}
             </div>

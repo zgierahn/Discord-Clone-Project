@@ -39,15 +39,15 @@ function App() {
             <LandingPage />
           </Route>
 
-          <Route exact path='/channel/:channelId/:serverId'>
+          {/* <Route exact path='/channel/:channelId/:serverId'>
             <ChannelTest />
-          </Route>
-          <Route exact path='/:userId/servers/:serverId/channels'>
+          </Route> */}
+          {/* <Route exact path='/:userId/servers/:serverId/channels'>
             <Channels />
-          </Route>
-          <Route exact path='/chat'>
+          </Route> */}
+          {/* <Route exact path='/chat'>
             <Chat />
-          </Route>
+          </Route> */}
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>
@@ -69,6 +69,9 @@ function App() {
           <Route exact path="/:userId/servers/:serverId/:channelId" >
             <SingleServer />
           </Route>
+          <Route exact path="/:userId/servers/:serverId/channels/new" >
+            <ChannelForm />
+          </Route>
           <Route exact path="/:userId/servers/:serverId/channels/:channelId" >
             <SingleChannel />
           </Route>
@@ -77,9 +80,6 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
-          </Route>
-          <Route exact path="/:userId/servers/:serverId/channels/new" >
-            <ChannelForm />
           </Route>
         </Switch>
       )}
