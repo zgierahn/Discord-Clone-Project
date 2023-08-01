@@ -3,21 +3,19 @@ import { thunkDeleteMessage } from "../../store/messages"
 import {useParams, useHistory} from 'react-router-dom'
 import { useState } from "react"
 
-export default function DeleteMessage () {
+export default function DeleteMsg ({msgId}) {
     const dispatch = useDispatch()
-    const {userId, messageId} = useParams()
-    const [errors, setErrors] = useState({})
+    const {userId} = useParams()
     const history = useHistory()
-    console.log('this is message id',messageId)
-    const deleteMessage = async() => {
-        const err = await dispatch(thunkDeleteMessage(userId,messageId))
-        setErrors(err)
+
+    const deleteMsg = async() => {
+        await dispatch(thunkDeleteMessage(msgId))
     }
     return (
         <div>
-            <h2>message delete</h2>
+
             <button onClick={(e) => {
-                deleteMessage()
+                deleteMsg()
             }}
             >Delete Message</button>
         </div>

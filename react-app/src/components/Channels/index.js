@@ -1,13 +1,13 @@
 import { thunkGetChannels } from '../../store/channels'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from "react-router-dom"
-import { NavLink } from "react-router-dom"
+// import { useHistory } from "react-router-dom"
 import { useParams } from 'react-router-dom'
+import ChannelTest from '../channel-socket'
 
 function Channels({serverId}) {
     const dispatch = useDispatch()
-    const history = useHistory()
+    // const history = useHistory()
     const { userId} = useParams()
 
     useEffect(() => {
@@ -20,6 +20,7 @@ function Channels({serverId}) {
             {channelsAll.map((ele) => {
                 return <div key={ele.id}>
                     <p>{ele.id}, {ele.name}</p>
+                    <ChannelTest channelId={ele.id} />
 
                 </div>
             })}

@@ -7,10 +7,10 @@ import { io } from 'socket.io-client';
 
 // let socket;
 
-const ChannelTest = () => {
+const ChannelTest = ({channelId}) => {
     // const [socket, setSocket] = useState('')
     const [buttonStatus, setButtonStatus] = useState(false)
-    const {channelId} = useParams()
+    // const {channelId} = useParams()
     let socket;
 
     // const [chatInput, setChatInput] = useState("");

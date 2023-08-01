@@ -2,22 +2,21 @@ import { thunkGetSingleChannel, thunkEditChannel } from '../../store/channels'
 import { useEffect,useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom"
-import { NavLink } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 
 function EditChannel() {
     const channel = useSelector(state => state.channels.singleChannel)
     const dispatch = useDispatch()
     const history = useHistory()
-    const { serverId,userId,channelId} = useParams()
-    console.log('channel', channel)
+    const { userId,channelId} = useParams()  // serverId
+    // console.log('channel', channel)
 
     const [name, setName] = useState(channel.name)
 
     const onSubmit = async() => {
-        let payload = {}
+        // let payload = {}
         const err = await dispatch(thunkEditChannel(channelId,name))
-        console.log('this is err', err)
+        // console.log('this is err', err)
     }
 
     useEffect(() => {
@@ -28,7 +27,7 @@ function EditChannel() {
         }
         err()
     },[channelId])
-    console.log('channel name', channel.name)
+    // console.log('channel name', channel.name)
     useEffect(() => {
         setName(channel.name)
     },[channel])

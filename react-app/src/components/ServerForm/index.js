@@ -1,21 +1,20 @@
 import { thunkCreateServer } from "../../store/servers"
-import { useEffect,useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from "react-router-dom"
-import { NavLink } from "react-router-dom"
-import { useParams } from 'react-router-dom'
+import { useState } from 'react'
+import { useDispatch  } from 'react-redux'  //useSelector
+// import { useHistory } from "react-router-dom"
+// import { useParams } from 'react-router-dom'
 
 function ServerForm() {
     const dispatch = useDispatch()
-    const history = useHistory()
-    const { userId } = useParams()
+    // const history = useHistory()
+    // const { userId } = useParams()
 
     const [name, setName] = useState('')
     const [privates, setPrivates] = useState(false)
     const [picture, setPicture] = useState('')
 
     const onSubmit = async() => {
-        let payload = {}
+        // let payload = {}
         const err = await dispatch(thunkCreateServer(name,privates,picture))
     }
 

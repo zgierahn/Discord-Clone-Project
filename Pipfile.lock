@@ -1,15 +1,7 @@
 {
     "_meta": {
         "hash": {
-<<<<<<<<< Temporary merge branch 1
             "sha256": "736a95e3e64fd64917713040eaad993ee88004bf1911311b8cc23444f1714068"
-=========
-
-            "sha256": "543422d22b10e3dee22922c23b9fbff5d53cb1d71a79c82db1e4adea24220672",
-
-            "sha256": "89711ca83a935208b262cbe8109b8e3b083cd19e21b0f2b365b9315e123a185d"
-
->>>>>>>>> Temporary merge branch 2
         },
         "pipfile-spec": 6,
         "requires": {

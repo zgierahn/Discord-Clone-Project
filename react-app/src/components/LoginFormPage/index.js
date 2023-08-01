@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory,Link } from "react-router-dom";
 import './LoginForm.css';
-import * as sessionActions from "../../store/session";
+import backgroundImg from "../../images/Login-bg.jpeg"
+
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ function LoginFormPage() {
   const [errors, setErrors] = useState([]);
   const history = useHistory();
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to={`/${sessionUser.id}/servers`} />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,15 +26,21 @@ function LoginFormPage() {
 
   return (
     <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+    <img className="pic-bg" src={backgroundImg} />
+    <div className='login'>
+      <form className="loginForm" onSubmit={handleSubmit}>
+        <div className="heading">
+      <h3 className='header'>Welcome back!</h3>
+      <p>We're so excited to see you again!</p>
+      </div>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
-          Email
+        <div className="inputs">
+        <label className="login-labels">
+          EMAIL
           <input
             type="text"
             value={email}
@@ -41,8 +48,8 @@ function LoginFormPage() {
             required
           />
         </label>
-        <label>
-          Password
+        <label className="login-labels">
+          PASSWORD
           <input
             type="password"
             value={password}
@@ -50,15 +57,22 @@ function LoginFormPage() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        </div>
+        <button type="submit" >Log In</button>
         <button className="demo-user" onClick={() => {
           // setErrors({});
           return dispatch(login({ email:'demo@aa.io', password:'password' }))
-          .then(()=>history.push(`/`))
 
         }} >Demo User</button>
+        <button className="demo-user" onClick={() => {
+          // setErrors({});
+          return dispatch(login({ email:'marnie@aa.io', password:'password' }))
+          .then(()=>history.push('/2/servers'))
+        }} >Demo User 2</button>
+      {/* <button onClick={() => { history.push(`/signup`)}}>Register</button> */}
+      <p>Need an account?</p> <Link className="registerLink" to={`/signup`}>Register</Link>
       </form>
-      <button onClick={() => { history.push(`/signup`)}}>Register</button>
+      </div>
     </>
   );
 }

@@ -20,7 +20,6 @@ import ChannelForm from "./components/ChannelForm";
 import DeleteChannel from "./components/DeleteChannel";
 import EditChannel from "./components/EditChannel";
 import SingleChannel from "./components/SingleChannel";
-import DeleteMessage from "./components/DeleteMessage";
 import DeleteReaction from "./components/DeleteReaction";
 
 
@@ -33,26 +32,27 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
 
           <Route exact path='/'>
+            <Navigation isLoaded={isLoaded} />
             <LandingPage />
           </Route>
 
-          <Route exact path='/channel/:channelId/:serverId'>
+          {/* <Route exact path='/channel/:channelId/:serverId'>
             <ChannelTest />
-          </Route>
-          <Route exact path='/:userId/servers/:serverId/channels'>
+          </Route> */}
+          {/* <Route exact path='/:userId/servers/:serverId/channels'>
             <Channels />
-          </Route>
-          <Route exact path='/chat'>
+          </Route> */}
+          {/* <Route exact path='/chat'>
             <Chat />
-          </Route>
-          <Route exact path='/:userId/message/:messageId/delete'>
+          </Route> */}
+          {/* <Route exact path='/:userId/message/:messageId/delete'>
             <DeleteMessage />
-          </Route>
+          </Route> */}
+
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>
@@ -77,14 +77,14 @@ function App() {
           <Route exact path="/:userId/servers/:serverId/:channelId" >
             <SingleServer />
           </Route>
+          <Route exact path="/:userId/servers/:serverId/channels/new" >
+            <ChannelForm />
+          </Route>
           <Route exact path="/:userId/servers/:serverId/channels/:channelId" >
             <SingleChannel />
           </Route>
           <Route exact path="/:userId/servers" >
             <Servers />
-          </Route>
-          <Route exact path="/:userId/servers/:serverId/channels/new" >
-            <ChannelForm/>
           </Route>
           <Route path="/signup">
             <SignupFormPage />

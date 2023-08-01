@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect,Link } from "react-router-dom";
 import { signUp } from "../../store/session";
 import './SignupForm.css';
+import backgroundImg from "../../images/Login-bg.jpeg"
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -13,7 +14,8 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+
+  if (sessionUser) return <Redirect to={`/${sessionUser.id}/servers`}/>;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,8 +31,11 @@ function SignupFormPage() {
 
   return (
     <>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+    <img className="pic-bg" src={backgroundImg} />
+    <div className='signup'>
+      <form className="signupForm" onSubmit={handleSubmit}>
+      <Link className='backLink'to={`/login`}>Go Back</Link>
+      <h2 className="signup-head">Sign Up</h2>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
@@ -70,8 +75,9 @@ function SignupFormPage() {
             required
           />
         </label>
-        <button type="submit">Sign Up</button>
+        <button type="submit" >Sign Up</button>
       </form>
+      </div>
     </>
   );
 }

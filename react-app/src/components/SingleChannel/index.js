@@ -1,8 +1,7 @@
 import { thunkGetSingleChannel } from '../../store/channels'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'   //useState
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom"
-import { NavLink } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 
 
@@ -11,8 +10,8 @@ import { useParams } from 'react-router-dom'
 
 function SingleChannel() {
     const dispatch = useDispatch()
-    const history = useHistory()
-    const { userId,  channelId } = useParams()
+    // const history = useHistory()
+    const { channelId } = useParams()  //userId
 
 
     useEffect(() => {
