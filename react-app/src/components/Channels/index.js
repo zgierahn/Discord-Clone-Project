@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 // import { useHistory } from "react-router-dom"
 import { useParams } from 'react-router-dom'
+import ChannelTest from '../channel-socket'
 
 function Channels({serverId}) {
     const dispatch = useDispatch()
@@ -19,6 +20,7 @@ function Channels({serverId}) {
             {channelsAll.map((ele) => {
                 return <div key={ele.id}>
                     <p>{ele.id}, {ele.name}</p>
+                    <ChannelTest channelId={ele.id} />
 
                 </div>
             })}
