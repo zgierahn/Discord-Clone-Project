@@ -87,8 +87,11 @@ const Chat = ({ channelId }) => {
                 })}
             </div>
             <div>
+                {msg_arr.length?msg_arr[0].emoji:'trddddd'}
                 {messages.map((message) => (
-                    <div key={message.id}>{`${message.user}: ${message.content}`}</div>
+                    <div>
+                        <div key={message.id}>{`${message.user}: ${message.content}`}</div>
+                        </div>
                 ))}
             </div>
             <form onSubmit={sendChat}>
