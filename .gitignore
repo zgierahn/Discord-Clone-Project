@@ -6,3 +6,5 @@ __pycache__/
 .vscode/
 /instance/dev.db
 dev.db
+/migrations/version/a6a1735bfb60_.py
+a6a1735bfb60_.py
