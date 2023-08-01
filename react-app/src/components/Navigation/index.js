@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+// import '../../images/nav-logo-discord.jpg'
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
@@ -10,7 +11,7 @@ function Navigation({ isLoaded }){
 	return (
 		<div className='NavBarContainer'>
 			<div>
-				<NavLink exact to="/">Home</NavLink>
+				<NavLink exact to="/"> Discord</NavLink>
 			</div>
 			<div className='ATagsInNav'>
 				<a href='#'>Download</a>

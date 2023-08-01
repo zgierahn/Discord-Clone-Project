@@ -1,8 +1,10 @@
-// import Navigation from "../Navigation"
+
+
 import React from 'react'
 import mainShoe from "../../images/main-shoe.jpg"
-import './LandingPage.css'
 
+
+import './LandingPage.css'
 
 
 function LandingPage() {
@@ -113,7 +115,7 @@ function LandingPage() {
 
             </div>
             <div className="FooterNav">
-                <div className="BottomHomeIcon">Discord</div>
+                <NavLink className="BottomHomeIcon" exact to="/"> Discord</NavLink>
                 <div>Sign Up</div>
             </div>
         </div>
