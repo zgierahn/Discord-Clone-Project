@@ -57,9 +57,9 @@ def channel_messages(id, channelId):
     return {'messages': messages}
 
 
-@msg_routes.route('/<int:id>/<int:messageId>/delete', methods=['GET','POST','DELETE'])
+@msg_routes.route('/<int:messageId>/delete', methods=['GET','POST','DELETE'])
 @login_required
-def delete_post(id,messageId):
+def delete_post(messageId):
   print('------------------------------',messageId)
   messgae_to_delete = Message.query.get(messageId)
   db.session.delete(messgae_to_delete)

@@ -34,9 +34,9 @@ export const thunkDeleteReaction = (userId,messageId,reactionId) => async (dispa
             }
 }
 
-export const thunkDeleteMessage = (userId,messageId) => async (dispatch) => {
+export const thunkDeleteMessage = (messageId) => async (dispatch) => {
     // try {
-        const res = await fetch(`/api/messages/${userId}/${messageId}/delete`, {
+        const res = await fetch(`/api/messages/${messageId}/delete`, {
             method:'DELETE'
         })
         if (res.ok)    {

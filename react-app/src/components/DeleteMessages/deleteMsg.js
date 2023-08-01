@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { thunkDeleteMessage } from "../../store/channels"
+import { thunkDeleteMessage } from "../../store/messages"
 import {useParams, useHistory} from 'react-router-dom'
 import { useState } from "react"
 
