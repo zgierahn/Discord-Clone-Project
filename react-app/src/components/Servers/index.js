@@ -7,6 +7,7 @@ import Channels from "../Channels"
 import addServer from "../../images/server-add.jpg"
 import discoverServer from "../../images/discoverable-servers.jpg"
 import downloadArrow from "../../images/download-arrow.jpg"
+import soloDiscord from "../../images/solo-discord-logo.jpg"
 
 import './servers.css'
 
@@ -34,28 +35,37 @@ function Servers() {
 
     return (
         <div className="servers-container">
+            <div className="tooltip" id="logo-container">
+                <span className="tooltiptext">Direct Messages</span>
+                <div className="server-logo">
+                    <img className="solo-server-discord" src={soloDiscord} alt='server-logo' />
+                </div>
+            </div>
+            <div class="guildSeparator"></div>
             {serversAll.map((ele) => {
                 return <div  key={ele.id}>
-                    <div className="tooltip">
-                    <span className="tooltiptext">{ele.name}</span>
-                     <img className="server-logo" src={ele.picture} alt={ele.name} onClick={(e)=> {
-                         setValueServerId(ele.id)
-                         setTest(false)}}/>
+                    <div className="tooltip" id="logo-container">
+                        <span className="tooltiptext">{ele.name}</span>
+                        <img className="server-image" src={ele.picture} alt={ele.name} onClick={(e)=> {
+                            setValueServerId(ele.id)
+                            setTest(false)}}/>
                     </div>
-                    {/* <button value={ele.id} onClick={(e)=> {
-                        setValueServerId(e.target.value)
-                        setTest(false)}}>
-                            {ele.name}
-                    </button> */}
-                    {ele.public ? <p>True</p> : <p>False</p>}
-                    {/* <Channels serverId={ele.id}/> */}
-        </div>
-
-})}
-        
-            <img className="server-logo" src={addServer} alt='server-logo' />
-            <img className="server-logo" src={discoverServer} alt='server-logo' />
-            <img className="server-logo" src={downloadArrow} alt='server-logo' />
+                    {/* {ele.public ? <p>True</p> : <p>False</p>} */}
+                </div>
+            })}
+            <div className="tooltip" id="logo-container">
+                <span className="tooltiptext">Add a Server</span>
+                <img className="server-logo" src={addServer} alt='server-logo' />
+            </div>
+            <div className="tooltip" id="logo-container">
+                <span className="tooltiptext">Explore Discoverable Servers</span>
+                <img className="server-logo" src={discoverServer} alt='server-logo' />
+            </div>
+            <div class="guildSeparator"></div>
+            <div className="tooltip" id="logo-container">
+                <span className="tooltiptext">Download Apps</span>
+                <img className="server-logo" src={downloadArrow} alt='server-logo' />
+            </div>
 {test?<Channels serverId={valueServerId}/>:null}
         </div>
     )
