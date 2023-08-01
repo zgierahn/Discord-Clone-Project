@@ -1,5 +1,5 @@
 
-
+import { NavLink } from 'react-router-dom'
 import React from 'react'
 import mainShoe from "../../images/main-shoe.jpg"
 import { NavLink } from 'react-router-dom'

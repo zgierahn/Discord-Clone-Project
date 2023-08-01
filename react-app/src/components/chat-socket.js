@@ -23,16 +23,7 @@ const Chat = ({channelId}) => {
         // open socket connection
         // create websocket
         socket = io();
-
-        const func = async() => {
-                let res = await dispatch(thunkGetAllMsg(user.id, channelId,serverId))
-            for (let each in res.data.messages){
-                console.log(res.data)
-            }
-
-        }
-        func()
-
+        dispatch(thunkGetAllMsg(user.id, channelId,serverId))
         socket.on("chat", (chat) => {
             // let arr = ['test']
             // const func = async() => {
