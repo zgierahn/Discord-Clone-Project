@@ -68,8 +68,12 @@ function Servers() {
                 <img className="server-logo" src={downloadArrow} alt='server-logo' />
             </div>
 {test?<Channels serverId={valueServerId}/>:null}
-        </div>
-    )
+        <button onClick={() =>{
+                return dispatch(logout())
+            .then(()=>history.push('/login'))
+            }}>Log Out</button>
+                </div>
+            )
 }
 
 export default Servers
