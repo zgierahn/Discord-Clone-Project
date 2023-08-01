@@ -1,17 +1,19 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
-// import '../../images/nav-logo-discord.jpg'
+import logo from "../../images/nav-logo-discord.jpeg"
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
+	const history=useHistory()
 
 	return (
 		<div className='NavBarContainer'>
 			<div>
-				<NavLink exact to="/"> Discord</NavLink>
+				<img src={logo} onClick={() => {history.push('/')}}/>
+				{/* <NavLink exact to="/">Home</NavLink> */}
 			</div>
 			<div className='ATagsInNav'>
 				<a href='#'>Download</a>
@@ -22,6 +24,7 @@ function Navigation({ isLoaded }){
 				<a href='#'>Blog</a>
 				<a href='#'>Careers</a>
 			</div>
+			{/* <button className="MenuButton" onClick={() => {history.push('/login')}}>Login</button> */}
 			{isLoaded && (
 				<div>
 					<ProfileButton user={sessionUser} />
