@@ -87,9 +87,6 @@ function App() {
           <Route exact path="/:userId/servers" >
             <Servers />
           </Route>
-          <Route exact path="/:userId/servers/:serverId/channels/new" >
-            <ChannelForm/>
-          </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>

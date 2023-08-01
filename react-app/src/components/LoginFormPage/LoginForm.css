@@ -18,10 +18,10 @@
     left:50%;
     border-radius:5px
 }
-h2{
-    color:white;
+.registerLink{
+    color:rgb(164, 168, 175);
 }
-form{
+.loginForm{
     background: rgb(52, 52, 60);
     display:flex;
     flex-direction:column;
@@ -33,9 +33,26 @@ form{
     height:450px;
 }
 
-label{
+.login-labels{
     color:rgb(164, 168, 175);
+    display: flex;
+    /* flex-wrap: wrap; */
+    align-content: stretch;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin:10px;
+    font-size:13px;
+
 }
 .heading{
     color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.inputs{
+    display:flex;
+    flex-direction:column;
+    
 }

@@ -18,7 +18,7 @@
     left:50%;
     border-radius:5px
 }
-h2{
+.signup-head{
     color:white;
 }
 .signupForm{
@@ -32,6 +32,12 @@ h2{
     width:480px;
     height:682px;
 }
-label{
+
+.inputs{
+    display:flex;
+    flex-direction:column;
+
+}
+.backLink{
     color:rgb(164, 168, 175);
 }
