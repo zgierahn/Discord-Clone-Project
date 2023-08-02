@@ -95,12 +95,15 @@ def single_server(id,serverId):
 @login_required
 def servers(id):
     servers = Server.query.join(User, Server.user).filter(User.id ==id)
+    # owner = Server.query.join(User,Server.user).all()
+    # print('-----------------------',[server.to_dict() for server in owner])
     """
     servers = servers[0].to_dict()
     servers = Server.query.all()
     Query for all users and returns them in a list of user dictionaries
     return {'servers': [server.to_dict() for server in servers]}
     """
+    # return [server.to_dict() for server in owner]
     return [server.to_dict() for server in servers]
 
 

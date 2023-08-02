@@ -9,6 +9,7 @@ import discoverServer from "../../images/discoverable-servers.png"
 import downloadArrow from "../../images/download-arrow.png"
 import soloDiscord from "../../images/solo-discord-logo.png"
 import { logout } from "../../store/session";
+import { thunkLogout } from "../../store/channels"
 
 import './servers.css'
 
@@ -45,6 +46,7 @@ function Servers() {
             </div>
             <div class="guildSeparator"></div>
             {serversAll.map((ele) => {
+                {console.log('this is ele.id',ele.id)}
                 return <div  key={ele.id}>
                     <div className="tooltip">
                         <span className="tooltiptext">{ele.name}</span>
@@ -72,6 +74,7 @@ function Servers() {
             <div className="servertochannels">
                 {test?<Channels server={valueServer}/>:null}
                 <button onClick={() =>{
+                    dispatch(thunkLogout())
                         return dispatch(logout())
                     .then(()=>history.push('/login'))
                     }}>Log Out</button>

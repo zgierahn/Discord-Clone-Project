@@ -3,6 +3,12 @@ const CREATE_CHANNEL = 'channels/CREATE_CHANNEL'
 const DELETE_CHANNEL = 'channels/DELETE_CHANNEL'
 const EDIT_CHANNEL = 'channels/EDIT_CHANNEL'
 const GET_SINGLE_CHANNEL = "channels/GET_SINGLE_CHANNEL"
+const LOGOUT = 'channels/LOGOUT'
+
+
+const logout = () => ({
+    type:LOGOUT
+})
 
 const getChannel = (channels) => ({
     type:GET_CHANNELS,
@@ -38,6 +44,10 @@ export const thunkGetChannels = (id, serverId) => async(dispatch) => {
         const err = await res.json()
         return {errors:err}
     }
+}
+
+export const thunkLogout = () => async (dispatch) => {
+    dispatch(logout())
 }
 
 export const thunkCreateChannel = (name, serverId) => async (dispatch) => {
@@ -119,8 +129,16 @@ export default function reducer(state = initialState, action) {
             });
             return {...newState}
         }
+        case LOGOUT:{
+            let newState = {...state, singleChannel:{...state.singleChannel}}
+            newState = {}
+            newState.allChannels = {}
+            newState.singleChannel = {}
+            return newState
+        }
         case GET_SINGLE_CHANNEL:{
             let newState = {...state, singleChannel:{...state.singleChannel}}
+
             // console.log('newState', newState)
             newState.singleChannel=action.data
             return newState
