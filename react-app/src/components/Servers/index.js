@@ -9,6 +9,8 @@ import discoverServer from "../../images/discoverable-servers.png"
 import downloadArrow from "../../images/download-arrow.png"
 import soloDiscord from "../../images/solo-discord-logo.png"
 import { logout } from "../../store/session";
+import Chat from "../chat-socket"
+import ChannelTest from "../channel-socket"
 
 import './servers.css'
 
@@ -23,7 +25,8 @@ function Servers() {
     const { userId } = useParams()
     // const [state, setState] = useState('start')
     const[test,setTest]=useState(false)
-    console.log('servesAll',serversAll)
+
+    // console.log('servesAll',serversAll)
     const[valueServer,setValueServer]=useState(serversAll.length?serversAll[0].id:0)
 
 
@@ -33,6 +36,7 @@ function Servers() {
     useEffect(() => {
         setTest(true)
     }, [test,valueServer])
+
 
     return (
         <>
@@ -77,6 +81,11 @@ function Servers() {
                         .then(()=>history.push('/login'))
                     }}>Log Out</button>
                 </div>
+                    <div>
+                        <p>Main chat box</p>
+                        {/* <Chat /> */}
+
+                    </div>
             </main>
             <footer className="developerfooter">
                 <a className="developer-names" href="">Emily</a>
