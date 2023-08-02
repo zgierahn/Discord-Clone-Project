@@ -35,48 +35,57 @@ function Servers() {
     }, [test,valueServer])
 
     return (
-        <main className="mainserverpage">
-            <nav className="servers-container">
-            <div className="tooltip" id="logo-container">
-                <span className="tooltiptext">Direct Messages</span>
-                <div className="server-logo">
-                    <img className="solo-server-discord" src={soloDiscord} alt='server-logo' />
-            </div>
-            </div>
-            <div class="guildSeparator"></div>
-            {serversAll.map((ele) => {
-                return <div  key={ele.id}>
-                    <div className="tooltip">
-                        <span className="tooltiptext">{ele.name}</span>
-                        <img className="server-image" src={ele.picture} alt={ele.name} onClick={(e)=> {
-                            setValueServer(ele)
-                            setTest(false)}}/>
-                    </div>
-                    {/* {ele.public ? <p>True</p> : <p>False</p>} */}
+        <>
+            <main className="mainserverpage">
+                <nav className="servers-container">
+                <div className="tooltip" id="logo-container">
+                    <span className="tooltiptext">Direct Messages</span>
+                    <div className="server-logo">
+                        <img className="solo-server-discord" src={soloDiscord} alt='server-logo' />
                 </div>
-            })}
-            <div className="tooltip" id="logo-container">
-                <span className="tooltiptext">Add a Server</span>
-                <img className="server-logo" src={addServer} alt='server-logo' />
-            </div>
-            <div className="tooltip" id="logo-container">
-                <span className="tooltiptext">Explore Discoverable Servers</span>
-                <img className="server-logo" src={discoverServer} alt='server-logo' />
-            </div>
-            <div class="guildSeparator"></div>
-            <div className="tooltip" id="logo-container">
-                <span className="tooltiptext">Download Apps</span>
-                <img className="server-logo" src={downloadArrow} alt='server-logo' />
-            </div>
-            </nav>
-            <div className="servertochannels">
-                {test?<Channels server={valueServer}/>:null}
-                <button onClick={() =>{
+                </div>
+                <div class="guildSeparator"></div>
+                {serversAll.map((ele) => {
+                    return <div  key={ele.id}>
+                        <div className="tooltip">
+                            <span className="tooltiptext">{ele.name}</span>
+                            <img className="server-image" src={ele.picture} alt={ele.name} onClick={(e)=> {
+                                setValueServer(ele)
+                                setTest(false)}}/>
+                        </div>
+                        {/* {ele.public ? <p>True</p> : <p>False</p>} */}
+                    </div>
+                })}
+                <div className="tooltip" id="logo-container">
+                    <span className="tooltiptext">Add a Server</span>
+                    <img className="server-logo" src={addServer} alt='server-logo' />
+                </div>
+                <div className="tooltip" id="logo-container">
+                    <span className="tooltiptext">Explore Discoverable Servers</span>
+                    <img className="server-logo" src={discoverServer} alt='server-logo' />
+                </div>
+                <div class="guildSeparator"></div>
+                <div className="tooltip" id="logo-container">
+                    <span className="tooltiptext">Download Apps</span>
+                    <img className="server-logo" src={downloadArrow} alt='server-logo' />
+                </div>
+                </nav>
+                <div className="servertochannels">
+                    {test?<Channels server={valueServer}/>:null}
+                    <button onClick={() =>{
                         return dispatch(logout())
-                    .then(()=>history.push('/login'))
+                        .then(()=>history.push('/login'))
                     }}>Log Out</button>
-            </div>
-        </main>
+                </div>
+            </main>
+            <footer className="developerfooter">
+                <a className="developer-names" href="">Emily</a>
+                <a className="developer-names" href="">Matt</a>
+                <div>Our Development Team</div>
+                <a className="developer-names" href="">Michael</a>
+                <a className="developer-names" href="">Zach</a>
+            </footer>
+        </>
     )
 }
 

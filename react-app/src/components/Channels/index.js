@@ -19,7 +19,9 @@ function Channels({server}) {
     const channelsAll = useSelector(state => Object.values(state.channels.allChannels))
     return (
         <div>
-            <h3 className='servernamediv'>{server.name}</h3>
+            <div className='thisisaclass'>
+                <h3 className='servernamediv'>{server.name}</h3>
+            </div>
             {channelsAll.map((ele) => {
                 return <div key={ele.id}>
 
