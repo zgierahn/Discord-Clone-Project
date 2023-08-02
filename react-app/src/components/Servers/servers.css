@@ -6,14 +6,14 @@ background-color: rgb(53, 55, 60);
 }
 
 
-/*------------------------- Servers Div -------------------------*/
+/*------------------------- Servers Div ----------------------*/
 .servers-container {
   display: flex;
   flex-direction: column;
   gap: 5px;
   padding: 10px;
   background-color: rgb(30, 32, 37);
-  height: 95vh;
+  height: 92.5vh;
   align-items: center;
   /* overflow-y: scroll; */
 }
@@ -78,16 +78,16 @@ background-color: rgb(53, 55, 60);
   background-color: #4E50587A;
 }
 
-
+/* -----------------Channels Container--------------------- */
 .servertochannels {
-  height: 95vh;
+  height:auto;
   width: 240px;
   background-color: #313338;
 }
 
 
 
-/*------------------------------ Footer -------------------------------- */
+/*------------------------------ Footer -------------------- */
 .developerfooter {
   background-color: rgb(30, 32, 37);
   display: flex;

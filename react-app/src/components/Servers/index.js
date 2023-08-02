@@ -9,13 +9,7 @@ import discoverServer from "../../images/discoverable-servers.png"
 import downloadArrow from "../../images/download-arrow.png"
 import soloDiscord from "../../images/solo-discord-logo.png"
 import { logout } from "../../store/session";
-import Chat from "../chat-socket"
-import ChannelTest from "../channel-socket"
-
 import './servers.css'
-
-
-
 
 
 function Servers() {
@@ -57,7 +51,6 @@ function Servers() {
                                 setValueServer(ele)
                                 setTest(false)}}/>
                         </div>
-                        {/* {ele.public ? <p>True</p> : <p>False</p>} */}
                     </div>
                 })}
                 <div className="tooltip" id="logo-container">
@@ -81,11 +74,10 @@ function Servers() {
                         .then(()=>history.push('/login'))
                     }}>Log Out</button>
                 </div>
-                    <div>
+                    {/* <div>
                         <p>Main chat box</p>
-                        {/* <Chat /> */}
 
-                    </div>
+                    </div> */}
             </main>
             <footer className="developerfooter">
                 <a className="developer-names" href="">Emily</a>
