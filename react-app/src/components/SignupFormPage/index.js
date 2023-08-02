@@ -34,48 +34,48 @@ function SignupFormPage() {
     <img className="pic-bg" src={backgroundImg} />
     <div className='signup'>
       <form className="signupForm" onSubmit={handleSubmit}>
-      <Link className='backLink'to={`/login`}>Go Back</Link>
-      <h2 className="signup-head">Sign Up</h2>
-        <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      <h3 className='header'>Create an account</h3>
+        <ul calssName="errorsCont">
+          {errors.map((error, idx) => <div className="errorslog"key={idx}>{error}</div>)}
         </ul>
-        <label>
-          Email
-          <input
+        <label className="login-labels">
+          EMAIL
+          <input className='inputLogin'
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Username
-          <input
+        </label >
+        <label className="login-labels">
+          USERNAME
+          <input className='inputLogin'
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </label>
-        <label>
-          Password
-          <input
+        <label className="login-labels">
+          PASSWORD
+          <input className='inputLogin'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
-        <label>
-          Confirm Password
-          <input
+        <label className="login-labels">
+          CONFIRM PASSWORD
+          <input className='inputLogin'
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
         </label>
-        <button type="submit" >Sign Up</button>
+        <button className="continuebtn" type="submit" >Continue</button>
+      <Link className='backLink'to={`/login`}>Already have an account?</Link>
       </form>
       </div>
     </>

@@ -31,17 +31,17 @@ function LoginFormPage() {
       <form className="loginForm" onSubmit={handleSubmit}>
         <div className="heading">
       <h3 className='header'>Welcome back!</h3>
-      <p>We're so excited to see you again!</p>
+      <p className="secondheader">We're so excited to see you again!</p>
       </div>
-        <ul>
+        <ul className="errorsCont">
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <li className="errorslog" key={idx}>{error}</li>
           ))}
         </ul>
         <div className="inputs">
         <label className="login-labels">
           EMAIL
-          <input
+          <input className='inputLogin'
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -50,7 +50,7 @@ function LoginFormPage() {
         </label>
         <label className="login-labels">
           PASSWORD
-          <input
+          <input className='inputLogin'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -58,19 +58,22 @@ function LoginFormPage() {
           />
         </label>
         </div>
-        <button type="submit" >Log In</button>
-        <button className="demo-user" onClick={() => {
+        <div className="buttonsCont">
+        <button className="loginbttn" type="submit" >Log In</button>
+        <div className="demobtncont">
+        <button className="demo-user1" onClick={() => {
           // setErrors({});
           return dispatch(login({ email:'demo@aa.io', password:'password' }))
 
         }} >Demo User</button>
-        <button className="demo-user" onClick={() => {
+        <button className="demo-user1" onClick={() => {
           // setErrors({});
           return dispatch(login({ email:'marnie@aa.io', password:'password' }))
-          .then(()=>history.push('/2/servers'))
         }} >Demo User 2</button>
+        </div>
+        </div>
       {/* <button onClick={() => { history.push(`/signup`)}}>Register</button> */}
-      <p>Need an account?</p> <Link className="registerLink" to={`/signup`}>Register</Link>
+      <div className="needacc">Need an account? <Link className="registerLink" to={`/signup`}>Register</Link></div>
       </form>
       </div>
     </>
