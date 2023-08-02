@@ -3,7 +3,7 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useHistory } from "react-router-dom";
-import "./LoginForm.css";
+
 
 function LoginFormModal() {
   const dispatch = useDispatch();

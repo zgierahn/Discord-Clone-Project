@@ -3,52 +3,32 @@ import { useSelector, useDispatch } from "react-redux";
 import { io } from 'socket.io-client';
 import { thunkGetAllMsg } from "../store/messages";
 import { useParams } from 'react-router-dom'
+import DeleteMsg from "./DeleteMessages/deleteMsg";
 let socket;
 
-const Chat = ({channelId}) => {
+const Chat = ({ channelId }) => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
-    const { serverId } = useParams()
+    // const { serverId } = useParams()
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
 
     let msgs = useSelector(state => state.messages.allMessages)
-    // let msg_arr;
 
-    // const channelId = 1
-
-    // console.log(socket)
 
     useEffect(() => {
         // open socket connection
         // create websocket
         socket = io();
 
-        const func = async() => {
-                let res = await dispatch(thunkGetAllMsg(user.id, channelId,serverId))
-            for (let each in res.data.messages){
-                console.log(res.data)
-            }
+        dispatch(thunkGetAllMsg(user.id, channelId))
 
-        }
-        func()
 
         socket.on("chat", (chat) => {
-            // let arr = ['test']
-            // const func = async() => {
-            let old_msg = dispatch(thunkGetAllMsg(user.id, channelId,serverId))
-                // let obj = old_msg.data
-                // for (let msg in obj){
-                //     arr.push('test')
-                // }
-            // arr.push('test')
-            // }
-            // func()
-            // console.log(old_msg)
+            let old_msg = dispatch(thunkGetAllMsg(user.id, channelId))
             old_msg = Object.values(old_msg)
-            // console.log('testttttt', old_msg)
             setMessages(messages => [...old_msg])
-            console.log(messages, '--------------')
+            // console.log(messages, '--------------')
         })
         // when component unmounts, disconnect
         return (() => {
@@ -58,12 +38,11 @@ const Chat = ({channelId}) => {
     }, [])
 
 
-    if(Object.values(msgs).length < 1){
-        return <>hi</>
+    if (Object.values(msgs) == undefined) {
+        return <></>
     }
 
     let msg_arr = Object.values(msgs)
-    console.log(msg_arr)
 
 
     const updateChatInput = (e) => {
@@ -72,27 +51,30 @@ const Chat = ({channelId}) => {
 
     const sendChat = (e) => {
         e.preventDefault()
-        socket.emit("chat", {user: user.username, user_id: user.id, content: chatInput, channel_Id: channelId });
+        socket.emit("chat", { user: user.username, user_id: user.id, content: chatInput, channel_Id: channelId });
         setChatInput("")
     }
 
     return (user && (
         <div>
             <div>
+                {/* {msg_arr.length?msg_arr[0].emoji:'trddddd'} */}
                 {msg_arr.map((msg) => {
                     return (
-                        <div key={msg.id}>{msg.content}</div>
+                        <>
+                            <div key={msg.id}>{msg.content}</div>
+                            {msg.user_id === user.id ? <DeleteMsg msgId={msg.id} /> : null}
+                        </>
+
                     )
                 })}
             </div>
-            <div>
-                {msg_arr.length?msg_arr[0].emoji:'trddddd'}
-                {messages.map((message) => (
-                    <div>
-                        <div key={message.id}>{`${message.user}: ${message.content}`}</div>
-                        </div>
-                ))}
-            </div>
+            {/* keep for reference PLEASE */}
+            {/* {messages.map((message) => (
+                <div>
+                    <div key={message.id}>{`${message.user}: ${message.content}`}</div>
+                    </div>
+            ))} */}
             <form onSubmit={sendChat}>
                 <input
                     value={chatInput}

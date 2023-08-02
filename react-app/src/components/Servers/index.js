@@ -1,13 +1,14 @@
 import { thunkGetServers } from "../../store/servers"
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 import Channels from "../Channels"
 import addServer from "../../images/server-add.png"
 import discoverServer from "../../images/discoverable-servers.png"
 import downloadArrow from "../../images/download-arrow.png"
 import soloDiscord from "../../images/solo-discord-logo.png"
+import { logout } from "../../store/session";
 
 import './servers.css'
 
@@ -18,7 +19,7 @@ import './servers.css'
 function Servers() {
     const serversAll = useSelector(state => Object.values(state.servers.allServers))
     const dispatch = useDispatch()
-    // const history = useHistory()
+    const history = useHistory()
     const { userId } = useParams()
     // const [state, setState] = useState('start')
     const[test,setTest]=useState(false)
@@ -33,6 +34,10 @@ function Servers() {
         setTest(true)
     }, [test,valueServerId])
 
+    // const handleLogout = (e) => {
+    //     e.preventDefault();
+    //     dispatch(logout());
+    //   };
 
     return (
         <div className="servers-container">
@@ -67,7 +72,7 @@ function Servers() {
                 <span className="tooltiptext">Download Apps</span>
                 <img className="server-logo" src={downloadArrow} alt='server-logo' />
             </div>
-{test?<Channels serverId={valueServerId}/>:null}
+        {test?<Channels serverId={valueServerId}/>:null}
         <button onClick={() =>{
                 return dispatch(logout())
             .then(()=>history.push('/login'))

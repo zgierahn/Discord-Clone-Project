@@ -49,6 +49,7 @@ export const thunkCreateChannel = (name, serverId) => async (dispatch) => {
         })
         if (response.ok)    {
             const server = await response.json()
+            console.log('thunkchannelcreate',server)
             dispatch(createChannel(server))
             return server
         }
@@ -120,7 +121,7 @@ export default function reducer(state = initialState, action) {
         }
         case GET_SINGLE_CHANNEL:{
             let newState = {...state, singleChannel:{...state.singleChannel}}
-            console.log('newState', newState)
+            // console.log('newState', newState)
             newState.singleChannel=action.data
             return newState
         }

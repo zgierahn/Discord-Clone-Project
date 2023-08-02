@@ -34,8 +34,8 @@ function SignupFormPage() {
     <img className="pic-bg" src={backgroundImg} />
     <div className='signup'>
       <form className="signupForm" onSubmit={handleSubmit}>
-      <Link to={`/login`}>Go Back</Link>
-      <h2>Sign Up</h2>
+      <Link className='backLink'to={`/login`}>Go Back</Link>
+      <h2 className="signup-head">Sign Up</h2>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
