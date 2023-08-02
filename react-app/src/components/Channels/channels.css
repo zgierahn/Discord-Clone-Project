@@ -33,5 +33,6 @@
 .textchannelheader{
     color:gray;
     font-size:12px;
-    font:Pontano Sans Font;
+    display:flex;
+
 }

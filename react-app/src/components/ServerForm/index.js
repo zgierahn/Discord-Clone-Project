@@ -4,7 +4,7 @@ import { useDispatch  } from 'react-redux'  //useSelector
 // import { useHistory } from "react-router-dom"
 // import { useParams } from 'react-router-dom'
 
-function ServerForm() {
+function ServerForm({closeModal}) {
     const dispatch = useDispatch()
     // const history = useHistory()
     // const { userId } = useParams()
@@ -19,7 +19,8 @@ function ServerForm() {
     }
 
     return (
-        <div>
+        <div className="makechannelmodals">
+            <div className="makechannelbackg" >
             <label htmlFor="name">name</label>
             <input type="text"
                 value={name}
@@ -46,6 +47,8 @@ function ServerForm() {
                     onSubmit()
                 }}
             >submit</button>
+
+            </div>
         </div>
     )
 }

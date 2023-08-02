@@ -10,8 +10,8 @@ import downloadArrow from "../../images/download-arrow.png"
 import soloDiscord from "../../images/solo-discord-logo.png"
 import { logout } from "../../store/session";
 import { thunkLogout } from "../../store/channels"
-
 import './servers.css'
+import ServerForm from "../ServerForm"
 
 
 
@@ -26,7 +26,7 @@ function Servers() {
     const[test,setTest]=useState(false)
     // console.log('servesAll',serversAll)
     const[valueServer,setValueServer]=useState(serversAll.length?serversAll[0].id:0)
- 
+
 
 
     useEffect(() => {
@@ -57,7 +57,8 @@ function Servers() {
                     {/* {ele.public ? <p>True</p> : <p>False</p>} */}
                 </div>
             })}
-            <div className="tooltip" id="logo-container">
+
+            <div className="tooltip" id="logo-container" >
                 <span className="tooltiptext">Add a Server</span>
                 <img className="server-logo" src={addServer} alt='server-logo' />
             </div>
