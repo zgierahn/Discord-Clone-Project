@@ -4,23 +4,26 @@ import { useDispatch, useSelector } from 'react-redux'
 // import { useHistory } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 import ChannelTest from '../channel-socket'
+import "./channels.css"
 
-function Channels({serverId}) {
+
+function Channels({server}) {
     const dispatch = useDispatch()
     // const history = useHistory()
     const { userId} = useParams()
 
     useEffect(() => {
-        dispatch(thunkGetChannels(userId, serverId))
+        dispatch(thunkGetChannels(userId, server.id))
     }, [dispatch])
 
     const channelsAll = useSelector(state => Object.values(state.channels.allChannels))
     return (
         <div>
+            <h3 className='servernamediv'>{server.name}</h3>
             {channelsAll.map((ele) => {
                 return <div key={ele.id}>
-                    <p>{ele.id}, {ele.name}</p>
-                    <ChannelTest channelId={ele.id} />
+
+                    <ChannelTest channel={ele} />
 
                 </div>
             })}

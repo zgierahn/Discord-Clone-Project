@@ -3,11 +3,11 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Chat from './chat-socket'
 import { io } from 'socket.io-client';
-
+import hashtag from "../images/hashtag.png"
 
 // let socket;
 
-const ChannelTest = ({channelId}) => {
+const ChannelTest = ({channel}) => {
     // const [socket, setSocket] = useState('')
     const [buttonStatus, setButtonStatus] = useState(false)
     // const {channelId} = useParams()
@@ -29,7 +29,7 @@ const ChannelTest = ({channelId}) => {
 
             // setSocket(thesocket)
 
-            socket.on('join',{channel: channelId})
+            socket.on('join',{channel: channel.id})
 
             return (() => {
                 socket.disconnect()
@@ -44,9 +44,9 @@ const ChannelTest = ({channelId}) => {
 
     return (user && (
         <div>
-            <button onClick={handleClick}>Join Channel</button>
+            <button className="channelnamebutton" onClick={handleClick}><img className="hashtagchannel" src={hashtag}/> {channel.name}</button>
 
-            {buttonStatus && <Chat channelId={channelId} /> }
+            {buttonStatus && <Chat channelId={channel.id} /> }
         </div>
     ))
 
