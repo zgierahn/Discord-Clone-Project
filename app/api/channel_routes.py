@@ -31,7 +31,7 @@ def create_Channel(serverId):
             name = form.data['name'],
             server_id=serverId
         )
-
+        print('backend-----------',channel)
         db.session.add(channel)
         db.session.commit()
         return channel.to_dict()

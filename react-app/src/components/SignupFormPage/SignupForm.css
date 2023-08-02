@@ -30,7 +30,7 @@
     position:fixed;
     border-radius:5px;
     width:480px;
-    height:682px;
+    height:600px;
 }
 
 .inputs{
@@ -39,5 +39,19 @@
 
 }
 .backLink{
-    color:rgb(164, 168, 175);
+    color:rgb(26, 133, 246);
+    text-decoration:none;
+    margin-right:243px;
+}
+.continuebtn{
+    padding:10px 173px;
+    background:#444def;
+    color:white;
+    border:none;
+    cursor:pointer;
+    font-size:15px;
+    margin-bottom:10px;
+}
+.continuebtn:hover{
+    background-color: #1c2295;
 }
