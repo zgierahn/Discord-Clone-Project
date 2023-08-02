@@ -23,7 +23,7 @@ function Servers() {
     const { userId } = useParams()
     // const [state, setState] = useState('start')
     const[test,setTest]=useState(false)
-    console.log('servesAll',serversAll)
+    // console.log('servesAll',serversAll)
     const[valueServer,setValueServer]=useState(serversAll.length?serversAll[0].id:0)
 
 

@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session,request
-from flask_login import login_required
+from flask_login import login_required,current_user
 from app.models import Server, User,Channel, Message
 from app.models import db
 from app.forms.channel_form import ChannelForm
@@ -26,12 +26,15 @@ def channels(id,serverId):
 def create_Channel(serverId):
     form = ChannelForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    # curr_user = User.query.get(current_user.id)
+    # owners=Server.query(Server.user).all()
+    # print("owners",owners)
     if form.validate_on_submit():
         channel = Channel(
             name = form.data['name'],
             server_id=serverId
         )
-        print('backend-----------',channel)
+        # print('backend-----------',channel)
         db.session.add(channel)
         db.session.commit()
         return channel.to_dict()

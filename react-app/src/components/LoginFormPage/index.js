@@ -33,7 +33,7 @@ function LoginFormPage() {
       <h3 className='header'>Welcome back!</h3>
       <p className="secondheader">We're so excited to see you again!</p>
       </div>
-        <ul className="errorsCont">
+        <ul className="errors">
           {errors.map((error, idx) => (
             <li className="errorslog" key={idx}>{error}</li>
           ))}

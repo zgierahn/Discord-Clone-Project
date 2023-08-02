@@ -3,11 +3,12 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom"
 import { useParams } from 'react-router-dom'
+import './channelForm.css'
 
-function ChannelForm() {
+function ChannelForm({closeModal,serverId}) {
     const dispatch = useDispatch()
     const history = useHistory()
-    const { userId,serverId } = useParams()
+    const { userId } = useParams()
 
     const [name, setName] = useState('')
 
@@ -15,22 +16,32 @@ function ChannelForm() {
         // let payload = {}
         const err = await dispatch(thunkCreateChannel(name,serverId))
     }
-
+    let disable=true
+    if(name.length){
+       disable=false
+    }
     return (
-        <div>
-            <label htmlFor="name">name</label>
-            <input type="text"
+        <div className="makechannelmodals">
+            <div className="makechannelbackg" >
+            <label className="channelNameLabel" htmlFor="name">CHANNEL NAME</label>
+            <input className="channelInput"type="text"
+            placeholder="# new-channel"
                 value={name}
                 onChange={(e) => {
                     setName(e.target.value)
                 }}
             />
-            <button
+            <button className="createChannelBtn"
+                disabled={disable}
                 onClick={(e) => {
                     onSubmit()
-                    // .then(()=>history.push(`/${userId}/servers`))
+                    .then(closeModal(false))
                 }}
-            >submit</button>
+            >Create Channel</button>
+            <button className="cancelChannel" onClick={()=>
+                closeModal(false)
+                }>Cancel</button>
+            </div>
         </div>
     )
 }

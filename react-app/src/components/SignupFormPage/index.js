@@ -13,6 +13,7 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [errors2, setErrors2] = useState([]);
 
 
   if (sessionUser) return <Redirect to={`/${sessionUser.id}/servers`}/>;
@@ -48,7 +49,7 @@ function SignupFormPage() {
           />
         </label >
         <label className="login-labels">
-          USERNAME
+          USERNAME 
           <input className='inputLogin'
             type="text"
             value={username}
