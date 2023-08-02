@@ -55,6 +55,15 @@ const Chat = ({ channelId }) => {
         setChatInput("")
     }
 
+
+    const loopThruFunc = (arr) => {
+        arr.map(react => {
+            console.log(react)
+            return react.emoji
+        })
+    }
+
+
     return (user && (
         <div>
             <div>
@@ -63,6 +72,9 @@ const Chat = ({ channelId }) => {
                     return (
                         <>
                             <div key={msg.id}>{msg.content}</div>
+                            {msg.reactions.length ? <div>{msg.reactions.map(each => (
+                                <div>{each.emoji}</div>
+                            ))}</div> : null}
                             {msg.user_id === user.id ? <DeleteMsg msgId={msg.id} /> : null}
                         </>
 
