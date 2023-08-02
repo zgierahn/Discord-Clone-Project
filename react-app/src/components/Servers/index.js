@@ -24,7 +24,7 @@ function Servers() {
     // const [state, setState] = useState('start')
     const[test,setTest]=useState(false)
     console.log('servesAll',serversAll)
-    const[valueServerId,setValueServerId]=useState(serversAll.length?serversAll[0].id:0)
+    const[valueServer,setValueServer]=useState(serversAll.length?serversAll[0].id:0)
 
 
     useEffect(() => {
@@ -32,15 +32,11 @@ function Servers() {
     }, [dispatch])
     useEffect(() => {
         setTest(true)
-    }, [test,valueServerId])
-
-    // const handleLogout = (e) => {
-    //     e.preventDefault();
-    //     dispatch(logout());
-    //   };
+    }, [test,valueServer])
 
     return (
-        <div className="servers-container">
+        <main className="mainserverpage">
+            <nav className="servers-container">
             <div className="tooltip" id="logo-container">
                 <span className="tooltiptext">Direct Messages</span>
                 <div className="server-logo">
@@ -53,7 +49,7 @@ function Servers() {
                     <div className="tooltip">
                         <span className="tooltiptext">{ele.name}</span>
                         <img className="server-image" src={ele.picture} alt={ele.name} onClick={(e)=> {
-                            setValueServerId(ele.id)
+                            setValueServer(ele)
                             setTest(false)}}/>
                     </div>
                     {/* {ele.public ? <p>True</p> : <p>False</p>} */}
@@ -72,13 +68,16 @@ function Servers() {
                 <span className="tooltiptext">Download Apps</span>
                 <img className="server-logo" src={downloadArrow} alt='server-logo' />
             </div>
-        {test?<Channels serverId={valueServerId}/>:null}
-        <button onClick={() =>{
-                return dispatch(logout())
-            .then(()=>history.push('/login'))
-            }}>Log Out</button>
-                </div>
-            )
+            </nav>
+            <div className="servertochannels">
+                {test?<Channels server={valueServer}/>:null}
+                <button onClick={() =>{
+                        return dispatch(logout())
+                    .then(()=>history.push('/login'))
+                    }}>Log Out</button>
+            </div>
+        </main>
+    )
 }
 
 export default Servers
