@@ -40,7 +40,8 @@ function Servers() {
     //   };
 
     return (
-        <div className="servers-container">
+        <main className="mainserverpage">
+            <nav className="servers-container">
             <div className="tooltip" id="logo-container">
                 <span className="tooltiptext">Direct Messages</span>
                 <div className="server-logo">
@@ -72,13 +73,16 @@ function Servers() {
                 <span className="tooltiptext">Download Apps</span>
                 <img className="server-logo" src={downloadArrow} alt='server-logo' />
             </div>
-        {test?<Channels serverId={valueServerId}/>:null}
-        <button onClick={() =>{
-                return dispatch(logout())
-            .then(()=>history.push('/login'))
-            }}>Log Out</button>
-                </div>
-            )
+            </nav>
+            <div className="servertochannels">
+                {test?<Channels serverId={valueServerId}/>:null}
+                <button onClick={() =>{
+                        return dispatch(logout())
+                    .then(()=>history.push('/login'))
+                    }}>Log Out</button>
+            </div>
+        </main>
+    )
 }
 
 export default Servers

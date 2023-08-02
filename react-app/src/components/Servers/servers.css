@@ -1,3 +1,22 @@
+/* -------------------main container -----------------------*/
+.mainserverpage {
+display: flex;
+flex-direction: row;
+}
+
+
+/*------------------------- Servers Div -------------------------*/
+.servers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  background-color: rgb(30, 30, 30);
+  height: 100vh;
+  align-items: center;
+  /* overflow-y: scroll; */
+}
+
 /* server logo */
 #logo-container {
   display: flex;
@@ -10,7 +29,7 @@
 }
 
 #logo-container:hover {
-  border-radius: 10px;
+  border-radius: 15px;
 }
 
 .server-image{
@@ -21,12 +40,13 @@
 }
 
 .server-image:hover {
-  border-radius: 10px;
+  border-radius: 15px;
 }
 
 .tooltip {
   position: relative;
   display: inline-block;
+  cursor: pointer;
 }
 
 /* Tooltip text */
@@ -49,19 +69,19 @@
   visibility: visible;
 }
 
-.servers-container {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-top: 10px;
-  margin-left: 10px;
-  /* align-items: center; */
-}
-
 
 .guildSeparator {
   height: 2px;
   width: 32px;
   border-radius: 1px;
-  background-color: darkgrey;
+  background-color: gray;
+}
+
+
+.servertochannels {
+  height: 100vh;
+  width: 200px;
+  /* border: 2px solid red; */
+  margin: 0px;
+  background-color: rgb(40, 40, 40);
 }
