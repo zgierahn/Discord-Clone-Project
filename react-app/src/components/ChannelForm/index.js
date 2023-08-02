@@ -28,7 +28,7 @@ function ChannelForm() {
             <button
                 onClick={(e) => {
                     onSubmit()
-                    .then(()=>history.push(`/${userId}/servers`))
+                    // .then(()=>history.push(`/${userId}/servers`))
                 }}
             >submit</button>
         </div>
