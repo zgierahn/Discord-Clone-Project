@@ -21,6 +21,7 @@ import DeleteChannel from "./components/DeleteChannel";
 import EditChannel from "./components/EditChannel";
 import SingleChannel from "./components/SingleChannel";
 import DeleteReaction from "./components/DeleteReaction";
+import CreateReaction from "./components/CreateReaction";
 
 
 function App() {
@@ -58,6 +59,9 @@ function App() {
           </Route>
           <Route exact path="/:userId/servers/edit/:serverId" >
             <EditServer />
+          </Route>
+          <Route exact path="/:userId/messages/:messageId/reaction/new" >
+            <CreateReaction />
           </Route>
           <Route exact path="/:userId/servers/:serverId/channels/edit/:channelId" >
             <EditChannel />

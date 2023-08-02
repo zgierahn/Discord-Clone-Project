@@ -4,6 +4,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.models import Server, User, Channel, Message, Reaction
 from app.models import db
 from app.forms import ServerForm
+from app.forms import ReactionForm
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, joinedload
 
@@ -60,7 +61,6 @@ def channel_messages(id, channelId):
 @msg_routes.route('/<int:messageId>/delete', methods=['GET','POST','DELETE'])
 @login_required
 def delete_post(messageId):
-  print('------------------------------',messageId)
   messgae_to_delete = Message.query.get(messageId)
   db.session.delete(messgae_to_delete)
   db.session.commit()
@@ -69,8 +69,28 @@ def delete_post(messageId):
 @msg_routes.route('/<int:id>/<int:messageId>/reaction/<int:reactionId>/delete', methods=['GET','POST','DELETE'])
 @login_required
 def delete_reaction(id,reactionId):
-  print('------------------------------',reactionId)
   reaction_to_delete = Reaction.query.get(reactionId)
   db.session.delete(reaction_to_delete)
   db.session.commit()
   return {'message':'deleted'}
+
+@msg_routes.route('/<int:id>/channel/<int:channelId>/<int:messageId>/reaction/new', methods=['GET','POST'])
+@login_required
+def create_Reaction(id,messageId,channelId):
+    form = ReactionForm()
+    # all_msg = selected_channel.messages
+    form['csrf_token'].data = request.cookies['csrf_token']
+    message = Message.query.get(messageId)
+    if form.validate_on_submit():
+        reaction = Reaction(
+            user_id = id,
+            emoji=form.data['emoji']
+        )
+        reaction.messages.append(message)
+        db.session.commit()
+        db.session.add(reaction)
+        db.session.commit()
+        selected_channel = Channel.query.get(channelId)
+        messages = [msg.to_dict() for msg in selected_channel.messages]
+        return {'messages': messages}
+    return {'errors': 'error'}, 401

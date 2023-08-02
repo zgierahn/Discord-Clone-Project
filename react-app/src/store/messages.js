@@ -2,6 +2,7 @@
 const GET_MESSAGES = 'messages/GET_MESSAGES'
 const DELETE_MESSAGE = 'messages/DELETE_MESSAGE'
 const DELETE_REACTION = 'messages/DELETE_REACTION'
+const CREATE_REACTION = 'message/CREATE_REACTION'
 
 const getMessages = (data) => ({
     type: GET_MESSAGES,
@@ -16,6 +17,11 @@ const deleteMessage = (messageId) => ({
 const deleteReaction = (reactionId) => ({
     type:DELETE_REACTION,
     data:reactionId
+})
+
+const createReaction = (messageId) => ({
+    type: GET_MESSAGES,
+    data:messageId
 })
 
 export const thunkDeleteReaction = (userId,messageId,reactionId) => async (dispatch) => {
@@ -60,7 +66,23 @@ export const thunkGetAllMsg = (id, channelId) => async(dispatch) => {
     }
 }
 
-
+export const thunkCreateReaction = (userId,messageId,emoji,channelId) => async (dispatch) => {
+    try {
+        const response = await fetch(`/api/messages/${userId}/channel/${channelId}/${messageId}/reaction/new`, {
+            method:'POST',
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({userId,messageId,emoji})
+        })
+        if (response.ok)    {
+            const res= await response.json()
+            dispatch(createReaction(res))
+            return res
+        }
+    } catch (error) {
+        const err = await error.json()
+        return {errors:err}
+    }
+}
 
 
 const initialState = {allMessages:{}}
@@ -75,7 +97,14 @@ export default function reducer(state = initialState, action){
                 newState.allMessages[ele.id]= ele
             });
             return newState
-
+        }
+        case CREATE_REACTION: {
+            let newState = {...state, allMessages:{...state.allMessages}}
+            newState.allMessages = {}
+            action.data.messages.forEach(ele => {
+                newState.allMessages[ele.id]= ele
+            });
+            return newState
         }
         case DELETE_MESSAGE: {
             const newState = {...state, allMessages:{...state.allMessages}}

@@ -4,6 +4,7 @@ import { io } from 'socket.io-client';
 import { thunkGetAllMsg } from "../store/messages";
 import { useParams } from 'react-router-dom'
 import DeleteMsg from "./DeleteMessages/deleteMsg";
+import CreateReaction from "./CreateReaction";
 let socket;
 
 const Chat = ({ channelId }) => {
@@ -62,8 +63,9 @@ const Chat = ({ channelId }) => {
                 {msg_arr.map((msg) => {
                     return (
                         <>
-                            <div key={msg.id}>{msg.content}</div>
+                            <div key={msg.id}value={msg.id}>{msg.content}</div>
                             {msg.user_id === user.id ? <DeleteMsg msgId={msg.id} /> : null}
+                            <CreateReaction messageId={msg.id} channelId={channelId}/>
                         </>
 
                     )
