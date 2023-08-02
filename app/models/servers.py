@@ -30,5 +30,6 @@ class Server(db.Model, UserMixin):
             'id': self.id,
             'name': self.name,
             'privates': self.privates,
-            'picture': self.picture
+            'picture': self.picture,
+            'owner': [owner.to_dict() for owner in self.user],
         }
