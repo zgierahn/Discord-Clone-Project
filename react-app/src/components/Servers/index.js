@@ -26,6 +26,7 @@ function Servers() {
     const[test,setTest]=useState(false)
     // console.log('servesAll',serversAll)
     const[valueServer,setValueServer]=useState(serversAll.length?serversAll[0].id:0)
+ 
 
 
     useEffect(() => {
@@ -46,7 +47,6 @@ function Servers() {
             </div>
             <div class="guildSeparator"></div>
             {serversAll.map((ele) => {
-                {console.log('this is ele.id',ele.id)}
                 return <div  key={ele.id}>
                     <div className="tooltip">
                         <span className="tooltiptext">{ele.name}</span>
