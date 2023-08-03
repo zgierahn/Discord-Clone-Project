@@ -15,7 +15,7 @@ import './servers.css'
 
 
 function Servers() {
-    const serversAll = useSelector(state => Object.values(state.servers.allServers))
+    let serversAll = useSelector(state => Object.values(state.servers.allServers))
     const dispatch = useDispatch()
     const history = useHistory()
     const { userId } = useParams()

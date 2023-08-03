@@ -1,3 +1,4 @@
+import './chatCss.css'
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { io } from 'socket.io-client';
@@ -5,6 +6,7 @@ import { thunkGetAllMsg } from "../store/messages";
 import { useParams } from 'react-router-dom'
 import DeleteMsg from "./DeleteMessages/deleteMsg";
 import CreateReaction from "./CreateReaction";
+import DeleteReaction from "./DeleteReaction";
 let socket;
 
 const Chat = ({ channelId }) => {
@@ -57,25 +59,20 @@ const Chat = ({ channelId }) => {
     }
 
 
-    const loopThruFunc = (arr) => {
-        arr.map(react => {
-            console.log(react)
-            return react.emoji
-        })
-    }
-
 
     return (user && (
-        <div>
-            <div>
-                {/* {msg_arr.length?msg_arr[0].emoji:'trddddd'} */}
+        <div className="ChatContainer">
+            <div className="ChatBox">
                 {msg_arr.map((msg) => {
                     return (
                         <>
                             <div key={msg.id}value={msg.id}>{msg.content}</div>
-                            {msg.reactions.length ? <div>{msg.reactions.map(each => (
-                                <div>{each.emoji}</div>
-                            ))}</div> : null}
+                            {Object.values(msg.emoji_count).length ? Object.keys(msg.emoji_count).map(each => (
+                                <div>{each} {msg.emoji_count[each]} {msg.reactions.map((react) => {
+                                    return react.emoji === each && react.user_id === user.id ? <DeleteReaction userId={user.id} channelId={channelId} reactionId={react.id}/> : null
+                                })  } </div>
+                            )) : null}
+
                             {msg.user_id === user.id ? <DeleteMsg msgId={msg.id} /> : null}
                             <CreateReaction messageId={msg.id} channelId={channelId}/>
                         </>
@@ -89,12 +86,13 @@ const Chat = ({ channelId }) => {
                     <div key={message.id}>{`${message.user}: ${message.content}`}</div>
                     </div>
             ))} */}
-            <form onSubmit={sendChat}>
+            <form className='ChatInputContainer' onSubmit={sendChat}>
                 <input
                     value={chatInput}
                     onChange={updateChatInput}
+                    placeholder='Message'
                 />
-                <button type="submit">Send</button>
+                {/* <button type="submit">Send</button> */}
             </form>
         </div>
     )
