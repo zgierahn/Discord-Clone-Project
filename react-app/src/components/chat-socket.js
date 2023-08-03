@@ -63,6 +63,7 @@ const Chat = ({ channelId }) => {
     return (user && (
         <div className="ChatContainer">
             <div className="ChatBox">
+                <div className='ChatMessagesContainer' >
                 {msg_arr.map((msg) => {
                     return (
                         <>
@@ -79,6 +80,7 @@ const Chat = ({ channelId }) => {
 
                     )
                 })}
+                </div>
             </div>
             {/* keep for reference PLEASE */}
             {/* {messages.map((message) => (

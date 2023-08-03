@@ -12,20 +12,32 @@ const ChannelTest = ({channel}) => {
 
     const [openModal,setOpenModal] = useState(false)
 
+    const [click, setClick] = useState(false)
+    const [leftClick, setLeftClick] = useState(false)
+
+    // const {channelId} = useParams()
     let socket;
 
     const user = useSelector(state => state.session.user)
 
-    const handleClick = () => {
-        if(buttonStatus) setButtonStatus(false)
-        else setButtonStatus(true)
+    const handleClick = (e) => {
+        // if (e.type === 'contextmenu') {
+        //     e.preventDefault()
+        //     setClick(true)
+        //     console.log('Right click');
+        // }
+        if (e.type === 'click'){
+            setLeftClick(true)
+            if(!buttonStatus) setButtonStatus(true)
+            if(buttonStatus) setButtonStatus(false)
+
+        }
     }
 
     useEffect(() => {
         if (buttonStatus){
             socket = io();
 
-            // setSocket(thesocket)
 
             socket.on('join',{channel: channel.id})
 
@@ -35,8 +47,6 @@ const ChannelTest = ({channel}) => {
         }
 
     }, [buttonStatus])
-
-
 
 
 

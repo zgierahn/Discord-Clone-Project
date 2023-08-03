@@ -64,7 +64,7 @@ export const thunkEditServer = (serverId, name,privates,picture) => async (dispa
 }
 
 export const thunkCreateServer = (name,privates,picture) => async (dispatch) => {
-    try {
+
         const response = await fetch(`/api/servers/new`, {
             method:'POST',
             headers:{"Content-Type":"application/json"},
@@ -75,9 +75,9 @@ export const thunkCreateServer = (name,privates,picture) => async (dispatch) => 
             dispatch(createServer(server))
             return server
         }
-    } catch (error) {
-        const err = await error.json()
-        return {errors:err}
+        else if (response.status < 500){
+        const err = await response.json()
+        return err
     }
 }
 

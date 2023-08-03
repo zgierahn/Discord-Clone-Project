@@ -36,7 +36,7 @@ function SignupFormPage() {
     <div className='signup'>
       <form className="signupForm" onSubmit={handleSubmit}>
       <h3 className='header'>Create an account</h3>
-        <ul calssName="errorsCont">
+        <ul className="errorsCont">
           {errors.map((error, idx) => <div className="errorslog"key={idx}>{error}</div>)}
         </ul>
         <label className="login-labels">
@@ -49,7 +49,7 @@ function SignupFormPage() {
           />
         </label >
         <label className="login-labels">
-          USERNAME 
+          USERNAME
           <input className='inputLogin'
             type="text"
             value={username}

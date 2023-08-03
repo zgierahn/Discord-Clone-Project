@@ -54,7 +54,6 @@ def delete_post(channelId):
 def edit_channel(channelId):
     form = ChannelForm()
     channel = Channel.query.get(channelId)
-    print('-----------------------formdata----------------',channel)
     form['csrf_token'].data = request.cookies['csrf_token']
     channel.name = form.data['name']
     # channel.server_id=serverId

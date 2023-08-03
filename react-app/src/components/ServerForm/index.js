@@ -5,6 +5,7 @@ import { useDispatch  } from 'react-redux'  //useSelector
 // import { useParams } from 'react-router-dom'
 
 function ServerForm({closeModal}) {
+function ServerForm({closeModal}) {
     const dispatch = useDispatch()
     // const history = useHistory()
     // const { userId } = useParams()
@@ -12,44 +13,61 @@ function ServerForm({closeModal}) {
     const [name, setName] = useState('')
     const [privates, setPrivates] = useState(false)
     const [picture, setPicture] = useState('')
+    const [errors, setErrors] = useState({})
 
     const onSubmit = async() => {
         // let payload = {}
         const err = await dispatch(thunkCreateServer(name,privates,picture))
+        if (err.error) {
+            await setErrors(err)
+        }
+        else {
+            closeModal(false)
+        }
+    }
+    let disable=true
+    if(name.length){
+       disable=false
     }
 
     return (
+        <>
         <div className="makechannelmodals">
             <div className="makechannelbackg" >
-            <label htmlFor="name">name</label>
-            <input type="text"
+            <label htmlFor="name" className="channelNameLabel">name</label>
+            <input type="text" className="channelInput"
                 value={name}
                 onChange={(e) => {
                     setName(e.target.value)
                 }}
             />
-            <label htmlFor="public">public</label>
-            <input type="checkbox"
+            <div className="errormessagescreateserver">{Object.values(errors).length > 0 ? errors.error : ''}</div>
+            <label htmlFor="public" className="channelNameLabel">public</label>
+            <input type="checkbox" className="channelInput"
                 value={privates}
                 onChange={(e) => {
                     setPrivates(!privates)
                 }}
             />
-            <label htmlFor="picture">picture</label>
-            <input type="text"
+            <label htmlFor="picture" className="channelNameLabel">picture</label>
+            <input type="text" className="channelInput"
                 value={picture}
                 onChange={(e) => {
                     setPicture(e.target.value)
                 }}
             />
-            <button
+            <button className="createChannelBtn"
+            disabled={disable}
                 onClick={(e) => {
                     onSubmit()
                 }}
             >submit</button>
-
+            <button className="cancelChannel" onClick={()=>
+                closeModal(false)
+                }>Cancel</button>
             </div>
         </div>
+        </>
     )
 }
 
