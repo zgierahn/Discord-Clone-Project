@@ -23,6 +23,7 @@ function ChannelForm({closeModal,serverId}) {
     return (
         <div className="makechannelmodals">
             <div className="makechannelbackg" >
+                <h3 className="headerCreateChannel2">Create Channel</h3>
             <label className="channelNameLabel" htmlFor="name">CHANNEL NAME</label>
             <input className="channelInput"type="text"
             placeholder="# new-channel"
@@ -31,6 +32,10 @@ function ChannelForm({closeModal,serverId}) {
                     setName(e.target.value)
                 }}
             />
+            <div className="buttonContCreateChannel">
+                <div className="cancelChannel" onClick={()=>
+                    closeModal(false)
+                    }>Cancel</div>
             <button className="createChannelBtn"
                 disabled={disable}
                 onClick={(e) => {
@@ -38,9 +43,7 @@ function ChannelForm({closeModal,serverId}) {
                     .then(closeModal(false))
                 }}
             >Create Channel</button>
-            <button className="cancelChannel" onClick={()=>
-                closeModal(false)
-                }>Cancel</button>
+            </div>
             </div>
         </div>
     )

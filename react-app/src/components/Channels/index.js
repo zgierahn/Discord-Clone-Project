@@ -23,8 +23,12 @@ function Channels({server}) {
     return (
         <div>
             <h3 className='servernamediv'>{server.name} </h3>
-            <div className="textchannelheader">TEXT CHANNEL {server.owner[0].id == userId &&<div className="addchannelbttn" onClick={()=>setOpenModal(true)}>+</div>}</div>
+            <div className="holderoftheaddingpower">
+            <div className="textchannelheader">TEXT CHANNELS </div>
+            {server.owner[0].id == userId &&<button className="addchannelbttn" onClick={()=>setOpenModal(true)}><span className="tooltiptext2">Add Channel</span>+</button>}
+            </div>
             {openModal && <ChannelForm closeModal ={setOpenModal} serverId={server.id}/>}
+
             {channelsAll.map((ele) => {
                 return <div key={ele.id}>
 

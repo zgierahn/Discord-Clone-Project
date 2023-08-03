@@ -81,9 +81,9 @@ function App() {
           <Route exact path="/:userId/servers/:serverId/:channelId" >
             <SingleServer />
           </Route>
-          <Route exact path="/:userId/servers/:serverId/channels/new" >
+          {/* <Route exact path="/:userId/servers/:serverId/channels/new" >
             <ChannelForm />
-          </Route>
+          </Route> */}
           <Route exact path="/:userId/servers/:serverId/channels/:channelId" >
             <SingleChannel />
           </Route>

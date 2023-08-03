@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 
-function EditChannel() {
+function EditChannel({closeModal,channelId}) {
     const channel = useSelector(state => state.channels.singleChannel)
     const dispatch = useDispatch()
     const history = useHistory()
-    const { userId,channelId} = useParams()  // serverId
+    const { userId} = useParams()  // serverId
     // console.log('channel', channel)
 
     const [name, setName] = useState(channel.name)
@@ -38,7 +38,8 @@ function EditChannel() {
 
 
     return (
-        <div>
+        <div className="makechannelmodals">
+            <div className="makechannelbackg" >
             <label htmlFor="name">name</label>
             <input type="text"
                 value={name}
@@ -46,12 +47,18 @@ function EditChannel() {
                     setName(e.target.value)
                 }}
             />
-            <button
+            <div className="buttonContCreateChannel">
+                <div className="cancelChannel" onClick={()=>
+                    closeModal(false)
+                    }>Cancel</div>
+            <button className="createChannelBtn"
                 onClick={(e) => {
                     onSubmit()
-                    .then(()=>history.push(`/${userId}/servers`))
+                    .then(closeModal(false))
                 }}
-            >submit</button>
+            >Edit Channel</button>
+            </div>
+            </div>
         </div>
     )
 }
