@@ -29,7 +29,7 @@ def channel_messages(id, channelId):
     selected_channel = Channel.query.get(channelId)
     # all_msg = selected_channel.messages
     messages = [msg.to_dict() for msg in selected_channel.messages]
-    print(messages, '---------------------')
+    # print(messages, '---------------------')
 
     # reactions1 = db.session.query(Message,Reaction).join(Reaction, Message.reaction).filter(Message.channel_id == channelId)
     # # print(reactions1, '------------------')
