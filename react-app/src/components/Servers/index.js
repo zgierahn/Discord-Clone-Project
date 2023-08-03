@@ -14,9 +14,6 @@ import { thunkLogout } from "../../store/channels"
 import './servers.css'
 
 
-
-
-
 function Servers() {
     const serversAll = useSelector(state => Object.values(state.servers.allServers))
     const dispatch = useDispatch()
@@ -24,9 +21,7 @@ function Servers() {
     const { userId } = useParams()
     // const [state, setState] = useState('start')
     const[test,setTest]=useState(false)
-    // console.log('servesAll',serversAll)
     const[valueServer,setValueServer]=useState(serversAll.length?serversAll[0].id:0)
- 
 
 
     useEffect(() => {
@@ -36,14 +31,16 @@ function Servers() {
         setTest(true)
     }, [test,valueServer])
 
+
     return (
+        <>
         <main className="mainserverpage">
             <nav className="servers-container">
             <div className="tooltip" id="logo-container">
                 <span className="tooltiptext">Direct Messages</span>
                 <div className="server-logo">
                     <img className="solo-server-discord" src={soloDiscord} alt='server-logo' />
-            </div>
+                </div>
             </div>
             <div class="guildSeparator"></div>
             {serversAll.map((ele) => {
@@ -54,7 +51,6 @@ function Servers() {
                             setValueServer(ele)
                             setTest(false)}}/>
                     </div>
-                    {/* {ele.public ? <p>True</p> : <p>False</p>} */}
                 </div>
             })}
             <div className="tooltip" id="logo-container">
@@ -78,8 +74,16 @@ function Servers() {
                         return dispatch(logout())
                     .then(()=>history.push('/login'))
                     }}>Log Out</button>
-            </div>
-        </main>
+                </div>
+            </main>
+            <footer className="developerfooter">
+                <a className="developer-names" href="">Emily</a>
+                <a className="developer-names" href="">Matt</a>
+                <div>Our Development Team</div>
+                <a className="developer-names" href="">Michael</a>
+                <a className="developer-names" href="">Zach</a>
+            </footer>
+        </>
     )
 }
 

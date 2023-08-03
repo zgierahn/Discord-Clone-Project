@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import Chat from './chat-socket'
 import { io } from 'socket.io-client';
 import hashtag from "../images/hashtag.png"
-
 // let socket;
 
 const ChannelTest = ({channel}) => {
@@ -12,7 +11,6 @@ const ChannelTest = ({channel}) => {
     const [buttonStatus, setButtonStatus] = useState(false)
     // const {channelId} = useParams()
     let socket;
-
     // const [chatInput, setChatInput] = useState("");
     // const [messages, setMessages] = useState([]);
     // const dispatch = useDispatch()
