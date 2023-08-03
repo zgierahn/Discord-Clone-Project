@@ -67,6 +67,14 @@ background-color: rgb(53, 55, 60);
   border-radius: 15px;
 }
 
+#blue:hover {
+  background-color:blue;
+}
+
+#green:hover {
+  background-color: #96db15;
+}
+
 .guildSeparator {
   height: 2px;
   width: 32px;
@@ -86,10 +94,10 @@ background-color: rgb(53, 55, 60);
 
 .userLogoutDiv {
   display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: rgb(35, 37, 42);
-    padding: 10px;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(35, 37, 42);
+  padding: 10px;
 }
 
 
@@ -105,6 +113,7 @@ background-color: rgb(53, 55, 60);
     padding-inline: 15px;
     border-radius: 20px;
     color: white;
+    cursor: pointer;
 }
 
 /*------------------------------ Footer -------------------- */

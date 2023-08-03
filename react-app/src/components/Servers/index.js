@@ -64,7 +64,7 @@ function Servers() {
                                                                     setPoints({x: e.pageX, y: e.pageY});
                                                                     }} >
                                 <span className="tooltiptext" value={ele.id}>{ele.name}</span>
-                                <img className="server-image" id={ele.id} src={ele.picture} alt={ele.name} onClick={(e)=> {
+                                <img className="server-image" id={ele.id} src={ele.picture? ele.picture: "https://www.vhv.rs/dpng/d/276-2761550_discord-icon-default-cool-discord-server-logos-hd.png"} alt={ele.name} onClick={(e)=> {
                                     setValueServer(ele)
                                     setTest(false)}}/>
                             </div>
