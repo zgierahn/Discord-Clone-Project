@@ -14,7 +14,7 @@
     margin-right:320px;
     font-size:13px;
     align-items:center;
-    
+
 }
 .gobackbtn:hover{
     color:white;
@@ -36,7 +36,9 @@
     color:rgb(26, 133, 246);
     text-decoration:none;
     margin-left:5px;
-    /* cursor:pointer; */
+}
+.registerLink:hover{
+    text-decoration:underline;
 }
 .loginForm{
     background: rgb(52, 52, 60);
