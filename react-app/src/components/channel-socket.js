@@ -9,9 +9,11 @@ import EditChannel from "./EditChannel";
 
 const ChannelTest = ({channel}) => {
     const [buttonStatus, setButtonStatus] = useState(false)
+
     const [openModal,setOpenModal] = useState(false)
 
     let socket;
+
     const user = useSelector(state => state.session.user)
 
     const handleClick = () => {

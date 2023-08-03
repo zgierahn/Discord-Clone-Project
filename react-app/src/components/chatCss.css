@@ -1,0 +1,39 @@
+.ChatContainer{
+    position: absolute;
+    width: -webkit-fill-available;
+    height: auto;
+    left: 318px;
+    right: 10px;
+    bottom: 20px;
+    top: 20px;
+
+}
+
+.ChatBox{
+    position: absolute;
+    width: -webkit-fill-available;
+    height: auto;
+    left: 10px;
+    right: 10px;
+    bottom: 90px;
+    top: 20px;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+
+.ChatInputContainer{
+    position: absolute;
+    bottom: 50px;
+    left: 10px;
+    width: -webkit-fill-available;
+}
+
+.ChatInputContainer > input {
+    width: inherit;
+    margin-right: 100px;
+    padding: 0px 20px;
+    height: 25px;
+}

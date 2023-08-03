@@ -66,13 +66,15 @@ def delete_post(messageId):
   db.session.commit()
   return {'message':'deleted'}
 
-@msg_routes.route('/<int:id>/<int:messageId>/reaction/<int:reactionId>/delete', methods=['GET','POST','DELETE'])
+@msg_routes.route('/<int:id>/<int:channelId>/reaction/<int:reactionId>/delete', methods=['GET','POST','DELETE'])
 @login_required
-def delete_reaction(id,reactionId):
+def delete_reaction(id, channelId,reactionId):
   reaction_to_delete = Reaction.query.get(reactionId)
   db.session.delete(reaction_to_delete)
   db.session.commit()
-  return {'message':'deleted'}
+  selected_channel = Channel.query.get(channelId)
+  messages = [msg.to_dict() for msg in selected_channel.messages]
+  return {'messages':messages}
 
 @msg_routes.route('/<int:id>/channel/<int:channelId>/<int:messageId>/reaction/new', methods=['GET','POST'])
 @login_required
