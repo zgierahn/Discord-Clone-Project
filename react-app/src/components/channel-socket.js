@@ -4,18 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import Chat from './chat-socket'
 import { io } from 'socket.io-client';
 import hashtag from "../images/hashtag.png"
-
 // let socket;
 
 const ChannelTest = ({channel}) => {
-    // const [socket, setSocket] = useState('')
     const [buttonStatus, setButtonStatus] = useState(false)
-    // const {channelId} = useParams()
-    let socket;
 
-    // const [chatInput, setChatInput] = useState("");
-    // const [messages, setMessages] = useState([]);
-    // const dispatch = useDispatch()
+    let socket;
     const user = useSelector(state => state.session.user)
 
     const handleClick = () => {
@@ -44,7 +38,7 @@ const ChannelTest = ({channel}) => {
 
     return (user && (
         <div>
-            <button className="channelnamebutton" onClick={handleClick}><img className="hashtagchannel" src={hashtag}/> {channel.name}</button>
+            <button className="channelnamebutton" onClick={handleClick} ><img className="hashtagchannel" src={hashtag}/> {channel.name}</button>
 
             {buttonStatus && <Chat channelId={channel.id} /> }
         </div>
