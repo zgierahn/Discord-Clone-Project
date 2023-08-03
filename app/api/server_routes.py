@@ -30,7 +30,11 @@ def delete_post(serverId):
 def create_server():
     form = ServerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    name_dupicate = Server.query.filter(form.data['name']==Server.name)
+    name_dupicate_length =len([server.to_dict() for server in name_dupicate])
     curr_user = User.query.get(current_user.id)
+    if name_dupicate_length > 0:
+        return {'error':'Server name already exists'},401
     if form.validate_on_submit():
         if form.data['privates'] == 1:
             answer = True
@@ -46,14 +50,12 @@ def create_server():
         db.session.add(server)
         db.session.commit()
         return server.to_dict()
-    return {'errors': 'error'}, 401
 
 @server_routes.route('/edit/<int:serverId>', methods=['GET','POST','PUT'])
 @login_required
 def edit_server(serverId):
     form = ServerForm()
     server = Server.query.get(serverId)
-    print('-----------------------formdata----------------',form.data['name'])
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.data['privates'] == 1:
         answer = False

@@ -12,6 +12,7 @@ import { logout } from "../../store/session";
 import { thunkLogout } from "../../store/channels"
 
 import './servers.css'
+import ServerForm from "../ServerForm"
 
 
 
@@ -22,12 +23,25 @@ function Servers() {
     const dispatch = useDispatch()
     const history = useHistory()
     const { userId } = useParams()
+    const [openModal,setOpenModal] = useState(false)
     // const [state, setState] = useState('start')
     const[test,setTest]=useState(false)
     // console.log('servesAll',serversAll)
     const[valueServer,setValueServer]=useState(serversAll.length?serversAll[0].id:0)
- 
 
+    const [clicked, setClicked] = useState(false);
+    const [points, setPoints] = useState({
+      x: 0,
+      y: 0,
+    });
+
+    useEffect(() => {
+        const handleClick = () => setClicked(false);
+        window.addEventListener("click", handleClick);
+        return () => {
+          window.removeEventListener("click", handleClick);
+        };
+      }, []);
 
     useEffect(() => {
         dispatch(thunkGetServers(userId))
@@ -45,27 +59,48 @@ function Servers() {
                     <img className="solo-server-discord" src={soloDiscord} alt='server-logo' />
             </div>
             </div>
-            <div class="guildSeparator"></div>
+
+            <div className="guildSeparator"></div>
             {serversAll.map((ele) => {
-                return <div  key={ele.id}>
-                    <div className="tooltip">
-                        <span className="tooltiptext">{ele.name}</span>
-                        <img className="server-image" src={ele.picture} alt={ele.name} onClick={(e)=> {
+                return <div  key={ele.id} value={ele.id}>
+                    <div className="tooltip"
+                    value={ele.id}
+                           onContextMenu={(e) => {
+                             e.preventDefault();
+                             e.stopPropagation()
+                             {console.log('-------------------',e.target.id)}
+                             setClicked(true);
+                             setPoints({
+                               x: e.pageX,
+                               y: e.pageY,
+                             });
+                            }}
+                    >
+                        <span className="tooltiptext" value={ele.id}>{ele.name}</span>
+                        <img className="server-image" id={ele.id} src={ele.picture} alt={ele.name} onClick={(e)=> {
                             setValueServer(ele)
                             setTest(false)}}/>
                     </div>
-                    {/* {ele.public ? <p>True</p> : <p>False</p>} */}
                 </div>
             })}
-            <div className="tooltip" id="logo-container">
+                              {clicked && (
+        <div className='App' style={{top:`${points.y}px`,left:`${points.x}px`}}>
+          <ul >
+            <li>Edit</li>
+            <li>Delete</li>
+          </ul>
+        </div>
+      )}
+            <div className="tooltip" id="logo-container" onClick={()=>setOpenModal(true)}>
                 <span className="tooltiptext">Add a Server</span>
                 <img className="server-logo" src={addServer} alt='server-logo' />
             </div>
+                {openModal && <ServerForm closeModal ={setOpenModal} />}
             <div className="tooltip" id="logo-container">
                 <span className="tooltiptext">Explore Discoverable Servers</span>
                 <img className="server-logo" src={discoverServer} alt='server-logo' />
             </div>
-            <div class="guildSeparator"></div>
+            <div className="guildSeparator"></div>
             <div className="tooltip" id="logo-container">
                 <span className="tooltiptext">Download Apps</span>
                 <img className="server-logo" src={downloadArrow} alt='server-logo' />
