@@ -1,5 +1,5 @@
 import './chatCss.css'
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { io } from 'socket.io-client';
 import { thunkGetAllMsg } from "../store/messages";
@@ -9,7 +9,7 @@ import CreateReaction from "./CreateReaction";
 import DeleteReaction from "./DeleteReaction";
 let socket;
 
-const Chat = ({ channelId }) => {
+const Chat = ({ channelId, buttonStatus }) => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
     // const { serverId } = useParams()
@@ -17,6 +17,17 @@ const Chat = ({ channelId }) => {
     const user = useSelector(state => state.session.user)
 
     let msgs = useSelector(state => state.messages.allMessages)
+
+
+    const messagesEndRef = useRef()
+
+
+
+    useEffect(() => {
+        if (messagesEndRef.current !== undefined){
+                messagesEndRef.current.focus()
+        }
+      }, []);
 
 
     useEffect(() => {
@@ -62,24 +73,31 @@ const Chat = ({ channelId }) => {
 
     return (user && (
         <div className="ChatContainer">
-            <div className="ChatBox">
+            <div className="ChatBox" >
                 <div className='ChatMessagesContainer' >
                 {msg_arr.map((msg) => {
                     return (
-                        <>
-                            <div key={msg.id}value={msg.id}>{msg.content}</div>
-                            {Object.values(msg.emoji_count).length ? Object.keys(msg.emoji_count).map(each => (
-                                <div>{each} {msg.emoji_count[each]} {msg.reactions.map((react) => {
+                        <div className='CreateReadDelete-ForMsgAndEmoji'>
+
+                            <div className='Msg-Emoji-Container'>
+                            <div key={msg.id} value={msg.id} >{msg.username.username}: {msg.content}</div>
+
+                            <div className='EachEmojiContainer'> {Object.values(msg.emoji_count).length ? Object.keys(msg.emoji_count).map(each => (
+                                <div className='EachEmojiContainer'>{each} {msg.emoji_count[each]} {msg.reactions.map((react) => {
                                     return react.emoji === each && react.user_id === user.id ? <DeleteReaction userId={user.id} channelId={channelId} reactionId={react.id}/> : null
                                 })  } </div>
-                            )) : null}
+                            )) : null} </div>
+
+                            </div>
 
                             {msg.user_id === user.id ? <DeleteMsg msgId={msg.id} /> : null}
                             <CreateReaction messageId={msg.id} channelId={channelId}/>
-                        </>
+                            <div ref={messagesEndRef}></div>
+                        </div>
 
                     )
-                })}
+                })
+                }
                 </div>
             </div>
             {/* keep for reference PLEASE */}
@@ -93,6 +111,7 @@ const Chat = ({ channelId }) => {
                     value={chatInput}
                     onChange={updateChatInput}
                     placeholder='Message'
+                    ref={messagesEndRef}
                 />
                 {/* <button type="submit">Send</button> */}
             </form>
