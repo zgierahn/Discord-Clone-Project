@@ -57,7 +57,7 @@ export const thunkEditServer = (serverValue, name,privates,picture) => async (di
             dispatch(editServer(server))
             return server
         }
-     else if (response.status < 500){
+        else if (response.status < 500){
         const err = await response.json()
         return err
     }
