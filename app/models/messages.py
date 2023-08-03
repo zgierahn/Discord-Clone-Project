@@ -46,5 +46,6 @@ class Message(db.Model, UserMixin):
             'user_id': self.user_id,
             'channel_id': self.channel_id,
             'reactions': [ react.to_dict() for react in self.reaction],
-            'emoji_count': answer
+            'emoji_count': answer,
+            'username':  self.users_id.to_dict()
         }

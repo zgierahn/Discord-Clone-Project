@@ -50,7 +50,7 @@ const ChannelTest = ({channel}) => {
         <div>
             <button className="channelnamebutton" onClick={handleClick} onContextMenu={handleClick}><img className="hashtagchannel" src={hashtag}/> {channel.name}</button>
             {/* {click && <div>Helllloooo</div> } */}
-            {buttonStatus && leftClick && <Chat channelId={channel.id} /> }
+            {buttonStatus && leftClick && <Chat channelId={channel.id} buttonStatus={buttonStatus} /> }
         </div>
     ))
 
