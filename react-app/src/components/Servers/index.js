@@ -10,9 +10,10 @@ import downloadArrow from "../../images/download-arrow.png"
 import soloDiscord from "../../images/solo-discord-logo.png"
 import { logout } from "../../store/session";
 import { thunkLogout } from "../../store/channels"
-
 import './servers.css'
 import ServerForm from "../ServerForm"
+import EditServer from "../EditServer"
+import DeleteServer from "../DeleteServer"
 
 
 
@@ -24,12 +25,14 @@ function Servers() {
     const history = useHistory()
     const { userId } = useParams()
     const [openModal,setOpenModal] = useState(false)
+    const [openModalServer,setOpenModalServer] = useState(false)
+    const [openModalServerDelete,setOpenModalServerDelete] = useState(false)
     // const [state, setState] = useState('start')
     const[test,setTest]=useState(false)
-    // console.log('servesAll',serversAll)
     const[valueServer,setValueServer]=useState(serversAll.length?serversAll[0].id:0)
 
     const [clicked, setClicked] = useState(false);
+    const [serverValue, setServerValue] = useState('');
     const [points, setPoints] = useState({
       x: 0,
       y: 0,
@@ -42,6 +45,10 @@ function Servers() {
           window.removeEventListener("click", handleClick);
         };
       }, []);
+
+    useEffect(() => {
+
+    }, [serverValue])
 
     useEffect(() => {
         dispatch(thunkGetServers(userId))
@@ -67,8 +74,7 @@ function Servers() {
                     value={ele.id}
                            onContextMenu={(e) => {
                              e.preventDefault();
-                             e.stopPropagation()
-                             {console.log('-------------------',e.target.id)}
+                             setServerValue(e.target.id)
                              setClicked(true);
                              setPoints({
                                x: e.pageX,
@@ -86,11 +92,19 @@ function Servers() {
                               {clicked && (
         <div className='App' style={{top:`${points.y}px`,left:`${points.x}px`}}>
           <ul >
-            <li>Edit</li>
-            <li>Delete</li>
+            <li onClick={(e)=>{
+                setOpenModalServer(true)
+            }}>Edit</li>
+            <li
+            onClick={(e)=>{
+                setOpenModalServerDelete(true)
+            }}
+            >Delete</li>
           </ul>
         </div>
       )}
+      {openModalServerDelete && <DeleteServer closeModal ={setOpenModalServerDelete} serverValue={serverValue}/>}
+      {openModalServer && <EditServer closeModal ={setOpenModalServer} serverValue={serverValue}/>}
             <div className="tooltip" id="logo-container" onClick={()=>setOpenModal(true)}>
                 <span className="tooltiptext">Add a Server</span>
                 <img className="server-logo" src={addServer} alt='server-logo' />

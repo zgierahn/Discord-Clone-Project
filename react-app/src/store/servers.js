@@ -14,9 +14,9 @@ const deleteServer = (serverId) => ({
     data:serverId
 })
 
-const editServer = (serverId) => ({
+const editServer = (serverValue) => ({
     type:EDIT_SERVER,
-    data:serverId
+    data:serverValue
 })
 
 const getSingleServer = (server) => ({
@@ -45,9 +45,9 @@ export const thunkDeleteServer = (serverId) => async (dispatch) => {
     }
 }
 
-export const thunkEditServer = (serverId, name,privates,picture) => async (dispatch) => {
-    try {
-        const response = await fetch(`/api/servers/edit/${serverId}`, {
+export const thunkEditServer = (serverValue, name,privates,picture) => async (dispatch) => {
+
+        const response = await fetch(`/api/servers/edit/${serverValue}`, {
             method:'PUT',
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({name,privates,picture})
@@ -57,9 +57,9 @@ export const thunkEditServer = (serverId, name,privates,picture) => async (dispa
             dispatch(editServer(server))
             return server
         }
-    } catch (error) {
-        const err = await error.json()
-        return {errors:err}
+     else if (response.status < 500){
+        const err = await response.json()
+        return err
     }
 }
 
@@ -138,7 +138,6 @@ export default function reducer(state = initialState, action) {
         case GET_SINGLE_SERVER:{
             let newState = {...state, singleServer:{...state.singleServer}}
             // newState.singleServer = {}
-            console.log("server newstate",newState)
             newState.singleServer=action.data
             return newState
         }
@@ -154,6 +153,7 @@ export default function reducer(state = initialState, action) {
         }
         case EDIT_SERVER: {
             const newState = {...state, singleServer:{...state.singleServer}}
+            newState.singleServer = {}
             newState.singleServer = action.data
             return newState
         }
