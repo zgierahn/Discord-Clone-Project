@@ -45,7 +45,7 @@ const ChannelTest = ({channel}) => {
             <button className="channelnamebutton" onClick={handleClick} ><img className="hashtagchannel" src={hashtag}/> {channel.name}</button>
                 <button className="editChannelModalButton" onClick={()=>setOpenModal(true)}><span className="tooltiptext2">Edit Channel</span><span><i class="fa-solid fa-gear"></i></span></button>
             {buttonStatus && <Chat channelId={channel.id} /> }
-            {openModal && <EditChannel closeModal ={setOpenModal} channelId={channel.id}/>}
+            {openModal && <EditChannel closeModal ={setOpenModal} channel={channel}/>}
         </div>
     ))
 

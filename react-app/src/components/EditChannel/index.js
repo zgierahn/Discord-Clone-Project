@@ -1,11 +1,11 @@
-import { thunkGetSingleChannel, thunkEditChannel } from '../../store/channels'
+import { thunkGetSingleChannel, thunkEditChannel, thunkGetChannels } from '../../store/channels'
 import { useEffect,useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 
-function EditChannel({closeModal,channelId}) {
-    const channel = useSelector(state => state.channels.singleChannel)
+function EditChannel({closeModal,channel}) {
+    // const channel = useSelector(state => state.channels.singleChannel)
     const dispatch = useDispatch()
     const history = useHistory()
     const { userId} = useParams()  // serverId
@@ -15,18 +15,18 @@ function EditChannel({closeModal,channelId}) {
 
     const onSubmit = async() => {
         // let payload = {}
-        const err = await dispatch(thunkEditChannel(channelId,name))
-        // console.log('this is err', err)
+        const err = await dispatch(thunkEditChannel(channel.id,name))
+        const ans=await dispatch(thunkGetChannels(userId,channel.server_id ))
     }
 
     useEffect(() => {
         const err = async () => {
-            const err = await dispatch(thunkGetSingleChannel(channelId))
+            const err = await dispatch(thunkGetSingleChannel(channel.id))
             // setErrors(err)
             // console.log('channelsss', err)
         }
         err()
-    },[channelId])
+    },[channel.id])
     // console.log('channel name', channel.name)
     useEffect(() => {
         setName(channel.name)

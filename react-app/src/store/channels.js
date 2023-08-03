@@ -154,8 +154,7 @@ export default function reducer(state = initialState, action) {
             return newState
         }
         case EDIT_CHANNEL: {
-            const newState = {...state, singleChannel:{...state.singleChannel}}
-
+            const newState = {...state, singleChannel:{...state.singleChannel},allChannels:{...state.allChannels}}
             console.log('editchannelstate', newState)
             newState.singleChannel = action.data
             return newState
