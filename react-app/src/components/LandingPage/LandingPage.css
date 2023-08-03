@@ -279,5 +279,17 @@ h5 {
 
 .BottomHomeIcon{
     font-size: x-large;
-    font-family: sans-serif
+    font-family: Simple Sans fonts;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+.LandingBottomSignUp{
+    padding: 10px 12px;
+    border-radius: 25px;
+    border: none;
+    background-color: #4c55ff;
+    color: white;
 }

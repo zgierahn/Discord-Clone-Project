@@ -24,15 +24,15 @@ const createReaction = (messageId) => ({
     data:messageId
 })
 
-export const thunkDeleteReaction = (userId,messageId,reactionId) => async (dispatch) => {
+export const thunkDeleteReaction = (userId,channelId,reactionId) => async (dispatch) => {
     // try {
-        const res = await fetch(`/api/messages/${userId}/${messageId}/reaction/${reactionId}/delete`, {
+        const res = await fetch(`/api/messages/${userId}/${channelId}/reaction/${reactionId}/delete`, {
             method:'DELETE'
         })
         if (res.ok)    {
             const data = await res.json()
 
-            dispatch(deleteReaction(data))
+            dispatch(getMessages(data))  //this is getting all the messages again because was faster then updating 2 objects
             return data
         }else {
                 const err = await res.json()

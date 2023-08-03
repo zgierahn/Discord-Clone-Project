@@ -5,18 +5,18 @@ import { useState } from "react"
 // import { thunkDeleteReaction } from "../../store/messages"
 
 
-export default function DeleteReaction () {
+export default function DeleteReaction ({userId, channelId, reactionId}) {
     const dispatch = useDispatch()
-    const {userId,reactionId,messageId} = useParams()
+    // const {userId,reactionId,messageId} = useParams()
     const [errors, setErrors] = useState({})
     // const history = useHistory()
     const deleteReaction = async() => {
-        const err = await dispatch(thunkDeleteReaction(userId,messageId,reactionId))
+        const err = await dispatch(thunkDeleteReaction(userId,channelId,reactionId))
         setErrors(err)
     }
     return (
         <div>
-            <h2>message reaction</h2>
+            {/* <h2>message reaction</h2> */}
             <button onClick={(e) => {
                 deleteReaction()
             }}
