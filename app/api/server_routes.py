@@ -54,9 +54,14 @@ def create_server():
 @server_routes.route('/edit/<int:serverId>', methods=['GET','POST','PUT'])
 @login_required
 def edit_server(serverId):
+    print('======================')
     form = ServerForm()
     server = Server.query.get(serverId)
+    name_dupicate = Server.query.filter(form.data['name']==Server.name)
+    name_dupicate_length =len([server.to_dict() for server in name_dupicate])
     form['csrf_token'].data = request.cookies['csrf_token']
+    if name_dupicate_length > 0:
+        return {'error':'Server name already exists'},401
     if form.data['privates'] == 1:
         answer = False
     else:
