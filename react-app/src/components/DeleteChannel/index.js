@@ -1,26 +1,35 @@
 import { useDispatch } from "react-redux"
-import { thunkDeleteChannel } from "../../store/channels"
+import { thunkDeleteChannel,thunkGetChannels } from "../../store/channels"
 import {useParams, useHistory} from 'react-router-dom'
 import { useState } from "react"
 
-export default function DeleteChannel () {
+export default function DeleteChannel ({closeModal1,channel}) {
     const dispatch = useDispatch()
     const {userId, channelId, serverId} = useParams()
     const [errors, setErrors] = useState({})
     const history = useHistory()
 
     const deleteChannel = async() => {
-        const err = await dispatch(thunkDeleteChannel(channelId))
+        const err = await dispatch(thunkDeleteChannel(channel.id))
+        const ans=await dispatch(thunkGetChannels(userId,channel.server_id ))
         setErrors(err)
     }
     return (
-        <div>
-            <h2>channel delete</h2>
-            <button onClick={(e) => {
+        <div className="makechannelmodals">
+        <div className="makechannelbackg" >
+        <h3 className="headerCreateChannel2">Delete Channel</h3>
+            <h2>Are you sure you want to delete <span className="innerspandeletechannel">#{channel.name}</span>? This cannot be undone.</h2>
+            <div className="buttonContCreateChannel">
+            <div className="cancelChannel" onClick={()=>
+                    closeModal1(false)
+                    }>Cancel</div>
+            <button className="createChannelBtn"onClick={(e) => {
                 deleteChannel()
-                .then(()=>history.push(`/${userId}/servers`))
+                .then(closeModal1(false))
             }}
             >Delete Channel</button>
+        </div>
+        </div>
         </div>
     )
 }

@@ -9,7 +9,7 @@ function EditChannel({closeModal,channel}) {
     const dispatch = useDispatch()
     const history = useHistory()
     const { userId} = useParams()  // serverId
-    // console.log('channel', channel)
+    const [errors, setErrors] = useState({})
 
     const [name, setName] = useState(channel.name)
 
@@ -17,6 +17,12 @@ function EditChannel({closeModal,channel}) {
         // let payload = {}
         const err = await dispatch(thunkEditChannel(channel.id,name))
         const ans=await dispatch(thunkGetChannels(userId,channel.server_id ))
+        if (err.error) {
+            await setErrors(err)
+        }
+        else {
+            closeModal(false)
+        }
     }
 
     useEffect(() => {
@@ -40,13 +46,15 @@ function EditChannel({closeModal,channel}) {
     return (
         <div className="makechannelmodals">
             <div className="makechannelbackg" >
-            <label htmlFor="name">name</label>
-            <input type="text"
+            <h3 className="headerCreateChannel2">Edit Channel</h3>
+            <label className="channelNameLabel" htmlFor="name">CHANNEL NAME</label>
+            <input className="channelInput" type="text"
                 value={name}
                 onChange={(e) => {
                     setName(e.target.value)
                 }}
             />
+            <div className="errormessagescreatechannel">{Object.values(errors).length > 0 ? errors.error : ''}</div>
             <div className="buttonContCreateChannel">
                 <div className="cancelChannel" onClick={()=>
                     closeModal(false)
@@ -54,7 +62,6 @@ function EditChannel({closeModal,channel}) {
             <button className="createChannelBtn"
                 onClick={(e) => {
                     onSubmit()
-                    .then(closeModal(false))
                 }}
             >Edit Channel</button>
             </div>

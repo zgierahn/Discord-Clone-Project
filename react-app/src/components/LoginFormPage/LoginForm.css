@@ -6,7 +6,20 @@
     min-height:770px;
     min-width:1230px
 }
-
+.gobackbtn{
+    display:flex;
+    color:rgb(164, 168, 175);
+    cursor:pointer;
+    gap:5px;
+    margin-right:320px;
+    font-size:13px;
+    align-items:center;
+    
+}
+.gobackbtn:hover{
+    color:white;
+    text-decoration: underline;
+}
 .login{
     background:white;
     display:flex;

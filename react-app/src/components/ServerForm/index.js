@@ -4,7 +4,7 @@ import { useDispatch  } from 'react-redux'  //useSelector
 // import { useHistory } from "react-router-dom"
 // import { useParams } from 'react-router-dom'
 
-function ServerForm({closeModal}) {
+
 function ServerForm({closeModal}) {
     const dispatch = useDispatch()
     // const history = useHistory()

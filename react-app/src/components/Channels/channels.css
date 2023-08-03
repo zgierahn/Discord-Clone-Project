@@ -2,23 +2,24 @@ body{
     font-family:Arial, Helvetica, sans-serif
 }
 .channelnamebutton {
-    display: flex;
+    display:inline-block;
     gap: 5px;
     width: -webkit-fill-available;
-    margin: 9px;
+    padding: 9px;
     background-color: transparent;
     border: none;
     font-size: 17px;
     color: gray;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     text-align: justify;
+     cursor:pointer;
 }
-.channelNameCont:hover{
-    cursor:pointer;
-    background:rgb(83, 81, 81);
-    border-radius:5px;
-    color:white;
-}
+
 .channelnamebutton:hover{
     color:white;
+
 }
 .holderoftheaddingpower{
     display:flex;
@@ -30,12 +31,15 @@ body{
     margin: 5px;
     color: white;
     font-weight: bold;
-    padding-left: 5px;
+    padding: 10px;
+    border-bottom: 1px solid black;
 }
 
 
 .hashtagchannel {
     height: 20px;
+    position: relative;
+    top: 4px;
 }
 .tooltiptext2 {
     visibility: hidden;
@@ -46,10 +50,8 @@ body{
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
-    /* top: 5px; */
-    /* right: 10px; */
-    /* left:2px; */
-    bottom:23px;
+    right: -54px;
+    bottom: 30px;
     position: absolute;
     z-index: 1;
 }
@@ -58,11 +60,12 @@ body{
     border: none;
     color:grey;
     font-size:25px;
-    /* align-content:center;
-    align-items:center; */
-    margin-left:80px;
-    cursor:pointer;
+    align-content:center;
+    align-items:center;
+    margin-left:70px;
+    cursor: pointer;
     position: relative;
+
     /* display: inline-block; */
 }
   .addchannelbttn:hover  {
@@ -74,10 +77,11 @@ body{
     visibility: visible;
 }
 .textchannelheader{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     color:gray;
-    font-size:13px;
-    display:flex;
-
+    font-size:12px;
 }
 .editChannelModalButton:hover .tooltiptext2{
     visibility: visible;
@@ -85,6 +89,10 @@ body{
 }
 .channelNameCont{
     display:flex;
+}
+.channelNameCont:hover{
+    background:rgb(68, 70, 75);
+
 }
 .channelNameCont:hover .editChannelModalButton{
     display:inline-block;
@@ -99,4 +107,32 @@ body{
 }
 .editChannelModalButton:hover{
   color:white;
+}
+.IBlameMatt {
+    position: absolute;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    width: 210px;
+    height:70px;
+    background-color: black;
+    border-radius: 5px;
+    box-sizing: border-box;
+    gap:10px;
+    margin:10px;
+    z-index:10;
+
+
+  }
+.chicken{
+    color: white;
+    background: black;
+    padding: 5px;
+    border: none;
+    width:200px;
+    border-radius: 2px;
+}
+.chicken:hover{
+    background:rgb(26, 133, 246);
 }

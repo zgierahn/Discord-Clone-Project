@@ -30,12 +30,8 @@
 .channelNameLabel{
   color:rgb(164, 168, 175);
   display: flex;
-  /* flex-wrap: wrap; */
   align-content: stretch;
-  /* justify-content: center; */
   align-items: flex-start;
-  /* flex-direction: column; */
-  /* margin-bottom:15px; */
   font-size:13px;
   margin-right:300px;
 }
@@ -46,6 +42,15 @@
   color:white;
   border-radius:5px;
 
+}
+.errormessagescreatechannel{
+
+  color:red;
+  display: flex;
+  align-content: stretch;
+  align-items: flex-start;
+  font-size:13px;
+  margin-right:230px;
 }
 .createChannelBtn{
   background:#444def;

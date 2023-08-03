@@ -112,10 +112,11 @@ background-color: rgb(53, 55, 60);
     top: ${top}px;
     left: ${left}px;
   `} */
-  ul {
+  /* ul {
     box-sizing: border-box;
     padding: 10px;
     margin: 0;
     list-style: none;
-  }
+  } */
+
 }
