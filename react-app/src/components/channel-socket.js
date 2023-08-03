@@ -7,25 +7,33 @@ import hashtag from "../images/hashtag.png"
 // let socket;
 
 const ChannelTest = ({channel}) => {
-    // const [socket, setSocket] = useState('')
     const [buttonStatus, setButtonStatus] = useState(false)
+    const [click, setClick] = useState(false)
+    const [leftClick, setLeftClick] = useState(false)
+
     // const {channelId} = useParams()
     let socket;
-    // const [chatInput, setChatInput] = useState("");
-    // const [messages, setMessages] = useState([]);
-    // const dispatch = useDispatch()
+
     const user = useSelector(state => state.session.user)
 
-    const handleClick = () => {
-        if(buttonStatus) setButtonStatus(false)
-        else setButtonStatus(true)
+    const handleClick = (e) => {
+        // if (e.type === 'contextmenu') {
+        //     e.preventDefault()
+        //     setClick(true)
+        //     console.log('Right click');
+        // }
+        if (e.type === 'click'){
+            setLeftClick(true)
+            if(!buttonStatus) setButtonStatus(true)
+            if(buttonStatus) setButtonStatus(false)
+
+        }
     }
 
     useEffect(() => {
         if (buttonStatus){
             socket = io();
 
-            // setSocket(thesocket)
 
             socket.on('join',{channel: channel.id})
 
@@ -38,13 +46,11 @@ const ChannelTest = ({channel}) => {
 
 
 
-
-
     return (user && (
         <div>
-            <button className="channelnamebutton" onClick={handleClick}><img className="hashtagchannel" src={hashtag}/> {channel.name}</button>
-
-            {buttonStatus && <Chat channelId={channel.id} /> }
+            <button className="channelnamebutton" onClick={handleClick} onContextMenu={handleClick}><img className="hashtagchannel" src={hashtag}/> {channel.name}</button>
+            {/* {click && <div>Helllloooo</div> } */}
+            {buttonStatus && leftClick && <Chat channelId={channel.id} /> }
         </div>
     ))
 
