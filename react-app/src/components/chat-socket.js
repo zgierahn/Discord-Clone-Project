@@ -27,9 +27,12 @@ const Chat = ({ buttonStatus }) => {
     let msgs = useSelector(state => state.messages.allMessages)
 
 
-    const messagesEndRef = useRef()
+    const messagesEndRef = useRef(null)
 
 
+    useEffect(()=> {
+        messagesEndRef.current?.scrollIntoView()
+    },[messages])
 
     useEffect(() => {
         // open socket connection
@@ -94,12 +97,12 @@ const Chat = ({ buttonStatus }) => {
 
                             {msg.user_id === user.id ? <DeleteMsg msgId={msg.id} /> : null}
                             <CreateReaction messageId={msg.id} channelId={channelId}/>
-                            <div ref={messagesEndRef}></div>
                         </div>
 
                     )
                 })
                 }
+                <div ref={messagesEndRef}></div>
                 </div>
             </div>
             {/* keep for reference PLEASE */}
@@ -113,7 +116,6 @@ const Chat = ({ buttonStatus }) => {
                     value={chatInput}
                     onChange={updateChatInput}
                     placeholder='Message'
-                    ref={messagesEndRef}
                 />
                 {/* <button type="submit">Send</button> */}
             </form>

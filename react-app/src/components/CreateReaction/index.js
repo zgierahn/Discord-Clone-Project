@@ -3,14 +3,14 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 import { thunkCreateReaction } from '../../store/messages'
-
+import './reaction.css'
 
 function CreateReaction({messageId,channelId}) {
     const dispatch = useDispatch()
     const history = useHistory()
     const { userId } = useParams()
 
-    const [emoji,setEmoji] = useState('')
+    const [emoji,setEmoji] = useState('😄')
 
     const onSubmit = async() => {
         // let payload = {}
@@ -28,6 +28,19 @@ function CreateReaction({messageId,channelId}) {
             >
                 <option value="😄">😄</option>
                 <option value="💗">💗</option>
+                <option value="💀">💀</option>
+                <option value="🔥">🔥</option>
+                <option value="✅ ">✅ </option>
+                <option value="👍">👍</option>
+                <option value="🎉">🎉</option>
+                <option value="⭐">⭐</option>
+                <option value="🫠">🫠</option>
+                <option value="🥹">🥹</option>
+                <option value="🚀">🚀</option>
+                <option value="😍 ">😍 </option>
+                <option value="💪">💪</option>
+                <option value="💰">💰</option>
+
             </select>
             <button
                 onClick={(e) => {
