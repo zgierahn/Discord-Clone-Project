@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Chat from './chat-socket'
 import { io } from 'socket.io-client';
 import hashtag from "../images/hashtag.png"
+import ChannelForm from "./ChannelForm";
 
 
 
@@ -22,6 +23,7 @@ const ChannelTest = () => {
     const history = useHistory()
 
     const [openModal,setOpenModal] = useState(false)
+    const [openModal3,setOpenModal3] = useState(false)
     const [openModal1,setOpenModal1] = useState(false)
     const [channelId, setChannelId] = useState('')
     let socket;
@@ -59,6 +61,16 @@ const ChannelTest = () => {
     if (!server.name) return null
     return (user && (
         <>
+              <span className='textchannelspan'>
+                <h3 className='servernamediv'>{server.name}</h3>
+                <div className="textchannelheader">TEXT CHANNELS
+                {server.owner[0].id == userId && <div className="addchannelbttn" onClick={()=>setOpenModal3(true)}>
+             <span className="tooltiptext2">Add Channel</span>+
+                </div>}
+            </div>
+             </span>
+             {openModal3 && <ChannelForm closeModal3 ={setOpenModal3} serverId={server.id}/>}
+
         <div className="channelNameCont">
             {channelsAll.map(channel => {
             return <button className="channelnamebutton" onClick={()=>history.push(`/${userId}/servers/${serverId}/channels/${channel.id}`)}

@@ -41,6 +41,7 @@ body{
     position: relative;
     top: 4px;
 }
+
 .tooltiptext2 {
     visibility: hidden;
     width: 120px;
@@ -74,6 +75,7 @@ body{
     /* visibility: visible; */
     color:white;
   }
+
 .addchannelbttn:hover .tooltiptext2{
     color:white;
     visibility: visible;
@@ -88,20 +90,27 @@ body{
     font-size:12px;
     height:27px;
 }
+
 .editChannelModalButton:hover .tooltiptext2{
     visibility: visible;
     color:white;
 }
+
 .channelNameCont{
-    display:flex;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: auto;
 }
+
 .channelNameCont:hover{
     background:rgb(68, 70, 75);
 
 }
+
 .channelNameCont:hover .editChannelModalButton{
     display:inline-block;
 }
+
 .editChannelModalButton{
     display:none;
     background: transparent;

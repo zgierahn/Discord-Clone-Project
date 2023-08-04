@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 import './channelForm.css'
 
-function ChannelForm({closeModal,serverId}) {
+function ChannelForm({closeModal3,serverId}) {
     const dispatch = useDispatch()
     const history = useHistory()
     const { userId } = useParams()
@@ -20,7 +20,7 @@ function ChannelForm({closeModal,serverId}) {
             await setErrors(err)
         }
         else {
-            closeModal(false)
+            closeModal3(false)
         }
     }
     let disable=true
@@ -43,7 +43,7 @@ function ChannelForm({closeModal,serverId}) {
 
             <div className="buttonContCreateChannel">
                 <div className="cancelChannel" onClick={()=>
-                    closeModal(false)
+                    closeModal3(false)
                     }>Cancel</div>
             <button className="createChannelBtn"
                 disabled={disable}

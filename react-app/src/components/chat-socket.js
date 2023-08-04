@@ -10,7 +10,9 @@ import DeleteReaction from "./DeleteReaction";
 import Servers from './Servers';
 import Channels from './Channels';
 import ChannelTest from './channel-socket';
+
 let socket;
+
 
 const Chat = ({ buttonStatus }) => {
     const [chatInput, setChatInput] = useState("");

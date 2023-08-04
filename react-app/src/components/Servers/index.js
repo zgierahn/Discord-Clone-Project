@@ -61,6 +61,7 @@ function Servers({server}) {
         // setTest(true)
     }, [valueServer])
 
+    console.log("looking for server", server)
     return (
         <>
         <main className="mainserverpage">
@@ -123,9 +124,9 @@ function Servers({server}) {
             </div>
             </nav>
             <div className="servertochannels">
-                {/* {console.log(valueServer, '============')} */}
+
                 { server ? <ChannelTest channel={server} /> : null }
-                {/* {test?<Channels server={valueServer}/>:null} */}
+
                 <span className="userLogoutDiv">
                     <div id="userNameDiv">
                         {userState[0]?.username}

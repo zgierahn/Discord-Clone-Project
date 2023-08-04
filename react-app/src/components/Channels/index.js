@@ -32,7 +32,7 @@ function Channels({server}) {
         //     <h3 className='servernamediv'>{server.name} </h3>
         //     <div className="textchannelheader">TEXT CHANNELS
         //         {server.owner[0].id == userId &&<div className="addchannelbttn" onClick={()=>setOpenModal(true)}>
-        //             <span className="tooltiptext2">Add Channel</span>+
+        //     <span className="tooltiptext2">Add Channel</span>+
         //         </div>}
         //     </div>
         //     {/* {server.owner[0].id == userId &&<div className="addchannelbttn" onClick={()=>setOpenModal(true)}><span className="tooltiptext2">Add Channel</span>+</div>} */}
