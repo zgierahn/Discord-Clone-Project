@@ -15,10 +15,10 @@ export default function DeleteChannel ({closeModal1,channel}) {
         setErrors(err)
     }
     return (
-        <div className="makechannelmodals">
+        <div className="makechannelmodals1">
         <div className="makedeletebackg" >
-        <h3 className="headerCreateChannel3">Delete Channel</h3>
-            <h2>Are you sure you want to delete <span className="innerspandeletechannel">#{channel.name}</span>? This cannot be undone.</h2>
+        <h3 className="headerDeleteChannel">Delete Channel</h3>
+            <div className="deletechannelinnertext">Are you sure you want to delete <span className="innerspandeletechannel">#{channel.name}</span>? This cannot be undone.</div>
             <div className="buttonContCreateChannel">
             <div className="cancelChannel" onClick={()=>
                     closeModal1(false)

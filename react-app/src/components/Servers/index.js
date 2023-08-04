@@ -126,7 +126,7 @@ function Servers({server}) {
             <div className="servertochannels">
 
                 {/* { server ? <ChannelTest channel={server} /> : null } */}
-                <ChannelTest />
+                {serverId && <ChannelTest /> }
                 <span className="userLogoutDiv">
                     <div id="userNameDiv">
                         {userState[0]?.username}

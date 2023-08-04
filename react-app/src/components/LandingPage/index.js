@@ -70,7 +70,7 @@ function LandingPage() {
                     <div>
                         <h5>Product</h5>
                         <div className='ATagContainer'>
-                            <a href="#">Download</a>
+                            <a onClick={()=>alert("")} >Download</a>
                             <a href="#">Nitro</a>
                             <a href="#">Status</a>
                         </div>
