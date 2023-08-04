@@ -14,15 +14,17 @@ import './servers.css'
 import ServerForm from "../ServerForm"
 import EditServer from "../EditServer"
 import DeleteServer from "../DeleteServer"
+import ChannelTest from "../channel-socket"
+// import Channels from "../Channels"
 
 
-function Servers() {
+function Servers({server}) {
     let serversAll = useSelector(state => Object.values(state.servers.allServers))
     let userState = useSelector(state => Object.values(state.session))
     // console.log('this is userState-----------', userState[0].username);
     const dispatch = useDispatch()
     const history = useHistory()
-    const { userId } = useParams()
+    const { userId, serverId } = useParams()
     const [openModal,setOpenModal] = useState(false)
     const [openModalServer,setOpenModalServer] = useState(false)
     const [openModalServerDelete,setOpenModalServerDelete] = useState(false)
@@ -37,6 +39,8 @@ function Servers() {
       y: 0,
     });
 
+    // const [serverT, setServerT] = useState(server)
+
 
     useEffect(() => {
         const handleClick = () => setClicked(false);
@@ -45,7 +49,7 @@ function Servers() {
     }, []);
 
     useEffect(() => {
-
+        // setServerT(server)
     }, [serverValue])
 
 
@@ -54,9 +58,8 @@ function Servers() {
         console.log('getting servers')
     }, [dispatch,userId])
     useEffect(() => {
-        setTest(true)
-    }, [test,valueServer])
-
+        // setTest(true)
+    }, [valueServer])
 
     return (
         <>
@@ -73,15 +76,19 @@ function Servers() {
                 return <div  key={ele.id} value={ele.id}>
 
                             <div className="tooltip" value={ele.id} onContextMenu={(e) => {
-                                                                    e.preventDefault();
-                                                                    setServerValue(e.target.id)
-                                                                    setClicked(true);
-                                                                    setPoints({x: e.pageX, y: e.pageY});
-                                                                    }} >
+                                e.preventDefault();
+                                setServerValue(e.target.id)
+                                setClicked(true);
+                                setPoints({x: e.pageX, y: e.pageY});
+                                }} >
                                 <span className="tooltiptext" value={ele.id}>{ele.name}</span>
-                                <img className="server-image" id={ele.id} src={ele.picture? ele.picture: "https://toppng.com/uploads/preview/discord-logo-discord-ico-11562851206m28xz1b1ln.png"} alt={ele.name} onClick={(e)=> {
-                                    setValueServer(ele)
-                                    setTest(false)}}/>
+
+                                <img className="server-image" id={ele.id} src={ele.picture? ele.picture: "https://toppng.com/uploads/preview/discord-logo-discord-ico-11562851206m28xz1b1ln.png"} alt={ele.name}
+                                onClick={(e)=> {
+                                    // console.log(ele, '--11111111111111111111')
+                                    history.push(`/${userId}/servers/${ele.id}`)
+                                    }}/>
+
                             </div>
                         </div>
             })}
@@ -116,7 +123,9 @@ function Servers() {
             </div>
             </nav>
             <div className="servertochannels">
-                {test?<Channels server={valueServer}/>:null}
+                {/* {console.log(valueServer, '============')} */}
+                { server ? <ChannelTest channel={server} /> : null }
+                {/* {test?<Channels server={valueServer}/>:null} */}
                 <span className="userLogoutDiv">
                     <div id="userNameDiv">
                         {userState[0]?.username}

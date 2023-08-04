@@ -3,16 +3,22 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { io } from 'socket.io-client';
 import { thunkGetAllMsg } from "../store/messages";
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import DeleteMsg from "./DeleteMessages/deleteMsg";
 import CreateReaction from "./CreateReaction";
 import DeleteReaction from "./DeleteReaction";
+import Servers from './Servers';
+import Channels from './Channels';
+import ChannelTest from './channel-socket';
 let socket;
 
-const Chat = ({ channelId, buttonStatus }) => {
+const Chat = ({ buttonStatus }) => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
+    const {channelId} = useParams()
+    // const [button, setButton] = useState(false)
     // const { serverId } = useParams()
+    const history = useHistory()
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
 
@@ -21,13 +27,6 @@ const Chat = ({ channelId, buttonStatus }) => {
 
     const messagesEndRef = useRef()
 
-
-
-    useEffect(() => {
-        if (messagesEndRef.current !== undefined){
-                messagesEndRef.current.focus()
-        }
-      }, []);
 
 
     useEffect(() => {
@@ -49,7 +48,7 @@ const Chat = ({ channelId, buttonStatus }) => {
             console.log('disconnected')
             socket.disconnect()
         })
-    }, [])
+    }, [channelId])
 
 
     if (Object.values(msgs) == undefined) {
@@ -72,6 +71,7 @@ const Chat = ({ channelId, buttonStatus }) => {
 
 
     return (user && (
+        <>
         <div className="ChatContainer">
             <div className="ChatBox" >
                 <div className='ChatMessagesContainer' >
@@ -116,6 +116,7 @@ const Chat = ({ channelId, buttonStatus }) => {
                 {/* <button type="submit">Send</button> */}
             </form>
         </div>
+        </>
     )
     )
 };

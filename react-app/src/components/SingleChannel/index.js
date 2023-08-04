@@ -3,6 +3,9 @@ import { useEffect } from 'react'   //useState
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom"
 import { useParams } from 'react-router-dom'
+import Servers from '../Servers'
+import ChannelTest from '../channel-socket'
+import Chat from '../chat-socket'
 
 
 // outside of your component, initialize the socket variable
@@ -22,7 +25,9 @@ function SingleChannel() {
     console.log('CHANNEL',channel)
     return (
         <div>
-            <p>{channel.name}</p>
+            <Servers />
+            <ChannelTest />
+            <Chat />
         </div>
     )
 }
