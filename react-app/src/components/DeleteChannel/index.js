@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux"
 import { thunkDeleteChannel,thunkGetChannels } from "../../store/channels"
 import {useParams, useHistory} from 'react-router-dom'
 import { useState } from "react"
-
+import "./deletechannel.css"
 export default function DeleteChannel ({closeModal1,channel}) {
     const dispatch = useDispatch()
     const {userId, channelId, serverId} = useParams()
@@ -16,8 +16,8 @@ export default function DeleteChannel ({closeModal1,channel}) {
     }
     return (
         <div className="makechannelmodals">
-        <div className="makechannelbackg" >
-        <h3 className="headerCreateChannel2">Delete Channel</h3>
+        <div className="makedeletebackg" >
+        <h3 className="headerCreateChannel3">Delete Channel</h3>
             <h2>Are you sure you want to delete <span className="innerspandeletechannel">#{channel.name}</span>? This cannot be undone.</h2>
             <div className="buttonContCreateChannel">
             <div className="cancelChannel" onClick={()=>

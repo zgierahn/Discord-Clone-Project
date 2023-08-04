@@ -17,17 +17,20 @@ export default function DeleteServer ({closeModal,serverValue}) {
         <>
         <div className="makechannelmodals">
             <div className="makechannelbackg">
-            <h2>Are you sure you want to delete your server?</h2>
+            <h3 className="headerCreateChannel3">Delete Server</h3>
+            <h3>Are you sure you want to delete your server?</h3>
+            <div className="buttonContCreateChannel">
+                <div className="cancelChannel" onClick={()=>
+                    closeModal(false)
+                    }>Cancel</div>
             <button className="createChannelBtn"
             onClick={(e) => {
                 deleteServer()
                 .then(()=>closeModal(false))
             }}
             >Delete Server</button>
-            <button className="cancelChannel" onClick={()=>
-                closeModal(false)
-                }>Cancel</button>
             </div>
+        </div>
         </div>
             </>
     )

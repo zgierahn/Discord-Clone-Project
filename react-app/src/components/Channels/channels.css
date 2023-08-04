@@ -86,6 +86,7 @@ body{
     align-items: center;
     color:gray;
     font-size:12px;
+    height:27px;
 }
 .editChannelModalButton:hover .tooltiptext2{
     visibility: visible;
@@ -139,4 +140,5 @@ body{
 }
 .chicken:hover{
     background:rgb(26, 133, 246);
+    cursor:pointer;
 }

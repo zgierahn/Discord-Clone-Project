@@ -63,14 +63,12 @@ function LoginFormPage() {
         <button className="loginbttn" type="submit" >Log In</button>
         <div className="demobtncont">
         <button className="demo-user1" onClick={() => {
-          // setErrors({});
-          return dispatch(login({ email:'demo@aa.io', password:'password' }))
-          .then(history.push('/1/servers'))
+          setEmail('demo@aa.io')
+          setPassword('password')
         }} >Demo User</button>
         <button className="demo-user1" onClick={() => {
-          // setErrors({});
-          return dispatch(login({ email:'marnie@aa.io', password:'password' }))
-          .then(history.push('/2/servers'))
+          setEmail('marnie@aa.io')
+          setPassword('password')
         }} >Demo User 2</button>
         </div>
         </div>

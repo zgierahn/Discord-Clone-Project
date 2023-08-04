@@ -36,7 +36,7 @@ function Channels({server}) {
             {channelsAll.map((ele) => {
                 return <div key={ele.id}>
 
-                    <ChannelTest channel={ele} />
+                    <ChannelTest channel={ele} server={server}/>
 
                 </div>
             })}

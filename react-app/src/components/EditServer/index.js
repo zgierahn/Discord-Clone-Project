@@ -45,39 +45,43 @@ function EditServer({closeModal, serverValue}) {
 
     return (
         <>
-        <div className="makechannelmodals">
-            <div className="makechannelbackg">
-            <label htmlFor="name" className="channelNameLabel">name</label>
-            <input type="text" className="channelInput"
+         <div className="makechannelmodals">
+            <div className="makechannelbackg" >
+            <h3 className="headerCreateChannel2">Edit Server</h3>
+            <label htmlFor="name" className="serverNameLabel">NAME</label>
+            <input type="text"className="serverInput"
                 value={name}
                 onChange={(e) => {
                     setName(e.target.value)
                 }}
             />
-             <div className="errormessagescreateserver">{Object.values(errors).length > 0 ? errors.error : ''}</div>
-            <label htmlFor="public" className="channelNameLabel">public</label>
-            <input type="checkbox" className="channelInput"
-                value={privates}
-                onChange={(e) => {
-                    setPrivates(!privates)
-                }}
-            />
-            <label htmlFor="picture" className="channelNameLabel">picture</label>
-            <input type="text" className="channelInput"
+            <label htmlFor="picture" className="serverNameLabel1">PICTURE</label>
+            <input type="text" className="serverInput"
                 value={picture}
                 onChange={(e) => {
                     setPicture(e.target.value)
                 }}
             />
+                <div className="errormessagescreateserver">{Object.values(errors).length > 0 ? errors.error : ''}</div>
+                <label htmlFor="public" className="serverNameLabel">PUBLIC</label>
+                <input type="checkbox" className="serverInput2"
+                    value={privates}
+                    onChange={(e) => {
+                        setPrivates(!privates)
+                    }}
+                />
+            <div className="buttonContCreateServer">
+            <div className="cancelChannel" onClick={()=>
+                closeModal(false)
+            }>Cancel</div>
             <button className="createChannelBtn"
+
                 onClick={(e) => {
                     onSubmit()
                 }}
-            >submit</button>
-            <button className="cancelChannel" onClick={()=>
-                closeModal(false)
-                }>Cancel</button>
-             </div>
+            >Edit Server</button>
+            </div>
+        </div>
         </div>
         </>
     )

@@ -6,11 +6,11 @@ import { io } from 'socket.io-client';
 import hashtag from "../images/hashtag.png"
 import EditChannel from "./EditChannel";
 import DeleteChannel from "./DeleteChannel";
-// let socket;
 
-const ChannelTest = ({channel}) => {
+
+const ChannelTest = ({channel, server}) => {
     const [buttonStatus, setButtonStatus] = useState(false)
-
+    const { userId} = useParams()
     const [openModal,setOpenModal] = useState(false)
     const [openModal1,setOpenModal1] = useState(false)
 
@@ -57,7 +57,7 @@ const ChannelTest = ({channel}) => {
     }, [buttonStatus])
 
 
-
+    if (!server.name) return null
     return (user && (
         <div className="channelNameCont">
             <button className="channelnamebutton" onClick={handleClick}
@@ -72,7 +72,7 @@ const ChannelTest = ({channel}) => {
               });
              }}
             ><img className="hashtagchannel" src={hashtag}/> {channel.name}</button>
-            {clicked && (
+            {server.owner[0].id == userId && clicked && (
         <div className='IBlameMatt' style={{top:`${points.y}px`,left:`${points.x}px`}}>
           {/* <ul > */}
             <button className="chicken" onClick={()=>setOpenModal(true)}>Edit</button>
@@ -80,7 +80,9 @@ const ChannelTest = ({channel}) => {
           {/* </ul> */}
         </div>
       )}
-                <button className="editChannelModalButton" onClick={()=>setOpenModal(true)}><span className="tooltiptext2">Edit Channel</span><span><i class="fa-solid fa-gear"></i></span></button>
+               { server.owner[0].id == userId &&<button className="editChannelModalButton" onClick={()=>setOpenModal(true)}>
+                  <span className="tooltiptext2">Edit Channel</span>
+                  <span><i class="fa-solid fa-gear"></i></span></button>}
             {buttonStatus && <Chat channelId={channel.id} /> }
             {openModal && <EditChannel closeModal ={setOpenModal} channel={channel}/>}
             {openModal1 && <DeleteChannel closeModal1 ={setOpenModal1} channel={channel}/>}
