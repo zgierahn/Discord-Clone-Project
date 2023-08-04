@@ -1,56 +1,44 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Chat from './chat-socket'
 import { io } from 'socket.io-client';
 import hashtag from "../images/hashtag.png"
+import { thunkGetChannels } from "../store/channels";
+import './Channels/channels.css'
+
+
 // let socket;
 
-const ChannelTest = ({channel}) => {
+const ChannelTest = ({channel, clickChannel, setClickChannel}) => {
+    // console.log(channel, '====+++++++++++++')
     const [buttonStatus, setButtonStatus] = useState(false)
-    const [click, setClick] = useState(false)
-    const [leftClick, setLeftClick] = useState(false)
-
-    // const {channelId} = useParams()
+    const dispatch = useDispatch()
+    const {userId, serverId} = useParams()
+    const history = useHistory()
     let socket;
 
-    const user = useSelector(state => state.session.user)
-
-    const handleClick = (e) => {
-        // if (e.type === 'contextmenu') {
-        //     e.preventDefault()
-        //     setClick(true)
-        //     console.log('Right click');
-        // }
-        if (e.type === 'click'){
-            setLeftClick(true)
-            if(!buttonStatus) setButtonStatus(true)
-            if(buttonStatus) setButtonStatus(false)
-
-        }
-    }
-
     useEffect(() => {
-        if (buttonStatus){
-            socket = io();
+        dispatch(thunkGetChannels(userId, serverId))
+    }, [dispatch, serverId])
 
-
-            socket.on('join',{channel: channel.id})
-
-            return (() => {
-                socket.disconnect()
-            })
-        }
-
-    }, [buttonStatus])
-
-
+    const channelsAll = useSelector(state => Object.values(state.channels.allChannels))
+    // console.log(channelsAll,'heloooooooooooooo')
+    const user = useSelector(state => state.session.user)
 
     return (user && (
         <div>
-            <button className="channelnamebutton" onClick={handleClick} onContextMenu={handleClick}><img className="hashtagchannel" src={hashtag}/> {channel.name}</button>
-            {/* {click && <div>Helllloooo</div> } */}
-            {buttonStatus && leftClick && <Chat channelId={channel.id} buttonStatus={buttonStatus} /> }
+            {channelsAll.map(channel => {
+                return<button className="channelnamebutton" onClick={() =>
+                    history.push(`/${userId}/servers/${serverId}/channels/${channel.id}`)}
+                    >
+                    <img className="hashtagchannel" src={hashtag}/>
+                    {channel.name}
+                    </button>
+
+            })}
+
+
         </div>
     ))
 
