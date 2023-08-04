@@ -29,6 +29,7 @@ function LoginFormPage() {
     <img className="pic-bg" src={backgroundImg} />
     <div className='login'>
       <form className="loginForm" onSubmit={handleSubmit}>
+        <div className="gobackbtn" onClick={()=> history.push('/')}><span><i className="fa-solid fa-arrow-left"></i></span> Go Back</div>
         <div className="heading">
       <h3 className='header'>Welcome back!</h3>
       <p className="secondheader">We're so excited to see you again!</p>
@@ -62,13 +63,12 @@ function LoginFormPage() {
         <button className="loginbttn" type="submit" >Log In</button>
         <div className="demobtncont">
         <button className="demo-user1" onClick={() => {
-          // setErrors({});
-          return dispatch(login({ email:'demo@aa.io', password:'password' }))
-
+          setEmail('demo@aa.io')
+          setPassword('password')
         }} >Demo User</button>
         <button className="demo-user1" onClick={() => {
-          // setErrors({});
-          return dispatch(login({ email:'marnie@aa.io', password:'password' }))
+          setEmail('marnie@aa.io')
+          setPassword('password')
         }} >Demo User 2</button>
         </div>
         </div>

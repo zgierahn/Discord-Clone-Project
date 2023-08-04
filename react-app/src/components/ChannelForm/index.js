@@ -9,12 +9,19 @@ function ChannelForm({closeModal,serverId}) {
     const dispatch = useDispatch()
     const history = useHistory()
     const { userId } = useParams()
+    const [errors, setErrors] = useState({})
 
     const [name, setName] = useState('')
 
     const onSubmit = async() => {
         // let payload = {}
         const err = await dispatch(thunkCreateChannel(name,serverId))
+        if (err.error) {
+            await setErrors(err)
+        }
+        else {
+            closeModal(false)
+        }
     }
     let disable=true
     if(name.length){
@@ -23,7 +30,8 @@ function ChannelForm({closeModal,serverId}) {
     return (
         <div className="makechannelmodals">
             <div className="makechannelbackg" >
-            <label className="channelNameLabel" htmlFor="name">CHANNEL NAME</label>
+                <h3 className="headerCreateChannel2">Create Channel</h3>
+            <label className="channelNameLabel" htmlFor="name">CHANNEL NAME </label>
             <input className="channelInput"type="text"
             placeholder="# new-channel"
                 value={name}
@@ -31,16 +39,20 @@ function ChannelForm({closeModal,serverId}) {
                     setName(e.target.value)
                 }}
             />
+                    <div className="errormessagescreatechannel">{Object.values(errors).length > 0 ? errors.error : ''}</div>
+
+            <div className="buttonContCreateChannel">
+                <div className="cancelChannel" onClick={()=>
+                    closeModal(false)
+                    }>Cancel</div>
             <button className="createChannelBtn"
                 disabled={disable}
                 onClick={(e) => {
                     onSubmit()
-                    .then(closeModal(false))
+
                 }}
             >Create Channel</button>
-            <button className="cancelChannel" onClick={()=>
-                closeModal(false)
-                }>Cancel</button>
+            </div>
             </div>
         </div>
     )

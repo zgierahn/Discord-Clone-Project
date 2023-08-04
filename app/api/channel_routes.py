@@ -26,9 +26,10 @@ def channels(id,serverId):
 def create_Channel(serverId):
     form = ChannelForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    # curr_user = User.query.get(current_user.id)
-    # owners=Server.query(Server.user).all()
-    # print("owners",owners)
+    name_dupicate = Channel.query.filter(form.data['name']==Channel.name)
+    name_dupicate_length =len([channel.to_dict() for channel in name_dupicate])
+    if name_dupicate_length > 0:
+        return {'error':'Channel name already exists'},401
     if form.validate_on_submit():
         channel = Channel(
             name = form.data['name'],
@@ -55,6 +56,10 @@ def edit_channel(channelId):
     form = ChannelForm()
     channel = Channel.query.get(channelId)
     form['csrf_token'].data = request.cookies['csrf_token']
+    name_dupicate = Channel.query.filter(form.data['name']==Channel.name)
+    name_dupicate_length =len([channel.to_dict() for channel in name_dupicate])
+    if name_dupicate_length > 0:
+        return {'error':'Channel name already exists'},401
     channel.name = form.data['name']
     # channel.server_id=serverId
     db.session.commit()

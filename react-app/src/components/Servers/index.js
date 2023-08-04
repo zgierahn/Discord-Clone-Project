@@ -48,9 +48,11 @@ function Servers() {
 
     }, [serverValue])
 
+
     useEffect(() => {
         dispatch(thunkGetServers(userId))
-    }, [dispatch])
+        console.log('getting servers')
+    }, [dispatch,userId])
     useEffect(() => {
         setTest(true)
     }, [test,valueServer])
@@ -77,23 +79,22 @@ function Servers() {
                                                                     setPoints({x: e.pageX, y: e.pageY});
                                                                     }} >
                                 <span className="tooltiptext" value={ele.id}>{ele.name}</span>
-                                <img className="server-image" id={ele.id} src={ele.picture? ele.picture: "https://www.vhv.rs/dpng/d/276-2761550_discord-icon-default-cool-discord-server-logos-hd.png"} alt={ele.name} onClick={(e)=> {
+                                <img className="server-image" id={ele.id} src={ele.picture? ele.picture: "https://toppng.com/uploads/preview/discord-logo-discord-ico-11562851206m28xz1b1ln.png"} alt={ele.name} onClick={(e)=> {
                                     setValueServer(ele)
                                     setTest(false)}}/>
                             </div>
                         </div>
             })}
         {clicked && (<div className='App' style={{top:`${points.y}px`,left:`${points.x}px`}}>
-        <ul >
-            <li onClick={(e)=>{
+
+            <button className="chicken" onClick={(e)=>{
                 setOpenModalServer(true)
-            }}>Edit</li>
-            <li
+            }}>Edit</button>
+            <button className="chicken"
             onClick={(e)=>{
                 setOpenModalServerDelete(true)
             }}
-            >Delete</li>
-          </ul>
+            >Delete</button>
                     </div>
         )}
         {openModalServerDelete && <DeleteServer closeModal ={setOpenModalServerDelete} serverValue={serverValue}/>}
@@ -130,11 +131,11 @@ function Servers() {
             </div>
         </main>
             <footer className="developerfooter">
-                <a className="developer-names" href="">Emily</a>
-                <a className="developer-names" href="">Matt</a>
+                <a className="developer-names" >Emily</a>
+                <a className="developer-names" >Matt</a>
                 <div>Our Development Team</div>
-                <a className="developer-names" href="">Michael</a>
-                <a className="developer-names" href="">Zach</a>
+                <a className="developer-names" >Michael</a>
+                <a className="developer-names" >Zach</a>
             </footer>
         </>
     )

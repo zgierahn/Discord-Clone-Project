@@ -51,7 +51,7 @@ export const thunkLogout = () => async (dispatch) => {
 }
 
 export const thunkCreateChannel = (name, serverId) => async (dispatch) => {
-    try {
+
         const response = await fetch(`/api/channels/${serverId}/new`, {
             method:'POST',
             headers:{"Content-Type":"application/json"},
@@ -59,13 +59,12 @@ export const thunkCreateChannel = (name, serverId) => async (dispatch) => {
         })
         if (response.ok)    {
             const server = await response.json()
-            console.log('thunkchannelcreate',server)
             dispatch(createChannel(server))
             return server
         }
-    } catch (error) {
-        const err = await error.json()
-        return {errors:err}
+        else if (response.status < 500){
+        const err = await response.json()
+        return err
     }
 }
 
@@ -99,7 +98,7 @@ export const thunkGetSingleChannel = (channelId) => async(dispatch) => {
 }
 
 export const thunkEditChannel = (channelId,name) => async (dispatch) => {
-    try {
+
         console.log('are we in the thiunk')
         const response = await fetch(`/api/channels/edit/${channelId}`, {
             method:'PUT',
@@ -108,13 +107,12 @@ export const thunkEditChannel = (channelId,name) => async (dispatch) => {
         })
         if (response.ok)    {
             const channel = await response.json()
-            console.log('thunk data', channel)
             dispatch(editChannel(channel))
             return channel
         }
-    } catch (error) {
-        const err = await error.json()
-        return {errors:err}
+        else if (response.status < 500){
+        const err = await response.json()
+        return err
     }
 }
 
@@ -154,7 +152,8 @@ export default function reducer(state = initialState, action) {
             return newState
         }
         case EDIT_CHANNEL: {
-            const newState = {...state, singleChannel:{...state.singleChannel}}
+            const newState = {...state, singleChannel:{...state.singleChannel},allChannels:{...state.allChannels}}
+            console.log('editchannelstate', newState)
             newState.singleChannel = action.data
             return newState
         }
