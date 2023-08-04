@@ -17,7 +17,7 @@ let socket;
 const Chat = ({ buttonStatus }) => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
-    const {channelId} = useParams()
+    const { channelId } = useParams()
     // const [button, setButton] = useState(false)
     // const { serverId } = useParams()
     const history = useHistory()
@@ -30,9 +30,23 @@ const Chat = ({ buttonStatus }) => {
     const messagesEndRef = useRef(null)
 
 
-    useEffect(()=> {
+    const [clicked, setClicked] = useState(false);
+    const [messageValue, setMessageValue] = useState('');
+    const [points, setPoints] = useState({
+        x: 0,
+        y: 0,
+    });
+
+    useEffect(() => {
+        const handleClick = () => setClicked(false);
+        window.addEventListener("click", handleClick);
+        return () => { window.removeEventListener("click", handleClick) };
+    }, []);
+
+
+    useEffect(() => {
         messagesEndRef.current?.scrollIntoView()
-    },[messages])
+    }, [messages])
 
     useEffect(() => {
         // open socket connection
@@ -77,49 +91,64 @@ const Chat = ({ buttonStatus }) => {
 
     return (user && (
         <>
-        <div className="ChatContainer">
-            <div className="ChatBox" >
-                <div className='ChatMessagesContainer' >
-                {msg_arr.map((msg) => {
-                    return (
-                        <div className='CreateReadDelete-ForMsgAndEmoji'>
+            <div className="ChatContainer">
+                <div className="ChatBox" >
+                    <div className='ChatMessagesContainer' >
+                        {msg_arr.map((msg) => {
+                            return (
+                                <div className='CreateReadDelete-ForMsgAndEmoji' onContextMenu={(e) => {
+                                    e.preventDefault();
+                                    setMessageValue(e.target.id)
+                                    setClicked(true);
+                                    setPoints({ x: e.pageX, y: e.pageY });
+                                }}>
 
-                            <div className='Msg-Emoji-Container'>
-                            <div key={msg.id} value={msg.id} >{msg.username.username}: {msg.content}</div>
+                                    <div className='Msg-Emoji-Container'>
+                                        <div key={msg.id} value={msg.id} >{msg.username.username}: {msg.content}</div>
 
-                            <div className='EachEmojiContainer'> {Object.values(msg.emoji_count).length ? Object.keys(msg.emoji_count).map(each => (
-                                <div className='EachEmojiContainer'>{each} {msg.emoji_count[each]} {msg.reactions.map((react) => {
-                                    return react.emoji === each && react.user_id === user.id ? <DeleteReaction userId={user.id} channelId={channelId} reactionId={react.id}/> : null
-                                })  } </div>
-                            )) : null} </div>
+                                        <div className='EachEmojiContainer'> {Object.values(msg.emoji_count).length ? Object.keys(msg.emoji_count).map(each => (
+                                            <div className='EachEmojiContainer'>{each} {msg.emoji_count[each]} {msg.reactions.map((react) => {
+                                                return react.emoji === each && react.user_id === user.id ? <DeleteReaction userId={user.id} channelId={channelId} reactionId={react.id} /> : null
+                                            })} </div>
+                                        )) : null} </div>
 
-                            </div>
+                                    </div>
 
-                            {msg.user_id === user.id ? <DeleteMsg msgId={msg.id} /> : null}
-                            <CreateReaction messageId={msg.id} channelId={channelId}/>
+                                    {msg.user_id === user.id ? <DeleteMsg msgId={msg.id} /> : null}
+                                    {/* <CreateReaction messageId={msg.id} channelId={channelId} /> */}
+                                </div>
+
+                            )
+                        })
+                        }
+                        {clicked && (<div className='App' style={{ top: `${points.y}px`, left: `${points.x}px` }}>
+
+                            <CreateReaction messageId={messageValue} channelId={channelId} />
+                            {/* <button className="chicken"
+                                onClick={(e) => {
+                                    setOpenModalServerDelete(true)
+                                }}
+                            >Delete</button> */}
                         </div>
-
-                    )
-                })
-                }
-                <div ref={messagesEndRef}></div>
+                        )}
+                        <div ref={messagesEndRef}></div>
+                    </div>
                 </div>
-            </div>
-            {/* keep for reference PLEASE */}
-            {/* {messages.map((message) => (
+                {/* keep for reference PLEASE */}
+                {/* {messages.map((message) => (
                 <div>
                     <div key={message.id}>{`${message.user}: ${message.content}`}</div>
                     </div>
             ))} */}
-            <form className='ChatInputContainer' onSubmit={sendChat}>
-                <input
-                    value={chatInput}
-                    onChange={updateChatInput}
-                    placeholder='Message'
-                />
-                {/* <button type="submit">Send</button> */}
-            </form>
-        </div>
+                <form className='ChatInputContainer' onSubmit={sendChat}>
+                    <input
+                        value={chatInput}
+                        onChange={updateChatInput}
+                        placeholder='Message'
+                    />
+                    {/* <button type="submit">Send</button> */}
+                </form>
+            </div>
         </>
     )
     )

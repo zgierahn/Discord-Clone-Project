@@ -1,0 +1,15 @@
+.SelectEmojiContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 125px;
+    gap: 6px;
+    background-color: black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.Emoji{
+    font-size: 22px;
+    cursor: pointer;
+}
