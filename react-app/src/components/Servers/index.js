@@ -118,7 +118,7 @@ function Servers() {
                 {test?<Channels server={valueServer}/>:null}
                 <span className="userLogoutDiv">
                     <div id="userNameDiv">
-                        {userState[0].username}
+                        {userState[0]?.username}
                     </div>
                     <button id="userChannelLogout" onClick={() =>{dispatch(thunkLogout())
                                                                 return dispatch(logout())
