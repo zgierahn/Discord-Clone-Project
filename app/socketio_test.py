@@ -6,8 +6,8 @@ from .models import Message, db
 # configure cors_allowed_origins
 if os.environ.get('FLASK_ENV') == 'production':
     origins = [
-        'http://actual-app-url.herokuapp.com',
-        'https://actual-app-url.herokuapp.com'
+        'http://discord-flask-clone.onrender.com',
+        'https://discord-flask-clone.onrender.com'
     ]
 else:
     origins = "*"
