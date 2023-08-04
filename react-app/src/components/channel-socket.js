@@ -94,9 +94,9 @@ const ChannelTest = () => {
           {/* </ul> */}
         </div>
       )}
-               { server.owner[0].id == userId &&<button className="editChannelModalButton" onClick={()=>setOpenModal(true)}>
+               {/* { server.owner[0].id == userId &&<button className="editChannelModalButton" onClick={()=>setOpenModal(true)}>
                   <span className="tooltiptext2">Edit Channel</span>
-                  <span><i class="fa-solid fa-gear"></i></span></button>}
+                  <span><i class="fa-solid fa-gear"></i></span></button>} */}
             {openModal && <EditChannel closeModal ={setOpenModal} channel={channel}/>}
             {openModal1 && <DeleteChannel closeModal1 ={setOpenModal1} channel={channel}/>}
 

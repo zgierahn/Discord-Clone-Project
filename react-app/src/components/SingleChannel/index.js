@@ -26,8 +26,8 @@ function SingleChannel() {
     return (
         <div>
             <Servers />
-            <ChannelTest />
             <Chat />
+            {/* <ChannelTest /> */}
         </div>
     )
 }

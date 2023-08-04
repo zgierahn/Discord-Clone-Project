@@ -125,8 +125,8 @@ function Servers({server}) {
             </nav>
             <div className="servertochannels">
 
-                { server ? <ChannelTest channel={server} /> : null }
-
+                {/* { server ? <ChannelTest channel={server} /> : null } */}
+                <ChannelTest />
                 <span className="userLogoutDiv">
                     <div id="userNameDiv">
                         {userState[0]?.username}
