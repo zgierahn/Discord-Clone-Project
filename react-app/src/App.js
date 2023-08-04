@@ -22,7 +22,7 @@ import EditChannel from "./components/EditChannel";
 import SingleChannel from "./components/SingleChannel";
 import DeleteReaction from "./components/DeleteReaction";
 import CreateReaction from "./components/CreateReaction";
-
+import DevTeam from "./components/DevTeam4";
 
 function App() {
   const dispatch = useDispatch();
@@ -80,6 +80,11 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+
+          <Route exact path="/ourDevTeam" >
+            <DevTeam />
+          </Route>
+
         </Switch>
       )}
     </>

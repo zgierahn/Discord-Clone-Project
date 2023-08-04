@@ -35,8 +35,19 @@
 }
 
 
-.MenuButton{
+.MenuButton {
   padding: 14px 18px;
   border-radius: 20px;
   border: none;
+  cursor: pointer;
+}
+
+.MenuButton:hover {
+  color: #303afc;
+  box-shadow: 2px 2px 5px  #2e3287;
+}
+
+.nav-login-Signup-div {
+  display: flex;
+    gap: 12px;
 }

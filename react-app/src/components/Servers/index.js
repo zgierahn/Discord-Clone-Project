@@ -66,7 +66,7 @@ function Servers({server}) {
         <>
         <main className="mainserverpage">
             <nav className="servers-container">
-            <div className="tooltip logo-container" id="blue">
+            <div className="tooltip logo-container" id="blue" onClick={()=>{alert("DM's coming soon!")}}>
                 <span className="tooltiptext">Direct Messages</span>
                 <div className="server-logo">
                     <img className="solo-server-discord" src={soloDiscord} alt='server-logo' />
@@ -113,12 +113,12 @@ function Servers({server}) {
                 <img className="server-logo" src={addServer} alt='server-logo' />
             </div>
                 {openModal && <ServerForm closeModal ={setOpenModal} />}
-            <div className="tooltip logo-container" id="green">
+            <div className="tooltip logo-container" id="green" onClick={()=>{alert("Feature coming soon!")}}>
                 <span className="tooltiptext">Explore Discoverable Servers</span>
                 <img className="server-logo" src={discoverServer} alt='server-logo' />
             </div>
             <div className="guildSeparator"></div>
-            <div className="tooltip logo-container" id="green">
+            <div className="tooltip logo-container" id="green" onClick={()=>{alert("Feature coming soon!")}}>
                 <span className="tooltiptext">Download Apps</span>
                 <img className="server-logo" src={downloadArrow} alt='server-logo' />
             </div>
@@ -143,7 +143,7 @@ function Servers({server}) {
             <footer className="developerfooter">
                 <a className="developer-names" >Emily</a>
                 <a className="developer-names" >Matt</a>
-                <div>Our Development Team</div>
+                <div className="DevTeamLink" onClick={()=>{history.push("/ourDevTeam")}}>Our Development Team</div>
                 <a className="developer-names" >Michael</a>
                 <a className="developer-names" >Zach</a>
             </footer>

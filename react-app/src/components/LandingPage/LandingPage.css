@@ -292,4 +292,10 @@ h5 {
     border: none;
     background-color: #4c55ff;
     color: white;
+    cursor: pointer;
+}
+
+.LandingBottomSignUp:hover {
+    color: black;
+    box-shadow: 2px 2px 5px  #343aaf;
 }
