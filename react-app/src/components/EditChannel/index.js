@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom"
 import { useParams } from 'react-router-dom'
 
-function EditChannel({closeModal,channel}) {
+function EditChannel({closeModal, channel}) {
     // const channel = useSelector(state => state.channels.singleChannel)
     const dispatch = useDispatch()
     const history = useHistory()
