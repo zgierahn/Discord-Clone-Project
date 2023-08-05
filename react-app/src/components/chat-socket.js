@@ -35,7 +35,11 @@ const Chat = () => {
     });
 
     let msgs = useSelector(state => state.messages.allMessages)
-    let channel = useSelector(state => state.channels.singleChannel)
+
+
+    let channel = useSelector(state => state.channels.singleChannel) 
+
+
 
 
     const messagesEndRef = useRef(null)
@@ -73,7 +77,6 @@ const Chat = () => {
 
         return () => { window.removeEventListener("click", handleClick) };
     }, []);
-
 
     useEffect(() => {
         messagesEndRef.current.scrollIntoView()
