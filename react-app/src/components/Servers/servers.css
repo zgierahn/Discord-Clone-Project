@@ -156,6 +156,11 @@ background-color: rgb(53, 55, 60);
   color: rgb(217, 214, 214);
 }
 
+.DevTeamLink {
+  cursor: pointer;
+}
+
+
 .App {
   position: absolute;
     display:flex;
