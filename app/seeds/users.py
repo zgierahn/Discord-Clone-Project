@@ -19,17 +19,17 @@ def seed_users():
     server1 = Server(
         name="Zach's place", picture= "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Trollface_non-free.png/220px-Trollface_non-free.png", privates=True,user=[demo,marnie,alex])
     server2 = Server(
-        name="Mike's place", picture= "https://www.hdwallpaper.nu/wp-content/uploads/2021/02/league_of_legends-11-scaled.jpg" ,  privates=False,user=[demo,will,sean])
+        name="Mike's place", picture= "https://www.hdwallpaper.nu/wp-content/uploads/2021/02/league_of_legends-11-scaled.jpg" ,  privates=False,user=[demo,will,marnie,sean])
     server3 = Server(
         name="Emily's place", picture= "https://i.pinimg.com/originals/eb/42/cb/eb42cb6804b5ac185e973d1d4d256fcb.jpg" ,  privates=False,user=[marnie,sean])
     server4 = Server(
         name='MattDonalds', picture= "https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg" ,  privates=True,user=[demo,marnie,will,alex])
     server5 = Server(
-        name='Bibliophiles', picture= "https://i.pinimg.com/originals/65/d4/d8/65d4d807c93884ee6ce4ac0212de1428.jpg" ,  privates=True,user=[marnie,demo,bobbie,will])
+        name='Bibliophiles', picture= "https://i.pinimg.com/originals/65/d4/d8/65d4d807c93884ee6ce4ac0212de1428.jpg" ,  privates=True,user=[marnie,bobbie,will])
     server6 = Server(
-        name='Superhero Training', picture= "https://static.vecteezy.com/system/resources/previews/000/652/026/original/superhero-flat-icons-vector.jpg" ,  privates=True,user=[marnie,demo,bobbie,alex])
+        name='Superhero Training', picture= "https://static.vecteezy.com/system/resources/previews/000/652/026/original/superhero-flat-icons-vector.jpg" ,  privates=True,user=[marnie,bobbie,alex])
     server7 = Server(
-        name='Hackers Anon', picture= "https://i.pinimg.com/736x/85/9c/47/859c47e6ffdcbb28cf03a7d11207fced.jpg" ,  privates=False,user=[marnie,will,demo,alex])
+        name='Hackers Anon', picture= "https://i.pinimg.com/736x/85/9c/47/859c47e6ffdcbb28cf03a7d11207fced.jpg" ,  privates=False,user=[demo,marnie,will,sean,alex])
     server8 = Server(
         name='Gaming', picture= "https://st2.depositphotos.com/4410397/7876/v/450/depositphotos_78763754-stock-illustration-game-controller-icon.jpg" ,  privates=False,user=[demo,marnie,bobbie,will])
     server9 = Server(
