@@ -5,17 +5,17 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        username='Demo', email='demo@aa.io', userPhoto="https://d4l6e04z43qjx.cloudfront.net/images/articles/iconic-logo/Iconic-Logo-2.jpg", password='password')
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
+        username='marnie', email='marnie@aa.io', userPhoto="https://static.vecteezy.com/system/resources/previews/002/195/322/original/crown-logo-template-illustration-free-vector.jpg", password='password')
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        username='bobbie', email='bobbie@aa.io', userPhoto="https://www.adobe.com/content/dam/cc/us/en/creativecloud/design/discover/mascot-logo-design/mascot-logo-design_fb-img_1200x800.jpg", password='password')
     will = User(
-        username='will', email='will@aa.io', password='password')
+        username='will', email='will@aa.io', userPhoto="https://static.vecteezy.com/system/resources/previews/000/623/024/original/viper-snake-logo-design-element-danger-snake-icon-viper-symbol-vector.jpg", password='password')
     sean = User(
-        username='sean', email='sean@aa.io', password='password')
+        username='sean', email='sean@aa.io', userPhoto="https://media.istockphoto.com/id/1204538042/vector/pant-jeans.jpg?s=612x612&w=0&k=20&c=xWTYid08fI_YmXxwycuQ84aKd71BW7cXJkuzO4KZKFg=", password='password')
     alex = User(
-        username='alex', email='alex@aa.io', password='password')
+        username='alex', email='alex@aa.io', userPhoto="https://images-platform.99static.com//tO4kwznrw2CeK0F1FP6D9Xrr06o=/197x1200:796x1799/fit-in/500x500/99designs-contests-attachments/136/136706/attachment_136706091", password='password')
     server1 = Server(
         name="Zach's place", picture= "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Trollface_non-free.png/220px-Trollface_non-free.png", privates=True,user=[demo,marnie,alex])
     server2 = Server(

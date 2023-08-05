@@ -64,7 +64,15 @@ function LandingPage() {
                     <div className="LeftResourcesConatainer">
                         <div className="LanguageContainer"> <img src="https://cdn3.vectorstock.com/i/1000x1000/68/67/flag-of-united-states-of-america-square-icon-vector-12656867.jpg" alt='broken' /> English, USA</div>
                         <div className="BrandIcons"> <i className="fa-brand fa-twitter"></i> <i className="fa-brands fa-instagram"></i> <i className="fa-brands fa-facebook"></i> <i className="fa-brands fa-youtube"></i> <i className="fa-brands fa-tiktok"></i> </div>
-                        <div>Brought to you By:</div>
+                        <div>
+                            <h5>Brought to you By:</h5>
+                            <div className='devBox' onClick={()=>{history.push("/ourDevTeam")}}>
+                                <p className='LandingDevName'>Emily Breininger</p>
+                                <p className='LandingDevName'>Matt Boyer</p>
+                                <p className='LandingDevName'>Michael Oyola</p>
+                                <p className='LandingDevName'>Zach Gierahn</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div>
