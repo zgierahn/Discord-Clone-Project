@@ -35,7 +35,6 @@ const Chat = () => {
 
     let msgs = useSelector(state => state.messages.allMessages)
 
-
     const messagesEndRef = useRef(null)
 
     const helperForToolKit = () => {
@@ -121,7 +120,7 @@ const Chat = () => {
         <>
             <div className="ChatContainer">
                 <div className="ChatBox" >
-                    <div className='ChatMessagesContainer' >  
+                    <div className='ChatMessagesContainer' >
                         {msg_arr.map((msg) => {
                             return (
                                 <div className='CreateReadDelete-ForMsgAndEmoji' >
