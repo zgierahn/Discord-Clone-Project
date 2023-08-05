@@ -146,7 +146,7 @@ background-color: rgb(53, 55, 60);
   -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }
 
-.memberListUserPhoto { 
+.memberListUserPhoto {
   height: 30px;
   width: 30px;
   border-radius: 50px;
