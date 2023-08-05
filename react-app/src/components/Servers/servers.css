@@ -15,8 +15,13 @@ background-color: rgb(53, 55, 60);
   background-color: rgb(30, 32, 37);
   height: 92.5vh;
   align-items: center;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 
 .tooltip {
   position: relative;
