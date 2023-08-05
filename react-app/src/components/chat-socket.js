@@ -25,9 +25,7 @@ const Chat = () => {
     const user = useSelector(state => state.session.user)
 
     let msgs = useSelector(state => state.messages.allMessages)
-    const channel = useSelector(state => state.channels.singleChannel)
-    // if(channel.id=== channelId) return channel
-    // console.log('channel', channel)
+
 
     const messagesEndRef = useRef()
 
