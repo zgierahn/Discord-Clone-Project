@@ -36,7 +36,9 @@ const Chat = () => {
 
     let msgs = useSelector(state => state.messages.allMessages)
 
+
     let channel = useSelector(state => state.channels.singleChannel) 
+
 
 
     const messagesEndRef = useRef(null)
@@ -127,7 +129,6 @@ const Chat = () => {
             <div className="ChatContainer">
                 <div className='ChatBoxHeader'>
                     <h4 className='channelNameInHeader'><img className="headerChannelHashtag" src={hashtag}/> {channel.name}</h4>
-
                 </div>
                 <div className="ChatBox" >
                     <div className='ChatMessagesContainer' >
