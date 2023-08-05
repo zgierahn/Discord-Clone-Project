@@ -17,6 +17,27 @@
     top: 0px;
 }
 
+.divholdingprofileimageandmessage {
+    display: flex;
+    gap: 16px;
+}
+
+.divusernameandmessage {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.usernamestylingchatbox {
+    font-weight: 900;
+}
+
+.profileimageinchatboxmessages {
+    height: 35px;
+    width: 35px;
+    border-radius: 50px;
+}
+
 .channelNameInHeader {
     display: flex;
     color: white;
