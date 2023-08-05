@@ -73,7 +73,6 @@ const Chat = () => {
         return () => { window.removeEventListener("click", handleClick) };
     }, []);
 
-
     useEffect(() => {
         messagesEndRef.current.scrollIntoView()
     }, [messages])
