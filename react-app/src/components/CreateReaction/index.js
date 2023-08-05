@@ -40,6 +40,9 @@ function CreateReaction({messageId,channelId}) {
                 <option className='Emoji' value="😍 " onClick={(e) => setEmoji(e.target.value)}>😍 </option>
                 <option className='Emoji' value="💪" onClick={(e) => setEmoji(e.target.value)}>💪</option>
                 <option className='Emoji' value="💰" onClick={(e) => setEmoji(e.target.value)}>💰</option>
+                <option className='Emoji' value="👀" onClick={(e) => setEmoji(e.target.value)}>👀</option>
+                <option className='Emoji' value="😎" onClick={(e) => setEmoji(e.target.value)}>😎</option>
+
 
             </div>
             {/* <button

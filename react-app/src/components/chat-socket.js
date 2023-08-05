@@ -2,7 +2,7 @@ import './chatCss.css'
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { io } from 'socket.io-client';
-import { thunkGetAllMsg } from "../store/messages";
+import { thunkDeleteReaction, thunkGetAllMsg } from "../store/messages";
 import { useParams, useHistory } from 'react-router-dom'
 import DeleteMsg from "./DeleteMessages/deleteMsg";
 import CreateReaction from "./CreateReaction";
@@ -23,13 +23,8 @@ const Chat = ({ buttonStatus }) => {
     const history = useHistory()
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-
-    let msgs = useSelector(state => state.messages.allMessages)
-
-
-    const messagesEndRef = useRef(null)
-
-
+    const [reactValue, setReactValue] = useState('')
+    const [userReactValue, setUserReactValue] = useState('')
     const [clicked, setClicked] = useState(false);
     const [messageValue, setMessageValue] = useState('');
     const [points, setPoints] = useState({
@@ -37,9 +32,42 @@ const Chat = ({ buttonStatus }) => {
         y: 0,
     });
 
+    let msgs = useSelector(state => state.messages.allMessages)
+
+
+    const messagesEndRef = useRef(null)
+
+    const helperForToolKit = () => {
+        if(window.innerHeight - points.y < 200 ){
+            setPoints({
+                x: points.x ,
+                y: points.y - 200
+            })
+        }
+
+    }
+
+
+    const helperDeleteReact = async() => {
+        await dispatch(thunkDeleteReaction(user.id,channelId, reactValue))
+    }
+
+    useEffect(()=>{
+        if(userReactValue){
+            helperDeleteReact()
+        }
+    },[reactValue])
+
+
+    useEffect(()=> {
+        helperForToolKit()
+    }, [points.x, points.y])
+
+
     useEffect(() => {
         const handleClick = () => setClicked(false);
         window.addEventListener("click", handleClick);
+
         return () => { window.removeEventListener("click", handleClick) };
     }, []);
 
@@ -60,7 +88,6 @@ const Chat = ({ buttonStatus }) => {
             let old_msg = dispatch(thunkGetAllMsg(user.id, channelId))
             old_msg = Object.values(old_msg)
             setMessages(messages => [...old_msg])
-            // console.log(messages, '--------------')
         })
         // when component unmounts, disconnect
         return (() => {
@@ -96,41 +123,32 @@ const Chat = ({ buttonStatus }) => {
                     <div className='ChatMessagesContainer' >
                         {msg_arr.map((msg) => {
                             return (
-                                <div className='CreateReadDelete-ForMsgAndEmoji' onContextMenu={(e) => {
+                                <div className='CreateReadDelete-ForMsgAndEmoji' >
+
+                                    <div value={msg.id} className='Msg-Emoji-Container' onContextMenu={(e) => {
                                     e.preventDefault();
-                                    setMessageValue(e.target.id)
+                                    {console.log(msg.id, 'heloooooo')}
+                                    setMessageValue(msg.id)
                                     setClicked(true);
                                     setPoints({ x: e.pageX, y: e.pageY });
+                                    helperForToolKit()
                                 }}>
-
-                                    <div className='Msg-Emoji-Container'>
                                         <div key={msg.id} value={msg.id} >{msg.username.username}: {msg.content}</div>
 
                                         <div className='EachEmojiContainer'> {Object.values(msg.emoji_count).length ? Object.keys(msg.emoji_count).map(each => (
-                                            <div className='EachEmojiContainer'>{each} {msg.emoji_count[each]} {msg.reactions.map((react) => {
-                                                return react.emoji === each && react.user_id === user.id ? <DeleteReaction userId={user.id} channelId={channelId} reactionId={react.id} /> : null
+                                            <div className='EachEmojiContainer' onClick={() => {
+                                                setReactValue(msg.reactions.find((e) => { return e.emoji === each && e.user_id === user.id})?.id)
+                                                setUserReactValue(msg.reactions.find((e) => { return e.emoji === each && e.user_id === user.id}))
+                                            }} >{each} {msg.emoji_count[each]} {msg.reactions.map((react) => {
                                             })} </div>
                                         )) : null} </div>
 
                                     </div>
-
-                                    {msg.user_id === user.id ? <DeleteMsg msgId={msg.id} /> : null}
-                                    {/* <CreateReaction messageId={msg.id} channelId={channelId} /> */}
                                 </div>
 
                             )
                         })
                         }
-                        {clicked && (<div className='App' style={{ top: `${points.y}px`, left: `${points.x}px` }}>
-
-                            <CreateReaction messageId={messageValue} channelId={channelId} />
-                            {/* <button className="chicken"
-                                onClick={(e) => {
-                                    setOpenModalServerDelete(true)
-                                }}
-                            >Delete</button> */}
-                        </div>
-                        )}
                         <div ref={messagesEndRef}></div>
                     </div>
                 </div>
@@ -145,10 +163,14 @@ const Chat = ({ buttonStatus }) => {
                         value={chatInput}
                         onChange={updateChatInput}
                         placeholder='Message'
-                    />
-                    {/* <button type="submit">Send</button> */}
+                        />
                 </form>
             </div>
+                        {clicked && (<div className='RightClickReaction' style={{ top: `${points.y}px`, left: `${points.x}px` }}>
+                            <CreateReaction messageId={messageValue} channelId={channelId} />
+                            <DeleteMsg msgId={messageValue} />
+                        </div>
+                        )}
         </>
     )
     )
