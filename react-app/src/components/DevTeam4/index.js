@@ -32,7 +32,7 @@ function DevTeam() {
                 <h3 className='white'>Matt Boyer</h3>
                 <ul>
                     <li className='white'>Github: </li>
-                    <li className='white'>LinkdIn: </li>
+                    <li className='white'><a className='anchorLinks' href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank">LinkdIn</a></li>
                 </ul>
             </div>
             <div>
