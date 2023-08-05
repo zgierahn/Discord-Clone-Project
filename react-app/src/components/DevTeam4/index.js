@@ -1,8 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import backgroundImg from "../../images/Login-bg.jpeg"
-import logo from "../../images/nav-logo-discord.jpeg"
-
 import "./devTeam.css"
 
 function DevTeam() {
