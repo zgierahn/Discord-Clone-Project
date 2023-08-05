@@ -23,15 +23,31 @@ function DevTeam() {
         <main className='creditsbox'>
             <div >
                 <h3>Emily Breininger</h3>
+                <ul>
+                    <li>Github: </li>
+                    <li>LinkdIn: </li>
+                </ul>
             </div>
             <div>
                 <h3>Matt Boyer</h3>
+                <ul>
+                    <li>Github: </li>
+                    <li>LinkdIn: </li>
+                </ul>
             </div>
             <div>
                 <h3>Mike Oyola</h3>
+                <ul>
+                    <li>Github: </li>
+                    <li>LinkdIn: </li>
+                </ul>
             </div>
             <div>
                 <h3>Zach Gierahn</h3>
+                <ul>
+                    <li>Github: </li>
+                    <li>LinkdIn: </li>
+                </ul>
             </div>
 
         </main>
