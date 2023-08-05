@@ -1,0 +1,9 @@
+.DeleteRightClickMessageButtom{
+    background-color: black;
+    color: red;
+    border: none;
+    margin: auto;
+    display: flex;
+    padding: 5px 0px;
+    cursor: pointer;
+}

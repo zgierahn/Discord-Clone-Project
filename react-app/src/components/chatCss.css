@@ -1,9 +1,18 @@
+
+
+.RightClickReaction{
+    position: absolute;
+    z-index: 10;
+    background-color: black;
+    border-radius: 5px;
+}
+
 .ChatContainer{
     position: absolute;
     width: -webkit-fill-available;
     height: auto;
     left: 318px;
-    right: 10px;
+    right: 204px;
     bottom: 20px;
     top: 20px;
 
@@ -30,15 +39,17 @@
 
 .ChatInputContainer > input {
     width: inherit;
-    margin-right: 100px;
+    margin-right: 23px;
     padding: 0px 20px;
-    height: 25px;
+    height: 45px;
+    background-color: #3f3e3e;
+    color: rgb(173, 172, 172);
 }
 
 
 .ChatMessagesContainer{
     margin-top: auto;
-    color: white;
+    color: rgb(173, 172, 172);
     display: flex;
     row-gap: 20px;
     flex-direction: column;
@@ -60,4 +71,5 @@
 .EachEmojiContainer{
     display: flex;
     column-gap: 5px;
+    cursor: pointer;
 }

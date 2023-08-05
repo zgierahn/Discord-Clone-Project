@@ -61,7 +61,6 @@ function Servers({server}) {
         // setTest(true)
     }, [valueServer])
 
-    console.log("looking for server", server)
     return (
         <>
         <main className="mainserverpage">
@@ -126,18 +125,25 @@ function Servers({server}) {
             <div className="servertochannels">
 
                 {/* { server ? <ChannelTest channel={server} /> : null } */}
-                <ChannelTest />
+                {serverId && <ChannelTest /> }
                 <span className="userLogoutDiv">
                     <div id="userNameDiv">
                         {userState[0]?.username}
                     </div>
                     <button id="userChannelLogout" onClick={() =>{dispatch(thunkLogout())
                                                                 return dispatch(logout())
-                                                            .then(()=>history.push('/login'))
+                                                                .then(()=>history.push('/login'))
                                                             }}>
                         Log Out
                     </button>
                 </span>
+            </div>
+            <div id='MembersForServerList'>
+                <div>Members</div>
+                {server && server.owner && server.owner.map((owner) => {
+                    return <div>{owner.username}</div>
+                })}
+                {/* {console.log(server, 'hereeeeeeeeee')} */}
             </div>
         </main>
             <footer className="developerfooter">
