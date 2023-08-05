@@ -27,6 +27,7 @@ const Chat = ({ buttonStatus }) => {
     const [userReactValue, setUserReactValue] = useState('')
     const [clicked, setClicked] = useState(false);
     const [messageValue, setMessageValue] = useState('');
+    const [messageUserId, setMessageUserId] = useState('');
     const [points, setPoints] = useState({
         x: 0,
         y: 0,
@@ -129,6 +130,7 @@ const Chat = ({ buttonStatus }) => {
                                     e.preventDefault();
                                     {console.log(msg.id, 'heloooooo')}
                                     setMessageValue(msg.id)
+                                    setMessageUserId(msg.user_id)
                                     setClicked(true);
                                     setPoints({ x: e.pageX, y: e.pageY });
                                     helperForToolKit()
@@ -168,7 +170,7 @@ const Chat = ({ buttonStatus }) => {
             </div>
                         {clicked && (<div className='RightClickReaction' style={{ top: `${points.y}px`, left: `${points.x}px` }}>
                             <CreateReaction messageId={messageValue} channelId={channelId} />
-                            <DeleteMsg msgId={messageValue} />
+                            {messageUserId === user.id && <DeleteMsg msgId={messageValue} />}
                         </div>
                         )}
         </>
