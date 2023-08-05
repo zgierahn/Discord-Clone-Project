@@ -19,14 +19,8 @@ body{
 
 .channelnamebutton:hover{
     color:white;
-    overflow: visible;
+    /* overflow: visible; */
     background:rgb(68, 70, 75);
-    /* display:flex; */
-    /* overflow-wrap: break-word; */
-    /* flex-wrap: wrap; */
-    /* white-space: normal; */
-    /* width: auto; */
-    /* word-wrap: break-word; */
 
 }
 .holderoftheaddingpower{
