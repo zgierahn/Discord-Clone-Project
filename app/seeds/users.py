@@ -10,6 +10,12 @@ def seed_users():
         username='marnie', email='marnie@aa.io', password='password')
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password')
+    will = User(
+        username='will', email='will@aa.io', password='password')
+    sean = User(
+        username='sean', email='sean@aa.io', password='password')
+    alex = User(
+        username='alex', email='alex@aa.io', password='password')
     server1 = Server(
         name='zachs place', picture= "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Trollface_non-free.png/220px-Trollface_non-free.png", privates=True,user=[demo,marnie])
     server2 = Server(
@@ -18,6 +24,18 @@ def seed_users():
         name='emilys place', picture= "https://marketplace.canva.com/EAFauoQSZtY/1/0/1600w/canva-brown-mascot-lion-free-logo-qJptouniZ0A.jpg" ,  privates=False,user=[marnie])
     server4 = Server(
         name='matts place', picture= "https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg" ,  privates=True,user=[demo,marnie])
+    server5 = Server(
+        name='Bibliophiles', picture= "https://static.vecteezy.com/system/resources/previews/000/652/026/original/superhero-flat-icons-vector.jpg" ,  privates=True,user=[demo,marnie])
+    server6 = Server(
+        name='Superhero Training', picture= "https://static.vecteezy.com/system/resources/previews/000/652/026/original/superhero-flat-icons-vector.jpg" ,  privates=True,user=[demo,marnie])
+    server7 = Server(
+        name='Hackers Anon', picture= "https://wallpapercave.com/wp/wp7447715.jpg" ,  privates=False,user=[demo,marnie])
+    server8 = Server(
+        name='Gaming', picture= "https://cdn5.vectorstock.com/i/1000x1000/91/44/game-controller-flat-app-icon-with-long-shadow-vector-3619144.jpg" ,  privates=False,user=[demo,marnie])
+    server9 = Server(
+        name="Adventure's Out There", picture= "https://img0.etsystatic.com/il_fullxfull.175159679.jpg" ,  privates=True,user=[demo,marnie])
+    server10 = Server(
+        name='The Great Escape', picture= "https://wallpapersmug.com/download/3840x2400/d3d05e/fantasy-astronaut-space.jpg" ,  privates=True,user=[demo,marnie])
     channel1 = Channel(
         name='awesome', server_id=1)
     channel2 = Channel(
@@ -58,7 +76,10 @@ def seed_users():
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
-    db.session.add_all([server1, server2,server3,server4])
+    db.session.add(will)
+    db.session.add(sean)
+    db.session.add(alex)
+    db.session.add_all([server1, server2,server3,server4,server5,server6,server7,server8,server9,server10])
     db.session.add_all([channel1,channel2,channel3,channel4,channel5,channel6])
     db.session.add_all([message1, message2,message3,message4,message5,message6])
     db.session.add_all([reaction1, reaction2,reaction3,reaction4,reaction5,reaction6])
