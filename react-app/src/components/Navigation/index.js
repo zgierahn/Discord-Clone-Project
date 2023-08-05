@@ -24,7 +24,11 @@ function Navigation({ isLoaded }){
 				<a href='#'>Blog</a>
 				<a href='#'>Careers</a>
 			</div>
-			<button className="MenuButton" onClick={() => {history.push('/login')}}>Login</button>
+			<div className='nav-login-Signup-div'>
+				<button className="MenuButton" onClick={() => {history.push('/login')}}>Login</button>
+				<button className='LandingBottomSignUp' onClick={() => history.push('/signup')}>Sign Up </button>
+			</div>
+
 			{/* {isLoaded && (
 				<div>
 					<ProfileButton user={sessionUser} />

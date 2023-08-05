@@ -119,6 +119,28 @@ background-color: rgb(53, 55, 60);
   background-color:rgb(68, 70, 75);
 }
 
+
+/*------------------------------ Members List -------------------- */
+
+#MembersForServerList{
+  margin-left: auto;
+    width: 200px;
+    background-color: #313338;
+    color: gray;
+
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
 /*------------------------------ Footer -------------------- */
 .developerfooter {
   background-color: rgb(30, 32, 37);
@@ -133,6 +155,11 @@ background-color: rgb(53, 55, 60);
 .developer-names {
   color: rgb(217, 214, 214);
 }
+
+.DevTeamLink {
+  cursor: pointer;
+}
+
 
 .App {
   position: absolute;

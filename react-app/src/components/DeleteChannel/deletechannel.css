@@ -12,9 +12,34 @@
     color:white;
     font-weight: bold;
 }
-.headerCreateChannel3 {
+.headerDeleteChannel{
     color: white;
     font-size: 22px;
     margin-right: 260px;
     margin-top: 0px;
+    /* position: relative;
+    bottom: 200px;
+    left: 423px; */
+}
+.makechannelmodals1{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    /* border:2px solid black; */
+    left:0;
+    right:0;
+     top: 0;
+    bottom: 0;
+    /* overflow: auto;  */
+    z-index:999;
+    background-color: rgba(0,0,0,0.8);
+}
+.deletechannelinnertext{
+    margin-left: 15px;
+    word-wrap: normal;
+    color:rgb(162, 157, 157);
+
 }

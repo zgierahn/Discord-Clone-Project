@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux"
 import { thunkDeleteMessage } from "../../store/messages"
 import {useParams, useHistory} from 'react-router-dom'
 import { useState } from "react"
+import './DeleteMsg.css'
 
 export default function DeleteMsg ({msgId}) {
     const dispatch = useDispatch()
@@ -14,7 +15,7 @@ export default function DeleteMsg ({msgId}) {
     return (
         <div>
 
-            <button onClick={(e) => {
+            <button className="DeleteRightClickMessageButtom" onClick={(e) => {
                 deleteMsg()
             }}
             >Delete Message</button>
