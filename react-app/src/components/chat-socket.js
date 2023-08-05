@@ -14,7 +14,7 @@ import ChannelTest from './channel-socket';
 let socket;
 
 
-const Chat = ({ buttonStatus }) => {
+const Chat = () => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
     const {channelId} = useParams()
@@ -25,7 +25,9 @@ const Chat = ({ buttonStatus }) => {
     const user = useSelector(state => state.session.user)
 
     let msgs = useSelector(state => state.messages.allMessages)
-
+    const channel = useSelector(state => state.channels.singleChannel)
+    // if(channel.id=== channelId) return channel
+    // console.log('channel', channel)
 
     const messagesEndRef = useRef()
 
@@ -79,6 +81,7 @@ const Chat = ({ buttonStatus }) => {
                 <div className='ChatMessagesContainer' >
                 {msg_arr.map((msg) => {
                     return (
+
                         <div className='CreateReadDelete-ForMsgAndEmoji'>
 
                             <div className='Msg-Emoji-Container'>

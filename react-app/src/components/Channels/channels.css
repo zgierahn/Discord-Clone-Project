@@ -19,6 +19,14 @@ body{
 
 .channelnamebutton:hover{
     color:white;
+    overflow: visible;
+    background:rgb(68, 70, 75);
+    /* display:flex; */
+    /* overflow-wrap: break-word; */
+    /* flex-wrap: wrap; */
+    /* white-space: normal; */
+    /* width: auto; */
+    /* word-wrap: break-word; */
 
 }
 .holderoftheaddingpower{
@@ -102,10 +110,10 @@ body{
     margin-bottom: auto;
 }
 
-.channelNameCont:hover{
+/* .channelNameCont:hover{
     background:rgb(68, 70, 75);
 
-}
+} */
 
 .channelNameCont:hover .editChannelModalButton{
     display:inline-block;

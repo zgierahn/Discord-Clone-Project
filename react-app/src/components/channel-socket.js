@@ -73,7 +73,7 @@ const ChannelTest = () => {
 
         <div className="channelNameCont">
             {channelsAll.map(channel => {
-            return <button className="channelnamebutton" onClick={()=>history.push(`/${userId}/servers/${serverId}/channels/${channel.id}`)}
+            return <div className="channelnamebutton" onClick={()=>history.push(`/${userId}/servers/${serverId}/channels/${channel.id}`)}
             value={channel.id}
             onContextMenu={(e) => {
               e.preventDefault();
@@ -85,7 +85,7 @@ const ChannelTest = () => {
                 y: e.pageY,
               });
              }}
-            ><img className="hashtagchannel" src={hashtag}/> {channel.name}</button>
+            ><img className="hashtagchannel" src={hashtag}/> {channel.name}</div>
 
           {/* { server.owner[0].id == userId &&<button className="editChannelModalButton" onClick={()=>setOpenModal2(true)}>
              <span className="tooltiptext2">Edit Channel</span>
