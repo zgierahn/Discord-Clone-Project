@@ -27,6 +27,7 @@ background-color: rgb(53, 55, 60);
   cursor: pointer;
 }
 
+
 /* Tooltip text */
 .tooltip .tooltiptext {
   visibility: hidden;
@@ -57,7 +58,8 @@ background-color: rgb(53, 55, 60);
 /* server logo */
 .logo-container {
   display: flex;
-  height: 48px;
+  min-height: 48px;
+  max-height: 48px;
   width: 48px;
   border-radius: 25px;
   background-color: #313338;
