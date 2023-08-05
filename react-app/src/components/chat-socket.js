@@ -16,7 +16,7 @@ import ChannelTest from './channel-socket';
 let socket;
 
 
-const Chat = ({ buttonStatus }) => {
+const Chat = () => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
     const { channelId } = useParams()
@@ -126,7 +126,7 @@ const Chat = ({ buttonStatus }) => {
             <div className="ChatContainer">
                 <div className='ChatBoxHeader'>
                     <h4 className='channelNameInHeader'><img className="headerChannelHashtag" src={hashtag}/> {channel.name}</h4>
-                  
+
                 </div>
                 <div className="ChatBox" >
                     <div className='ChatMessagesContainer' >
