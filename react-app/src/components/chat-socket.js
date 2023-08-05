@@ -74,9 +74,12 @@ const Chat = ({ buttonStatus }) => {
 
 
     useEffect(() => {
-        messagesEndRef.current?.scrollIntoView()
+        messagesEndRef.current.scrollIntoView()
     }, [messages])
 
+    useEffect(() => {
+        messagesEndRef.current.scrollIntoView()
+    }, )
     useEffect(() => {
         // open socket connection
         // create websocket
@@ -90,6 +93,7 @@ const Chat = ({ buttonStatus }) => {
             old_msg = Object.values(old_msg)
             setMessages(messages => [...old_msg])
         })
+
         // when component unmounts, disconnect
         return (() => {
             console.log('disconnected')
