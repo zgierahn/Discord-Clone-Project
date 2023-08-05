@@ -3,9 +3,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { io } from 'socket.io-client';
 import { thunkDeleteReaction, thunkGetAllMsg } from "../store/messages";
+import { thunkGetSingleChannel } from '../store/channels';
 import { useParams, useHistory } from 'react-router-dom'
 import DeleteMsg from "./DeleteMessages/deleteMsg";
 import CreateReaction from "./CreateReaction";
+import hashtag from "../images/hashtag.png"
 import DeleteReaction from "./DeleteReaction";
 import Servers from './Servers';
 import Channels from './Channels';
@@ -18,7 +20,6 @@ const Chat = () => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
     const { channelId } = useParams()
-    // const [button, setButton] = useState(false)
     // const { serverId } = useParams()
     const history = useHistory()
     const dispatch = useDispatch()
@@ -34,6 +35,8 @@ const Chat = () => {
     });
 
     let msgs = useSelector(state => state.messages.allMessages)
+    let channel = useSelector(state => state.channels.singleChannel)  
+
 
     const messagesEndRef = useRef(null)
 
@@ -73,28 +76,32 @@ const Chat = () => {
 
 
     useEffect(() => {
-        messagesEndRef.current?.scrollIntoView()
+        messagesEndRef.current.scrollIntoView()
     }, [messages])
 
+    useEffect(() => {
+        messagesEndRef.current.scrollIntoView()
+    }, )
     useEffect(() => {
         // open socket connection
         // create websocket
         socket = io();
 
         dispatch(thunkGetAllMsg(user.id, channelId))
-
+        dispatch(thunkGetSingleChannel(channelId))
 
         socket.on("chat", (chat) => {
             let old_msg = dispatch(thunkGetAllMsg(user.id, channelId))
             old_msg = Object.values(old_msg)
             setMessages(messages => [...old_msg])
         })
+
         // when component unmounts, disconnect
         return (() => {
             console.log('disconnected')
             socket.disconnect()
         })
-    }, [channelId])
+    }, [channelId]);
 
 
     if (Object.values(msgs) == undefined) {
@@ -115,38 +122,44 @@ const Chat = () => {
     }
 
 
-
     return (user && (
         <>
             <div className="ChatContainer">
+                <div className='ChatBoxHeader'>
+                    <h4 className='channelNameInHeader'><img className="headerChannelHashtag" src={hashtag}/> {channel.name}</h4>
+                    <p>-</p>
+                </div>
                 <div className="ChatBox" >
                     <div className='ChatMessagesContainer' >
                         {msg_arr.map((msg) => {
                             return (
                                 <div className='CreateReadDelete-ForMsgAndEmoji' >
-
-                                    <div value={msg.id} className='Msg-Emoji-Container' onContextMenu={(e) => {
+                                <div value={msg.id} className='Msg-Emoji-Container'
+                                    onContextMenu={(e) => {
                                     e.preventDefault();
                                     {console.log(msg.id, 'heloooooo')}
                                     setMessageValue(msg.id)
                                     setMessageUserId(msg.user_id)
                                     setClicked(true);
                                     setPoints({ x: e.pageX, y: e.pageY });
-                                    helperForToolKit()
-                                }}>
-                                        <div key={msg.id} value={msg.id} >{msg.username.username}: {msg.content}</div>
-
-                                        <div className='EachEmojiContainer'> {Object.values(msg.emoji_count).length ? Object.keys(msg.emoji_count).map(each => (
-                                            <div className='EachEmojiContainer' onClick={() => {
-                                                setReactValue(msg.reactions.find((e) => { return e.emoji === each && e.user_id === user.id})?.id)
-                                                setUserReactValue(msg.reactions.find((e) => { return e.emoji === each && e.user_id === user.id}))
-                                            }} >{each} {msg.emoji_count[each]} {msg.reactions.map((react) => {
-                                            })} </div>
-                                        )) : null} </div>
-
-                                    </div>
+                                    helperForToolKit() }}>
+                                <div key={msg.id} value={msg.id} >
+                                    {msg.username.username}: {msg.content}
                                 </div>
 
+                                <div className='EachEmojiContainer'> {Object.values(msg.emoji_count).length ?
+                                    Object.keys(msg.emoji_count).map(each => (
+                                    <div className='EachEmojiContainer' onClick={() => {
+                                        setReactValue(msg.reactions.find((e) => { return e.emoji === each && e.user_id === user.id})?.id)
+                                        setUserReactValue(msg.reactions.find((e) => { return e.emoji === each && e.user_id === user.id}))
+                                        }} >{each} {msg.emoji_count[each]} {msg.reactions.map((react) => {
+                                        })}
+                                    </div>
+                                    )) : null}
+                                </div>
+
+                                </div>
+                                </div>
                             )
                         })
                         }

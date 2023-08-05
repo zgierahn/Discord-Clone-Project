@@ -11,12 +11,35 @@
     position: absolute;
     width: -webkit-fill-available;
     height: auto;
-    left: 318px;
-    right: 204px;
-    bottom: 20px;
-    top: 20px;
-
+    left: 309px;
+    right: 201px;
+    bottom: 38px;
+    top: 0px;
 }
+
+.channelNameInHeader {
+    display: flex;
+    color: white;
+    align-items: center;
+    gap: 7px;
+}
+
+.headerChannelHashtag {
+    height: 20px;
+    color: white;
+}
+
+.ChatBoxHeader {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-inline: 15px;
+    background-color: rgb(53, 55, 60);
+    border-bottom: 1px solid black;
+    height: 46px;
+    z-index: 1;
+}
+
 
 .ChatBox{
     position: absolute;
@@ -32,7 +55,7 @@
 
 .ChatInputContainer{
     position: absolute;
-    bottom: 50px;
+    bottom: 25px;
     left: 10px;
     width: -webkit-fill-available;
 }
@@ -53,6 +76,8 @@
     display: flex;
     row-gap: 20px;
     flex-direction: column;
+    position: relative;
+    bottom: -20px;
 }
 
 
