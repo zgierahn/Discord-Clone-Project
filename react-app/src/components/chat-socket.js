@@ -126,7 +126,7 @@ const Chat = ({ buttonStatus }) => {
             <div className="ChatContainer">
                 <div className='ChatBoxHeader'>
                     <h4 className='channelNameInHeader'><img className="headerChannelHashtag" src={hashtag}/> {channel.name}</h4>
-                    <p>-</p>
+                  
                 </div>
                 <div className="ChatBox" >
                     <div className='ChatMessagesContainer' >
