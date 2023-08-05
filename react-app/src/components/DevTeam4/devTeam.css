@@ -1,0 +1,71 @@
+.dev-bg {
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    position: absolute;
+    min-height: 770px;
+    min-width: 1230px;
+    top: 0px;
+}
+
+
+.devTeamNav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center
+}
+
+.GoHomeButton {
+    font-size: 6px;
+    padding: 0px 13px;
+    height: 17px;
+    border-radius: 25px;
+    border: none;
+    transform: scale(3,3);
+    color: white;
+    background-color: rgb(27, 26, 26);
+    cursor: pointer;
+}
+
+
+.DevMenuButton {
+    font-size: 6px;
+    padding: 0px 13px;
+    height: 17px;
+    border-radius: 25px;
+    border: none;
+    transform: scale(3,3);
+    color: white;
+    background-color: #343aaf;
+    cursor: pointer;
+}
+
+
+.DevMenuButton:hover {
+    background-color: rgb(44, 44, 44);
+    box-shadow: 0px 2px 5px #343aaf
+}
+
+.GoHomeButton:hover {
+    background-color: #343aaf;
+    box-shadow: 0px 2px 5px #343aaf
+}
+
+.DevTitle {
+    font-size: x-large;
+    font-weight: 700;
+    color: white;
+    text-decoration: underline;
+}
+
+.creditsbox {
+    background: rgb(52, 52, 60);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+}

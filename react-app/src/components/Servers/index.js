@@ -141,11 +141,11 @@ function Servers({server}) {
             </div>
         </main>
             <footer className="developerfooter">
-                <a className="developer-names" >Emily</a>
-                <a className="developer-names" >Matt</a>
-                <div className="DevTeamLink" onClick={()=>{history.push("/ourDevTeam")}}>Our Development Team</div>
-                <a className="developer-names" >Michael</a>
-                <a className="developer-names" >Zach</a>
+                <p className="developer-names" >Emily</p>
+                <p className="developer-names" >Matt</p>
+                <a className="DevTeamLink" onClick={()=>{history.push("/ourDevTeam")}}>Our Development Team</a>
+                <p className="developer-names" >Michael</p>
+                <p className="developer-names" >Zach</p>
             </footer>
         </>
     )
