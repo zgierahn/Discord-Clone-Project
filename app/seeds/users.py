@@ -161,7 +161,7 @@ def seed_users():
     message22 = Message(
         content='About to watch the new season of Jutusu Kaisen!! So excited!', user_id=2,channel_id=8)
     message23 = Message(
-        content='I just finished it. Geto deserves the world!! ', user_id=3,channel_id=8)
+        content='I just finished it. Gojo is basically a god!! ', user_id=3,channel_id=8)
     message24 = Message(
         content='NO SPOILERS!!!', user_id=2,channel_id=8)
     message25 = Message(
