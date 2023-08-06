@@ -159,7 +159,7 @@ def seed_users():
     message21 = Message(
         content='did you seriously just make a whole channel to tell me this???', user_id=4,channel_id=23)
     message22 = Message(
-        content='About to watch the new season of Jutusu Kaisen!! So excited!', user_id=2,channel_id=8)
+        content='About to watch the new season of Jujutsu Kaisen!! So excited!', user_id=2,channel_id=8)
     message23 = Message(
         content='I just finished it. Gojo is basically a god!! ', user_id=3,channel_id=8)
     message24 = Message(
