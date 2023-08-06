@@ -123,7 +123,10 @@ function Servers({server}) {
                 {serverId && <ChannelTest /> }
                 <span className="userLogoutDiv">
                     <div id="userNameDiv">
-                    <img className='memberListUserPhoto' src={userState[0]?.userPhoto} alt="user-photo"/>
+                        <div className="memberListUserPhoto">
+                            <img className='userImageBG' src={soloDiscord} alt="user-photo"/>
+                            {/* //src={userState[0]?.userPhoto} */}
+                        </div>
                         {userState[0]?.username}
                     </div>
                     <button id="userChannelLogout" onClick={() =>{dispatch(thunkLogout())
@@ -138,7 +141,11 @@ function Servers({server}) {
                 <div>Members</div>
                 {server && server.owner && server.owner.map((owner) => {
                     return <div className="memberlistUserPhotoDiv" key={owner.id}>
-                        <img className='memberListUserPhoto' src={owner.userPhoto} alt="user-photo"/>
+                        <div className="memberListUserPhoto">
+                            <img className='userImageBG' src={soloDiscord} alt="user-photo"/>
+                            {/* //src={userState[0]?.userPhoto} */}
+                        </div>
+                        {/* <img className='memberListUserPhoto' src={owner.userPhoto} alt="user-photo"/> */}
                         {owner.username}
                         </div>
                 })}
