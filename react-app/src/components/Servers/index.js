@@ -3,25 +3,22 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from "react-router-dom"
 import { useParams } from 'react-router-dom'
-import Channels from "../Channels"
 import addServer from "../../images/server-add.png"
 import discoverServer from "../../images/discoverable-servers.png"
 import downloadArrow from "../../images/download-arrow.png"
 import soloDiscord from "../../images/solo-discord-logo.png"
 import { logout } from "../../store/session";
 import { thunkLogout } from "../../store/channels"
-import './servers.css'
 import ServerForm from "../ServerForm"
 import EditServer from "../EditServer"
 import DeleteServer from "../DeleteServer"
 import ChannelTest from "../channel-socket"
-// import Channels from "../Channels"
+import './servers.css'
 
 
 function Servers({server}) {
     let serversAll = useSelector(state => Object.values(state.servers.allServers))
     let userState = useSelector(state => Object.values(state.session))
-    // console.log('this is userState-----------', userState[0].username);
     const dispatch = useDispatch()
     const history = useHistory()
     const { userId, serverId } = useParams()
@@ -65,7 +62,7 @@ function Servers({server}) {
         <>
         <main className="mainserverpage">
             <nav className="servers-container">
-            <div className="tooltip logo-container" id="blue">
+            <div className="tooltip logo-container" id="blue" onClick={()=>{alert("DM's coming soon!")}}>
                 <span className="tooltiptext">Direct Messages</span>
                 <div className="server-logo">
                     <img className="solo-server-discord" src={soloDiscord} alt='server-logo' />
@@ -85,7 +82,6 @@ function Servers({server}) {
 
                                 <img className="server-image" id={ele.id} src={ele.picture? ele.picture: "https://toppng.com/uploads/preview/discord-logo-discord-ico-11562851206m28xz1b1ln.png"} alt={ele.name}
                                 onClick={(e)=> {
-                                    // console.log(ele, '--11111111111111111111')
                                     history.push(`/${userId}/servers/${ele.id}`)
                                     }}/>
 
@@ -112,22 +108,22 @@ function Servers({server}) {
                 <img className="server-logo" src={addServer} alt='server-logo' />
             </div>
                 {openModal && <ServerForm closeModal ={setOpenModal} />}
-            <div className="tooltip logo-container" id="green">
+            <div className="tooltip logo-container" id="green" onClick={()=>{alert("Feature coming soon!")}}>
                 <span className="tooltiptext">Explore Discoverable Servers</span>
                 <img className="server-logo" src={discoverServer} alt='server-logo' />
             </div>
             <div className="guildSeparator"></div>
-            <div className="tooltip logo-container" id="green">
+            <div className="tooltip logo-container" id="green" onClick={()=>{alert("Feature coming soon!")}}>
                 <span className="tooltiptext">Download Apps</span>
                 <img className="server-logo" src={downloadArrow} alt='server-logo' />
             </div>
             </nav>
             <div className="servertochannels">
-
                 {/* { server ? <ChannelTest channel={server} /> : null } */}
-                <ChannelTest />
+                {serverId && <ChannelTest /> }
                 <span className="userLogoutDiv">
                     <div id="userNameDiv">
+                    <img className='memberListUserPhoto' src={userState[0]?.userPhoto} alt="user-photo"/>
                         {userState[0]?.username}
                     </div>
                     <button id="userChannelLogout" onClick={() =>{dispatch(thunkLogout())
@@ -141,17 +137,20 @@ function Servers({server}) {
             <div id='MembersForServerList'>
                 <div>Members</div>
                 {server && server.owner && server.owner.map((owner) => {
-                    return <div>{owner.username}</div>
+                    return <div className="memberlistUserPhotoDiv" key={owner.id}>
+                        <img className='memberListUserPhoto' src={owner.userPhoto} alt="user-photo"/>
+                        {owner.username}
+                        </div>
                 })}
                 {/* {console.log(server, 'hereeeeeeeeee')} */}
             </div>
         </main>
             <footer className="developerfooter">
-                <a className="developer-names" >Emily</a>
-                <a className="developer-names" >Matt</a>
-                <div>Our Development Team</div>
-                <a className="developer-names" >Michael</a>
-                <a className="developer-names" >Zach</a>
+                <p className="developer-names" >Emily</p>
+                <p className="developer-names" >Matt</p>
+                <a className="DevTeamLink" onClick={()=>{history.push("/ourDevTeam")}}>Our Development Team</a>
+                <p className="developer-names" >Michael</p>
+                <p className="developer-names" >Zach</p>
             </footer>
         </>
     )

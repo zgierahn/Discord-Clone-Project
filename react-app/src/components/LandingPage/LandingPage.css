@@ -227,6 +227,7 @@ h2 {
 .ATagContainer > a{
     color: white;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .ATagContainer > a:hover{
@@ -292,4 +293,36 @@ h5 {
     border: none;
     background-color: #4c55ff;
     color: white;
+    cursor: pointer;
 }
+
+.LandingBottomSignUp:hover {
+    color: black;
+    box-shadow: 2px 2px 5px  #343aaf;
+}
+
+
+.devBox {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid #4c55ff;
+    border-radius: 8px;
+    position: relative;
+    left: 28px;
+    width: 340px;
+    height: 160px;
+    gap: 5px;
+    cursor: pointer;
+ }
+
+.devBox:hover {
+    border: 2px solid lightblue;
+    box-shadow: 10px 10px 10px lightblue;
+}
+
+ .LandingDevName {
+    width: 130px;
+    padding: 10px;
+    margin-left: 17px;
+    color: white;
+ }

@@ -11,12 +11,62 @@
     position: absolute;
     width: -webkit-fill-available;
     height: auto;
-    left: 318px;
-    right: 204px;
-    bottom: 20px;
-    top: 20px;
-
+    left: 309px;
+    right: 201px;
+    bottom: 38px;
+    top: 0px;
 }
+
+.divholdingprofileimageinchatbox {
+    width: 35px;
+}
+
+.divholdingprofileimageandmessage {
+    display: flex;
+    gap: 16px;
+}
+
+.divusernameandmessage {
+    display: flex;
+    gap: 2px;
+    flex-direction: column;
+}
+
+.usernamestylingchatbox {
+    font-weight: 900;
+    margin-top: 15px;
+}
+
+.profileimageinchatboxmessages {
+    height: 35px;
+    width: 35px;
+    border-radius: 50px;
+    margin-top: 15px;
+}
+
+.channelNameInHeader {
+    display: flex;
+    color: white;
+    align-items: center;
+    gap: 7px;
+}
+
+.headerChannelHashtag {
+    height: 20px;
+    color: white;
+}
+
+.ChatBoxHeader {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-inline: 15px;
+    background-color: rgb(53, 55, 60);
+    border-bottom: 1px solid black;
+    height: 46px;
+    z-index: 1;
+}
+
 
 .ChatBox{
     position: absolute;
@@ -32,7 +82,7 @@
 
 .ChatInputContainer{
     position: absolute;
-    bottom: 50px;
+    bottom: 25px;
     left: 10px;
     width: -webkit-fill-available;
 }
@@ -51,8 +101,10 @@
     margin-top: auto;
     color: rgb(173, 172, 172);
     display: flex;
-    row-gap: 20px;
+    row-gap: 6px;
     flex-direction: column;
+    position: relative;
+    bottom: -20px;
 }
 
 
@@ -68,8 +120,20 @@
 
 }
 
-.EachEmojiContainer{
-    display: flex;
-    column-gap: 5px;
+.EachEmojiContainerSingleEmoji{
+    position: relative;
+    left: 25px;
+    font-size: 15px;
     cursor: pointer;
+    border: solid 1px #5454c9;
+    border-radius: 8px;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-right: 5px;
+}
+
+.EachEmojiContainer {
+    display: flex;
+    position: relative;
+    left: 25px;
 }

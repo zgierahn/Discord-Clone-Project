@@ -19,8 +19,8 @@ function LandingPage() {
                 <div className="paragraph">...where you can belong to a school club, a gaming group, or a worldwide art community. Where just you and a handful of friends can spend time together. A place that makes it easy to talk every day and hang out more often.</div>
                 <img src="https://theme.zdassets.com/theme_assets/678183/b7e9dce75f9edb23504e13b4699e208f204e5015.png" alt='broken' />
                 <div className="ButtonContainer">
-                    <button className="MacButton"><i className="fa-regular fa-arrow-down-to-line" />Download for Mac</button>
-                    <button className="BrowserButton">Open Discord in your browser</button>
+                    <button onClick={()=>alert("Link is for Decorative purposes")} className="MacButton"><i className="fa-regular fa-arrow-down-to-line" />Download for Mac</button>
+                    <button onClick={()=>{history.push("/login")}} className="BrowserButton">Open Discord in your browser</button>
                 </div>
             </div>
 
@@ -56,7 +56,7 @@ function LandingPage() {
                 <div className="FifthText">Low-latency voice and video feels like you’re in the same room. Wave hello over video, watch friends stream their games, or gather up and have a drawing session with screen share.</div>
                 <img className="FifthImg" src="https://www.iplandigital.co.th/wp-content/uploads/2022/08/discord.com_-1024x516.png" alt='broken' />
                 <div className="FifthFooter">Ready to start your journey?</div>
-                <button className="FifthButton">Download for Mac</button>
+                <button onClick={()=>alert("Link is for Decorative purposes")} className="FifthButton">Download for Mac</button>
             </div>
 
             <div className="FooterContainer">
@@ -64,60 +64,68 @@ function LandingPage() {
                     <div className="LeftResourcesConatainer">
                         <div className="LanguageContainer"> <img src="https://cdn3.vectorstock.com/i/1000x1000/68/67/flag-of-united-states-of-america-square-icon-vector-12656867.jpg" alt='broken' /> English, USA</div>
                         <div className="BrandIcons"> <i className="fa-brand fa-twitter"></i> <i className="fa-brands fa-instagram"></i> <i className="fa-brands fa-facebook"></i> <i className="fa-brands fa-youtube"></i> <i className="fa-brands fa-tiktok"></i> </div>
-                        <div>Brought to you By:</div>
+                        <div>
+                            <h5>Brought to you By:</h5>
+                            <div className='devBox' onClick={()=>{history.push("/ourDevTeam")}}>
+                                <p className='LandingDevName'>Emily Breininger</p>
+                                <p className='LandingDevName'>Matt Boyer</p>
+                                <p className='LandingDevName'>Michael Oyola</p>
+                                <p className='LandingDevName'>Zach Gierahn</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div>
                         <h5>Product</h5>
                         <div className='ATagContainer'>
-                            <a href="#">Download</a>
-                            <a href="#">Nitro</a>
-                            <a href="#">Status</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")} >Download</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Nitro</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Status</a>
                         </div>
                     </div>
 
                     <div>
                         <h5>Company</h5>
                         <div className='ATagContainer'>
-                            <a href="#">About</a>
-                            <a href="#">Jobs</a>
-                            <a href="#">Brand</a>
-                            <a href="#">Newsroom</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>About</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Jobs</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Brand</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Newsroom</a>
                         </div>
                     </div>
 
                     <div>
                         <h5>Resources</h5>
                         <div className='ATagContainer'>
-                            <a href="#">College</a>
-                            <a href="#">Support</a>
-                            <a href="#">Safety</a>
-                            <a href="#">Blog</a>
-                            <a href="#">Feedback</a>
-                            <a href="#">Developers</a>
-                            <a href="#">Streamkit</a>
-                            <a href="#">Creators</a>
-                            <a href="#">Community</a>
-                            <a href="#">Official Third Party Merch</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>College</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Support</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Safety</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Blog</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Feedback</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Developers</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Streamkit</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Creators</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Community</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Official Third Party Merch</a>
                         </div>
                     </div>
 
                     <div>
                         <h5>Policies</h5>
                         <div className='ATagContainer'>
-                            <a href="#">Terms</a>
-                            <a href="#">Privacy</a>
-                            <a href="#">Cookie Settings</a>
-                            <a href="#">Guidelines</a>
-                            <a href="#">Acknowledgements</a>
-                            <a href="#">Licenses</a>
-                            <a href="#">Company Information</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Terms</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Privacy</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Cookie Settings</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Guidelines</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Acknowledgements</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Licenses</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Company Information</a>
                         </div>
                     </div>
 
                 </div>
                 <div className="FooterNav">
-                    <NavLink className="BottomHomeIcon" exact to="/"> <img src={solologo}/> Discord</NavLink>
+                    <div className="BottomHomeIcon"> <img src={solologo}/> Discord</div>
                     <button className='LandingBottomSignUp' onClick={() => history.push('/signup')}>Sign Up </button>
                 </div>
             </div>

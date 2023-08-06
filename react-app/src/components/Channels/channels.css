@@ -1,6 +1,8 @@
 body{
     font-family:Arial, Helvetica, sans-serif
 }
+
+
 .channelnamebutton {
     display:inline-block;
     gap: 5px;
@@ -20,12 +22,29 @@ body{
 .channelnamebutton:hover{
     color:white;
 
+    overflow: visible;
+    background:rgb(68, 70, 75);
+    /* display:flex; */
+    /* overflow-wrap: break-word; */
+    /* flex-wrap: wrap; */
+    /* white-space: normal; */
+    /* width: auto; */
+    /* word-wrap: break-word; */
+
+    /* overflow: visible; */
+ 
+
+
 }
+
+
 .holderoftheaddingpower{
     display:flex;
     align-items: center;
     justify-content: space-evenly;
 }
+
+
 .servernamediv {
     margin-top: 5px;
     margin: 5px;
@@ -68,7 +87,6 @@ body{
     margin-left:70px;
     cursor: pointer;
     position: relative;
-
     /* display: inline-block; */
 }
   .addchannelbttn:hover  {
@@ -102,10 +120,6 @@ body{
     margin-bottom: auto;
 }
 
-.channelNameCont:hover{
-    background:rgb(68, 70, 75);
-
-}
 
 .channelNameCont:hover .editChannelModalButton{
     display:inline-block;
@@ -119,9 +133,13 @@ body{
     cursor:pointer;
     position: relative;
 }
+
+
 .editChannelModalButton:hover{
   color:white;
 }
+
+
 .IBlameMatt {
     position: absolute;
     display:flex;
@@ -139,6 +157,8 @@ body{
 
 
   }
+
+
 .chicken{
     color: white;
     background: black;
@@ -147,6 +167,8 @@ body{
     width:200px;
     border-radius: 2px;
 }
+
+
 .chicken:hover{
     background:rgb(26, 133, 246);
     cursor:pointer;
