@@ -19,8 +19,8 @@ function LandingPage() {
                 <div className="paragraph">...where you can belong to a school club, a gaming group, or a worldwide art community. Where just you and a handful of friends can spend time together. A place that makes it easy to talk every day and hang out more often.</div>
                 <img src="https://theme.zdassets.com/theme_assets/678183/b7e9dce75f9edb23504e13b4699e208f204e5015.png" alt='broken' />
                 <div className="ButtonContainer">
-                    <button className="MacButton"><i className="fa-regular fa-arrow-down-to-line" />Download for Mac</button>
-                    <button className="BrowserButton">Open Discord in your browser</button>
+                    <button onClick={()=>alert("Link is for Decorative purposes")} className="MacButton"><i className="fa-regular fa-arrow-down-to-line" />Download for Mac</button>
+                    <button onClick={()=>{history.push("/login")}} className="BrowserButton">Open Discord in your browser</button>
                 </div>
             </div>
 
@@ -56,7 +56,7 @@ function LandingPage() {
                 <div className="FifthText">Low-latency voice and video feels like you’re in the same room. Wave hello over video, watch friends stream their games, or gather up and have a drawing session with screen share.</div>
                 <img className="FifthImg" src="https://www.iplandigital.co.th/wp-content/uploads/2022/08/discord.com_-1024x516.png" alt='broken' />
                 <div className="FifthFooter">Ready to start your journey?</div>
-                <button className="FifthButton">Download for Mac</button>
+                <button onClick={()=>alert("Link is for Decorative purposes")} className="FifthButton">Download for Mac</button>
             </div>
 
             <div className="FooterContainer">
@@ -125,7 +125,7 @@ function LandingPage() {
 
                 </div>
                 <div className="FooterNav">
-                    <NavLink className="BottomHomeIcon" exact to="/"> <img src={solologo}/> Discord</NavLink>
+                    <div className="BottomHomeIcon"> <img src={solologo}/> Discord</div>
                     <button className='LandingBottomSignUp' onClick={() => history.push('/signup')}>Sign Up </button>
                 </div>
             </div>
