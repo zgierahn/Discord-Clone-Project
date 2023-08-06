@@ -18,7 +18,7 @@ let socket;
 
 const Chat = () => {
     const [chatInput, setChatInput] = useState("");
-    const [messages, setMessages] = useState([]);
+    // const [messages, setMessages] = useState([]);
     const { channelId } = useParams()
     // const { serverId } = useParams()
     const history = useHistory()
@@ -53,6 +53,7 @@ const Chat = () => {
 
     }
 
+    let counter = 0
 
     const helperDeleteReact = async() => {
         await dispatch(thunkDeleteReaction(user.id,channelId, reactValue))
@@ -77,13 +78,13 @@ const Chat = () => {
         return () => { window.removeEventListener("click", handleClick) };
     }, []);
 
-    useEffect(() => {
-        messagesEndRef.current?.scrollIntoView()//POSSIBLE FIX USE MSGARRLENGTH SO WHEN ADDING REACTION TO TOP MESSAGE IT DEOSNT AUTO SCROLL DOWN
-    }, [messages])
+    // useEffect(() => {
+    //     messagesEndRef.current?.scrollIntoView()//POSSIBLE FIX USE MSGARRLENGTH SO WHEN ADDING REACTION TO TOP MESSAGE IT DEOSNT AUTO SCROLL DOWN
+    // }, [messages])
 
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView()
-    }, )
+    }, [])
     useEffect(() => {
         // open socket connection
         // create websocket
@@ -94,8 +95,8 @@ const Chat = () => {
 
         socket.on("chat", (chat) => {
             let old_msg = dispatch(thunkGetAllMsg(user.id, channelId))
-            old_msg = Object.values(old_msg)
-            setMessages(messages => [...old_msg])
+            // old_msg = Object.values(old_msg)
+            // setMessages(messages => [...old_msg])
         })
 
         // when component unmounts, disconnect
@@ -133,12 +134,15 @@ const Chat = () => {
                 <div className="ChatBox" >
                     <div className='ChatMessagesContainer' >
                         {msg_arr.map((msg) => {
+
+                            {console.log('index of message current',msg_arr.indexOf(msg))}
+                            {console.log('index of message previous',msg_arr[msg_arr.indexOf(msg)-1]?.username.id)}
                             return (
                                 <div className='CreateReadDelete-ForMsgAndEmoji' >
                                 <div value={msg.id} className='Msg-Emoji-Container'
                                     onContextMenu={(e) => {
                                     e.preventDefault();
-                                    {console.log(msg.id, 'heloooooo')}
+                                    // {console.log(msg.id, 'heloooooo')}
                                     setMessageValue(msg.id)
                                     setMessageUserId(msg.user_id)
                                     setClicked(true);
@@ -147,14 +151,13 @@ const Chat = () => {
                                 <div className='divholdingprofileimageandmessage' key={msg.id} value={msg.id} >
                                     {/* {console.log('this is message last one?',msg_arr[msg_arr.length-1].username.id)} */}
                                     {/* {console.log('this is is of current message',msg.username.id)} */}
-                                    {/* {msg.username.id !== msg_arr[msg_arr.length-1].username.id?<div>{<img className='profileimageinchatboxmessages' src={`${msg.username.userPhoto}`}></img>}
-                                    </div>:null} */}
-                                    <div>{<img className='profileimageinchatboxmessages' src={`${msg.username.userPhoto}`}></img>}
-                                    </div>
+                                    {/* {msg.username.id === msg_arr[msg_arr.length-1].username.id && <div>{<img className='profileimageinchatboxmessages' src={`${msg.username.userPhoto}`}></img>}
+                                    </div>} */}
+                                    <div className='divholdingprofileimageinchatbox'>{(msg.username.id !==msg_arr[msg_arr.indexOf(msg)-1]?.username.id) && <img className='profileimageinchatboxmessages' src={`${msg.username.userPhoto}`}></img>}</div>
                                     <div className='divusernameandmessage'>
-                                        <div className='usernamestylingchatbox'>
+                                       {(msg.username.id !==msg_arr[msg_arr.indexOf(msg)-1]?.username.id) && <div className='usernamestylingchatbox'>
                                             {msg.username.username}
-                                        </div>
+                                        </div>}
                                         <div>
                                             {msg.content}
                                         </div>
@@ -163,7 +166,7 @@ const Chat = () => {
 
                                 <div className='EachEmojiContainer'> {Object.values(msg.emoji_count).length ?
                                     Object.keys(msg.emoji_count).map(each => (
-                                    <div className='EachEmojiContainer' onClick={() => {
+                                    <div className='EachEmojiContainerSingleEmoji' onClick={() => {
                                         setReactValue(msg.reactions.find((e) => { return e.emoji === each && e.user_id === user.id})?.id)
                                         setUserReactValue(msg.reactions.find((e) => { return e.emoji === each && e.user_id === user.id}))
                                         }} >{each} {msg.emoji_count[each]} {msg.reactions.map((react) => {
