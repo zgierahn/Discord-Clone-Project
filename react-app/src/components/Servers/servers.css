@@ -16,6 +16,7 @@
     height: 92.5vh;
     align-items: center;
     overflow-y: scroll;
+    width: 55px;
   }
 
 
@@ -39,12 +40,13 @@
     top: 5px;
     left: 55px;
     position: absolute;
-    z-index: 1;
+    z-index: 10;
   }
 
   /* Show the tooltip text */
   .tooltip:hover .tooltiptext {
     visibility: visible;
+
   }
 
   .server-image{
@@ -138,6 +140,7 @@
   }
 
   ::-webkit-scrollbar {
+    /* display: none; */
     -webkit-appearance: none;
     width: 10px;
   }
@@ -202,4 +205,9 @@
       margin:10px;
       z-index:10;
 
+  }
+
+  /*------ Must be below the generic webkit scrollbar CSS ------ */
+  .servers-container::-webkit-scrollbar {
+    display: none;
   }

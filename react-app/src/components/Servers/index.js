@@ -19,7 +19,6 @@ import './servers.css'
 function Servers({server}) {
     let serversAll = useSelector(state => Object.values(state.servers.allServers))
     let userState = useSelector(state => Object.values(state.session))
-    console.log('this is userState-----------', userState[0]);
     const dispatch = useDispatch()
     const history = useHistory()
     const { userId, serverId } = useParams()
@@ -120,7 +119,6 @@ function Servers({server}) {
             </div>
             </nav>
             <div className="servertochannels">
-
                 {/* { server ? <ChannelTest channel={server} /> : null } */}
                 {serverId && <ChannelTest /> }
                 <span className="userLogoutDiv">
