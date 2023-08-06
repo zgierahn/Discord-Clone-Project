@@ -78,48 +78,48 @@ function LandingPage() {
                     <div>
                         <h5>Product</h5>
                         <div className='ATagContainer'>
-                            <a onClick={()=>alert("")} >Download</a>
-                            <a href="#">Nitro</a>
-                            <a href="#">Status</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")} >Download</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Nitro</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Status</a>
                         </div>
                     </div>
 
                     <div>
                         <h5>Company</h5>
                         <div className='ATagContainer'>
-                            <a href="#">About</a>
-                            <a href="#">Jobs</a>
-                            <a href="#">Brand</a>
-                            <a href="#">Newsroom</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>About</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Jobs</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Brand</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Newsroom</a>
                         </div>
                     </div>
 
                     <div>
                         <h5>Resources</h5>
                         <div className='ATagContainer'>
-                            <a href="#">College</a>
-                            <a href="#">Support</a>
-                            <a href="#">Safety</a>
-                            <a href="#">Blog</a>
-                            <a href="#">Feedback</a>
-                            <a href="#">Developers</a>
-                            <a href="#">Streamkit</a>
-                            <a href="#">Creators</a>
-                            <a href="#">Community</a>
-                            <a href="#">Official Third Party Merch</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>College</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Support</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Safety</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Blog</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Feedback</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Developers</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Streamkit</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Creators</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Community</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Official Third Party Merch</a>
                         </div>
                     </div>
 
                     <div>
                         <h5>Policies</h5>
                         <div className='ATagContainer'>
-                            <a href="#">Terms</a>
-                            <a href="#">Privacy</a>
-                            <a href="#">Cookie Settings</a>
-                            <a href="#">Guidelines</a>
-                            <a href="#">Acknowledgements</a>
-                            <a href="#">Licenses</a>
-                            <a href="#">Company Information</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Terms</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Privacy</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Cookie Settings</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Guidelines</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Acknowledgements</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Licenses</a>
+                            <a onClick={()=>alert("Link is for Decorative purposes")}>Company Information</a>
                         </div>
                     </div>
 
