@@ -77,3 +77,12 @@
 .anchorLinks {
     color: #4c55ff;
 }
+
+
+.lineUpLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    margin-right: 25px;
+}

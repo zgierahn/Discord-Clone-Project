@@ -120,7 +120,6 @@ function Servers({server}) {
             </div>
             </nav>
             <div className="servertochannels">
-
                 {/* { server ? <ChannelTest channel={server} /> : null } */}
                 {serverId && <ChannelTest /> }
                 <span className="userLogoutDiv">
