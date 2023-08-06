@@ -99,7 +99,6 @@ export const thunkGetServers = (id) => async(dispatch) => {
     if (res.ok) {
         const data = await res.json()
         dispatch(getServer(data))
-        console.log(data)
         return data
     }
     else {
