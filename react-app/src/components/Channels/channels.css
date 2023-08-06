@@ -29,7 +29,7 @@ body{
     /* flex-wrap: wrap; */
     /* white-space: normal; */
     /* width: auto; */
-    /* word-wrap: break-word; */ 
+    /* word-wrap: break-word; */
 
     /* overflow: visible; */
 
@@ -73,7 +73,7 @@ body{
     right: -54px;
     bottom: 30px;
     position: absolute;
-    z-index: 1;
+    z-index: 20;
 }
 
 

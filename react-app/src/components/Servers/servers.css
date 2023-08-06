@@ -1,205 +1,205 @@
 /* -------------------main container -----------------------*/
 .mainserverpage {
-display: flex;
-flex-direction: row;
-background-color: rgb(53, 55, 60);
-}
-
-
-/*------------------------- Servers Div ----------------------*/
-.servers-container {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 10px;
-  background-color: rgb(30, 32, 37);
-  height: 92.5vh;
-  align-items: center;
-  overflow-y: scroll;
- 
-
-}
-
-
-
-.tooltip {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-}
-
-/* Tooltip text */
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-  top: 5px;
-  left: 55px;
-  position: absolute;
-  z-index: 1;
-}
-
-/* Show the tooltip text */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
-
-.server-image{
-  height: 48px;
-  width: 48px;
-  border-radius: 25px;
-
-}
-
-/* server logo */
-.logo-container {
-  display: flex;
-  height: 48px;
-  width: 48px;
-  border-radius: 25px;
-  background-color: #313338;
-  justify-content: center;
-  align-items: center;
-}
-
-.server-image:hover ,
-.logo-container:hover {
-  border-radius: 15px;
-}
-
-#blue:hover {
-  background-color:blue;
-}
-
-#green:hover {
-  background-color: #96db15;
-}
-
-.guildSeparator {
-  height: 2px;
-  width: 32px;
-  border-radius: 1px;
-  background-color: #4E50587A;
-}
-
-/* -----------------Channels Container--------------------- */
-.servertochannels {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 240px;
-  height:auto;
-  background-color: #313338;
-}
-
-.userLogoutDiv {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: rgb(35, 37, 42);
-}
-
-
-#userNameDiv {
-  color: white;
-    font-weight: 500;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    gap: 6px
-}
-
-#userChannelLogout {
-  background-color: #313338;
-  border: none;
-  padding-block: 7px;
-  padding-inline: 15px;
-  border-radius: 20px;
-  color: white;
-  cursor: pointer;
-}
-#userChannelLogout:hover{
-  background-color:rgb(68, 70, 75);
-}
-
-
-/*------------------------------ Members List -------------------- */
-
-#MembersForServerList{
-  margin-left: auto;
-    width: 200px;
-    background-color: #313338;
-    color: gray;
-
-}
-
-::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  background-color: rgba(0,0,0,.5);
-  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
-}
-
-.memberListUserPhoto {
-  height: 30px;
-  width: 30px;
-  border-radius: 50px;
-}
-
-.memberlistUserPhotoDiv {
-  color: white;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-left: 5px;
-  margin-top: 5px;
-}
-::-webkit-scrollbar-corner {
-  background: rgba(0,0,0,0);
-}
-
-/*------------------------------ Footer -------------------- */
-.developerfooter {
-  background-color: rgb(30, 32, 37);
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 5vh;
-  color: white;
-}
-
-.developer-names {
-  color: rgb(217, 214, 214);
-}
-
-.DevTeamLink {
-  cursor: pointer;
-}
+  background-color: rgb(53, 55, 60);
+  }
 
 
-.App {
-  position: absolute;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    width: 210px;
-    height:70px;
+  /*------------------------- Servers Div ----------------------*/
+  .servers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    background-color: rgb(30, 32, 37);
+    height: 92.5vh;
+    align-items: center;
+    overflow-y: scroll;
+  }
+
+
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
     background-color: black;
-    border-radius: 5px;
-    box-sizing: border-box;
-    gap:10px;
-    margin:10px;
-    z-index:10;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    top: 5px;
+    left: 55px;
+    position: absolute;
+    z-index: 1;
+  }
 
-}
+  /* Show the tooltip text */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .server-image{
+    height: 48px;
+    width: 48px;
+    border-radius: 25px;
+
+  }
+
+  /* server logo */
+  .logo-container {
+    display: flex;
+    min-height: 48px;
+    max-height: 48px;
+    width: 48px;
+    border-radius: 25px;
+    background-color: #313338;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .server-image:hover ,
+  .logo-container:hover {
+    border-radius: 15px;
+  }
+
+  #blue:hover {
+    background-color:blue;
+  }
+
+  #green:hover {
+    background-color: #96db15;
+  }
+
+  .guildSeparator {
+    height: 2px;
+    width: 32px;
+    border-radius: 1px;
+    background-color: #4E50587A;
+  }
+
+  /* -----------------Channels Container--------------------- */
+  .servertochannels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 240px;
+    height:auto;
+    background-color: #313338;
+  }
+
+  .userLogoutDiv {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(35, 37, 42);
+  }
+
+
+  #userNameDiv {
+    color: white;
+      font-weight: 500;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 6px
+  }
+
+  #userChannelLogout {
+    background-color: #313338;
+    border: none;
+    padding-block: 7px;
+    padding-inline: 15px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+  }
+  #userChannelLogout:hover{
+    background-color:rgb(68, 70, 75);
+  }
+
+
+  /*------------------------------ Members List -------------------- */
+
+  #MembersForServerList{
+    margin-left: auto;
+      width: 200px;
+      background-color: #313338;
+      color: gray;
+
+  }
+
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+  }
+
+  .memberListUserPhoto {
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+  }
+
+  .memberlistUserPhotoDiv {
+    color: white;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+  ::-webkit-scrollbar-corner {
+    background: rgba(0,0,0,0);
+  }
+
+  /*------------------------------ Footer -------------------- */
+  .developerfooter {
+    background-color: rgb(30, 32, 37);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 5vh;
+    color: white;
+  }
+
+  .developer-names {
+    color: rgb(217, 214, 214);
+  }
+
+  .DevTeamLink {
+    cursor: pointer;
+  }
+
+
+  .App {
+    position: absolute;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      width: 210px;
+      height:70px;
+      background-color: black;
+      border-radius: 5px;
+      box-sizing: border-box;
+      gap:10px;
+      margin:10px;
+      z-index:10;
+
+  }

@@ -37,8 +37,7 @@ const Chat = () => {
     let msgs = useSelector(state => state.messages.allMessages)
 
 
-    let channel = useSelector(state => state.channels.singleChannel) 
-
+    let channel = useSelector(state => state.channels.singleChannel)
 
 
 
@@ -79,11 +78,11 @@ const Chat = () => {
     }, []);
 
     useEffect(() => {
-        messagesEndRef.current.scrollIntoView()
+        messagesEndRef.current?.scrollIntoView()//POSSIBLE FIX USE MSGARRLENGTH SO WHEN ADDING REACTION TO TOP MESSAGE IT DEOSNT AUTO SCROLL DOWN
     }, [messages])
 
     useEffect(() => {
-        messagesEndRef.current.scrollIntoView()
+        messagesEndRef.current?.scrollIntoView()
     }, )
     useEffect(() => {
         // open socket connection
@@ -145,8 +144,21 @@ const Chat = () => {
                                     setClicked(true);
                                     setPoints({ x: e.pageX, y: e.pageY });
                                     helperForToolKit() }}>
-                                <div key={msg.id} value={msg.id} >
-                                    {msg.username.username}: {msg.content}
+                                <div className='divholdingprofileimageandmessage' key={msg.id} value={msg.id} >
+                                    {/* {console.log('this is message last one?',msg_arr[msg_arr.length-1].username.id)} */}
+                                    {/* {console.log('this is is of current message',msg.username.id)} */}
+                                    {/* {msg.username.id !== msg_arr[msg_arr.length-1].username.id?<div>{<img className='profileimageinchatboxmessages' src={`${msg.username.userPhoto}`}></img>}
+                                    </div>:null} */}
+                                    <div>{<img className='profileimageinchatboxmessages' src={`${msg.username.userPhoto}`}></img>}
+                                    </div>
+                                    <div className='divusernameandmessage'>
+                                        <div className='usernamestylingchatbox'>
+                                            {msg.username.username}
+                                        </div>
+                                        <div>
+                                            {msg.content}
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div className='EachEmojiContainer'> {Object.values(msg.emoji_count).length ?
