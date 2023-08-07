@@ -5,49 +5,105 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        username='Demo', email='demo@aa.io', userPhoto="https://d4l6e04z43qjx.cloudfront.net/images/articles/iconic-logo/Iconic-Logo-2.jpg", password='password')
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
+        username='marnie', email='marnie@aa.io', userPhoto="https://static.vecteezy.com/system/resources/previews/002/195/322/original/crown-logo-template-illustration-free-vector.jpg", password='password')
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        username='bobbie', email='bobbie@aa.io', userPhoto="https://www.adobe.com/content/dam/cc/us/en/creativecloud/design/discover/mascot-logo-design/mascot-logo-design_fb-img_1200x800.jpg", password='password')
     will = User(
-        username='will', email='will@aa.io', password='password')
+        username='will', email='will@aa.io', userPhoto="https://static.vecteezy.com/system/resources/previews/000/623/024/original/viper-snake-logo-design-element-danger-snake-icon-viper-symbol-vector.jpg", password='password')
     sean = User(
-        username='sean', email='sean@aa.io', password='password')
+        username='sean', email='sean@aa.io', userPhoto="https://media.istockphoto.com/id/1204538042/vector/pant-jeans.jpg?s=612x612&w=0&k=20&c=xWTYid08fI_YmXxwycuQ84aKd71BW7cXJkuzO4KZKFg=", password='password')
     alex = User(
-        username='alex', email='alex@aa.io', password='password')
+        username='alex', email='alex@aa.io', userPhoto="https://images-platform.99static.com//tO4kwznrw2CeK0F1FP6D9Xrr06o=/197x1200:796x1799/fit-in/500x500/99designs-contests-attachments/136/136706/attachment_136706091", password='password')
     server1 = Server(
-        name='zachs place', picture= "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Trollface_non-free.png/220px-Trollface_non-free.png", privates=True,user=[demo,marnie])
+        name="Zach's place", picture= "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Trollface_non-free.png/220px-Trollface_non-free.png", privates=True,user=[demo,marnie,alex])
     server2 = Server(
-        name='mikes place', picture= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPHRvtFUvNT9Rrpz2HE4gu05hPPg8m7DweCg&usqp=CAU" ,  privates=False,user=[demo])
+        name="Mike's place", picture= "https://www.hdwallpaper.nu/wp-content/uploads/2021/02/league_of_legends-11-scaled.jpg" ,  privates=False,user=[demo,will,marnie,sean])
     server3 = Server(
-        name='emilys place', picture= "https://marketplace.canva.com/EAFauoQSZtY/1/0/1600w/canva-brown-mascot-lion-free-logo-qJptouniZ0A.jpg" ,  privates=False,user=[marnie])
+        name="Emily's place", picture= "https://i.pinimg.com/originals/eb/42/cb/eb42cb6804b5ac185e973d1d4d256fcb.jpg" ,  privates=False,user=[marnie,sean])
     server4 = Server(
-        name='matts place', picture= "https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg" ,  privates=True,user=[demo,marnie])
+        name='MattDonalds', picture= "https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg" ,  privates=True,user=[demo,marnie,will,alex])
     server5 = Server(
-        name='Bibliophiles', picture= "https://static.vecteezy.com/system/resources/previews/000/652/026/original/superhero-flat-icons-vector.jpg" ,  privates=True,user=[demo,marnie])
+        name='Bibliophiles', picture= "https://i.pinimg.com/originals/65/d4/d8/65d4d807c93884ee6ce4ac0212de1428.jpg" ,  privates=True,user=[marnie,bobbie,will])
     server6 = Server(
-        name='Superhero Training', picture= "https://static.vecteezy.com/system/resources/previews/000/652/026/original/superhero-flat-icons-vector.jpg" ,  privates=True,user=[demo,marnie])
+        name='Superhero Training', picture= "https://static.vecteezy.com/system/resources/previews/000/652/026/original/superhero-flat-icons-vector.jpg" ,  privates=True,user=[marnie,bobbie,alex])
     server7 = Server(
-        name='Hackers Anon', picture= "https://wallpapercave.com/wp/wp7447715.jpg" ,  privates=False,user=[demo,marnie])
+        name='Hackers Anon', picture= "https://i.pinimg.com/736x/85/9c/47/859c47e6ffdcbb28cf03a7d11207fced.jpg" ,  privates=False,user=[demo,marnie,will,sean,alex])
     server8 = Server(
-        name='Gaming', picture= "https://cdn5.vectorstock.com/i/1000x1000/91/44/game-controller-flat-app-icon-with-long-shadow-vector-3619144.jpg" ,  privates=False,user=[demo,marnie])
+        name='Gaming', picture= "https://st2.depositphotos.com/4410397/7876/v/450/depositphotos_78763754-stock-illustration-game-controller-icon.jpg" ,  privates=False,user=[demo,marnie,bobbie,will])
     server9 = Server(
-        name="Adventure's Out There", picture= "https://img0.etsystatic.com/il_fullxfull.175159679.jpg" ,  privates=True,user=[demo,marnie])
+        name="Adventure's Out There", picture= "https://img0.etsystatic.com/il_fullxfull.175159679.jpg" ,  privates=True,user=[marnie, sean, will, bobbie])
     server10 = Server(
-        name='The Great Escape', picture= "https://wallpapersmug.com/download/3840x2400/d3d05e/fantasy-astronaut-space.jpg" ,  privates=True,user=[demo,marnie])
+        name='Cooking', picture= "https://cdn.dribbble.com/users/68386/screenshots/2312479/cooking.png" ,  privates=True,user=[demo,marnie,alex])
     channel1 = Channel(
-        name='awesome', server_id=1)
+        name='snowboarding', server_id=1)
     channel2 = Channel(
-        name='talking', server_id=3)
+        name='cars', server_id=1)
     channel3 = Channel(
-        name='surfing', server_id=3)
+        name='hiking', server_id=1)
     channel4 = Channel(
-        name='school', server_id=3)
+        name='cycling', server_id=1)
     channel5 = Channel(
-        name='learning', server_id=4)
+        name='Book Talk!', server_id=2)
     channel6 = Channel(
-        name='homework', server_id=4)
+        name='Tardis Travels', server_id=2)
+    channel7 = Channel(
+        name='Food Talk', server_id=2)
+    channel8 = Channel(
+        name='Anime', server_id=2)
+    channel9 = Channel(
+        name='Pixar Theory', server_id=3)
+    channel10 = Channel(
+        name='Disney Adults', server_id=3)
+    channel11 = Channel(
+        name='Disney Events', server_id=3)
+    channel12 = Channel(
+        name='New Releases', server_id=3)
+    channel13 = Channel(
+        name='League of Legends', server_id=4)
+    channel14 = Channel(
+        name='Gym Life', server_id=4)
+    channel15 = Channel(
+        name='Music Recs', server_id=4)
+    channel16 = Channel(
+        name='Going Places', server_id=4)
+    channel17 = Channel(
+        name='Coding', server_id=5)
+    channel18 = Channel(
+        name='Gym Bros', server_id=5)
+    channel19 = Channel(
+        name='Making Money', server_id=5)
+    channel20 = Channel(
+        name='24 Grind Life', server_id=5)
+    channel21 = Channel(
+        name='Book Club', server_id=6)
+    channel22 = Channel(
+        name='Spicy Recs', server_id=6)
+    channel23 = Channel(
+        name='Borrowers Club', server_id=6)
+    channel24 = Channel(
+        name='Events', server_id=6)
+    channel25 = Channel(
+        name='Definiely Not Villians', server_id=7)
+    channel26 = Channel(
+        name='Hero Meet Up', server_id=7)
+    channel27 = Channel(
+        name='Handling a Giant Squid', server_id=7)
+    channel28 = Channel(
+        name='Dodging Death Rays', server_id=7)
+    channel29 = Channel(
+        name='Programming Pigeons', server_id=8)
+    channel30 = Channel(
+        name='How to get away with Hacking', server_id=8)
+    channel31 = Channel(
+        name="Pirating your Neighbor's WIFI", server_id=8)
+    channel32 = Channel(
+        name='Dark Web', server_id=8)
+    channel33 = Channel(
+        name='D&D Meetup', server_id=9)
+    channel34 = Channel(
+        name='Recipes', server_id=10)
     message1 = Message(
         content='This is a test message user 1, channel 1', user_id=1,channel_id=1)
     message2 = Message(
@@ -80,7 +136,10 @@ def seed_users():
     db.session.add(sean)
     db.session.add(alex)
     db.session.add_all([server1, server2,server3,server4,server5,server6,server7,server8,server9,server10])
-    db.session.add_all([channel1,channel2,channel3,channel4,channel5,channel6])
+    db.session.add_all([channel1,channel2,channel3,channel4,channel5,channel6,channel7,channel8,channel9,channel10,
+                        channel11,channel12,channel13,channel14,channel15,channel16,channel17,channel18,channel19,channel20,
+                        channel21,channel22,channel23,channel24,channel25,channel26,channel27,channel28,channel29,channel30,
+                        channel31,channel32,channel33, channel34])
     db.session.add_all([message1, message2,message3,message4,message5,message6])
     db.session.add_all([reaction1, reaction2,reaction3,reaction4,reaction5,reaction6])
     db.session.commit()

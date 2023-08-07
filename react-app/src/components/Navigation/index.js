@@ -16,13 +16,13 @@ function Navigation({ isLoaded }){
 				{/* <NavLink exact to="/">Home</NavLink> */}
 			</div>
 			<div className='ATagsInNav'>
-				<a href='#'>Download</a>
-				<a href='#'>Nitro</a>
-				<a href='#'>Discover</a>
-				<a href='#'>Safety</a>
-				<a href='#'>Support</a>
-				<a href='#'>Blog</a>
-				<a href='#'>Careers</a>
+				<a onClick={()=>alert("Link is for Decorative purposes")}>Download</a>
+				<a onClick={()=>alert("Link is for Decorative purposes")}>Nitro</a>
+				<a onClick={()=>alert("Link is for Decorative purposes")}>Discover</a>
+				<a onClick={()=>alert("Link is for Decorative purposes")}>Safety</a>
+				<a onClick={()=>alert("Link is for Decorative purposes")}>Support</a>
+				<a onClick={()=>alert("Link is for Decorative purposes")}>Blog</a>
+				<a onClick={()=>alert("Link is for Decorative purposes")}>Careers</a>
 			</div>
 			<div className='nav-login-Signup-div'>
 				<button className="MenuButton" onClick={() => {history.push('/login')}}>Login</button>

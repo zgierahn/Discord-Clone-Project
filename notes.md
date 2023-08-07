@@ -7,9 +7,9 @@ if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
 Insides Shell
-Flask db init
-Flask db migrate
-Flask db upgrade
-Flask seed all
+flask db init
+flask db migrate
+flask db upgrade
+flask seed all
 
-Flask undo seed
+flask undo seed

@@ -15,14 +15,22 @@ background-color: rgb(53, 55, 60);
   background-color: rgb(30, 32, 37);
   height: 92.5vh;
   align-items: center;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
+<<<<<<< HEAD
+  width: 55px;
+=======
+>>>>>>> matt
 }
 
+
+
 .tooltip {
-  position: relative;
+  /* position: relative; */
   display: inline-block;
   cursor: pointer;
+  
 }
+
 
 /* Tooltip text */
 .tooltip .tooltiptext {
@@ -36,12 +44,13 @@ background-color: rgb(53, 55, 60);
   top: 5px;
   left: 55px;
   position: absolute;
-  z-index: 1;
+  z-index: 10;
 }
 
 /* Show the tooltip text */
 .tooltip:hover .tooltiptext {
   visibility: visible;
+
 }
 
 .server-image{
@@ -54,7 +63,8 @@ background-color: rgb(53, 55, 60);
 /* server logo */
 .logo-container {
   display: flex;
-  height: 48px;
+  min-height: 48px;
+  max-height: 48px;
   width: 48px;
   border-radius: 25px;
   background-color: #313338;
@@ -102,8 +112,16 @@ background-color: rgb(53, 55, 60);
 
 #userNameDiv {
   color: white;
-  font-weight: 500;
-  padding: 15px;
+    font-weight: 500;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px
+}
+
+.userImageBG {
+  height: 15px;
+  width: auto;
 }
 
 #userChannelLogout {
@@ -131,6 +149,7 @@ background-color: rgb(53, 55, 60);
 }
 
 ::-webkit-scrollbar {
+  /* display: none; */
   -webkit-appearance: none;
   width: 10px;
 }
@@ -139,6 +158,29 @@ background-color: rgb(53, 55, 60);
   border-radius: 5px;
   background-color: rgba(0,0,0,.5);
   -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+.memberListUserPhoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  background-color: rgb(1,150,163);
+}
+
+.memberlistUserPhotoDiv {
+  color: white;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+::-webkit-scrollbar-corner {
+  background: rgba(0,0,0,0);
 }
 
 /*------------------------------ Footer -------------------- */
@@ -158,6 +200,12 @@ background-color: rgb(53, 55, 60);
 
 .DevTeamLink {
   cursor: pointer;
+  padding: 8px 120px;
+}
+
+.DevTeamLink:hover {
+  background-color: rgb(89, 96, 97);
+  border-radius: 50px;
 }
 
 
@@ -176,4 +224,9 @@ background-color: rgb(53, 55, 60);
     margin:10px;
     z-index:10;
 
+}
+
+/*------ Must be below the generic webkit scrollbar CSS ------ */
+.servers-container::-webkit-scrollbar {
+  display: none;
 }
