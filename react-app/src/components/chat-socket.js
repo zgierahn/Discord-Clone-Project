@@ -53,7 +53,6 @@ const Chat = () => {
 
     }
 
-    let counter = 0
 
     const helperDeleteReact = async() => {
         await dispatch(thunkDeleteReaction(user.id,channelId, reactValue))
