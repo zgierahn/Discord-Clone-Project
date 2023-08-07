@@ -12,14 +12,13 @@ import DeleteReaction from "./DeleteReaction";
 import Servers from './Servers';
 import Channels from './Channels';
 import ChannelTest from './channel-socket';
-import soloDiscord from "../images/solo-discord-logo.png"
 
 let socket;
 
 
 const Chat = () => {
     const [chatInput, setChatInput] = useState("");
-    // const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState([]);
     const { channelId } = useParams()
     // const { serverId } = useParams()
     const history = useHistory()
@@ -78,13 +77,6 @@ const Chat = () => {
         return () => { window.removeEventListener("click", handleClick) };
     }, []);
 
-    // useEffect(() => {
-    //     messagesEndRef.current?.scrollIntoView()//POSSIBLE FIX USE MSGARRLENGTH SO WHEN ADDING REACTION TO TOP MESSAGE IT DEOSNT AUTO SCROLL DOWN
-    // }, [messages])
-
-    useEffect(() => {
-        messagesEndRef.current?.scrollIntoView()
-    }, [])
     useEffect(() => {
         // open socket connection
         // create websocket
@@ -95,8 +87,8 @@ const Chat = () => {
 
         socket.on("chat", (chat) => {
             let old_msg = dispatch(thunkGetAllMsg(user.id, channelId))
-            // old_msg = Object.values(old_msg)
-            // setMessages(messages => [...old_msg])
+            old_msg = Object.values(old_msg)
+            setMessages(messages => [...old_msg])
         })
 
         // when component unmounts, disconnect
@@ -106,6 +98,13 @@ const Chat = () => {
         })
     }, [channelId]);
 
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView()//POSSIBLE FIX USE MSGARRLENGTH SO WHEN ADDING REACTION TO TOP MESSAGE IT DEOSNT AUTO SCROLL DOWN
+    }, [messages,Object.values(msgs).length])
+
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView()
+    }, [])
 
     if (Object.values(msgs) == undefined) {
         return <></>
@@ -153,7 +152,7 @@ const Chat = () => {
                                     {/* {console.log('this is is of current message',msg.username.id)} */}
                                     {/* {msg.username.id === msg_arr[msg_arr.length-1].username.id && <div>{<img className='profileimageinchatboxmessages' src={`${msg.username.userPhoto}`}></img>}
                                     </div>} */}
-                                    <div className='divholdingprofileimageinchatbox'>{(msg.username.id !==msg_arr[msg_arr.indexOf(msg)-1]?.username.id) && <img className='profileimageinchatboxmessages' src={msg.username.userPhoto?msg.username.userPhoto:soloDiscord} />}</div>
+                                    <div className='divholdingprofileimageinchatbox'>{(msg.username.id !==msg_arr[msg_arr.indexOf(msg)-1]?.username.id) && <img className='profileimageinchatboxmessages' src={`${msg.username.userPhoto}`}></img>}</div>
                                     <div className='divusernameandmessage'>
                                        {(msg.username.id !==msg_arr[msg_arr.indexOf(msg)-1]?.username.id) && <div className='usernamestylingchatbox'>
                                             {msg.username.username}
@@ -180,7 +179,7 @@ const Chat = () => {
                             )
                         })
                         }
-                        <div ref={messagesEndRef}></div>
+                        <div className='pleasework' ref={messagesEndRef}></div>
                     </div>
                 </div>
                 {/* keep for reference PLEASE */}
