@@ -78,9 +78,9 @@ const Chat = () => {
         return () => { window.removeEventListener("click", handleClick) };
     }, []);
 
-    useEffect(() => {
-        messagesEndRef.current?.scrollIntoView()//POSSIBLE FIX USE MSGARRLENGTH SO WHEN ADDING REACTION TO TOP MESSAGE IT DEOSNT AUTO SCROLL DOWN
-    }, [messages])
+    // useEffect(() => {
+    //     messagesEndRef.current?.scrollIntoView()//POSSIBLE FIX USE MSGARRLENGTH SO WHEN ADDING REACTION TO TOP MESSAGE IT DEOSNT AUTO SCROLL DOWN
+    // }, [messages])
 
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView()
@@ -153,7 +153,7 @@ const Chat = () => {
                                     {/* {console.log('this is is of current message',msg.username.id)} */}
                                     {/* {msg.username.id === msg_arr[msg_arr.length-1].username.id && <div>{<img className='profileimageinchatboxmessages' src={`${msg.username.userPhoto}`}></img>}
                                     </div>} */}
-                                    <div className='divholdingprofileimageinchatbox'>{(msg.username.id !==msg_arr[msg_arr.indexOf(msg)-1]?.username.id) && <img className='profileimageinchatboxmessages' src={msg.username.userPhoto?msg.username.userPhoto:soloDiscord}></img>}</div>
+                                    <div className='divholdingprofileimageinchatbox'>{(msg.username.id !==msg_arr[msg_arr.indexOf(msg)-1]?.username.id) && <img className='profileimageinchatboxmessages' src={msg.username.userPhoto?msg.username.userPhoto:soloDiscord} />}</div>
                                     <div className='divusernameandmessage'>
                                        {(msg.username.id !==msg_arr[msg_arr.indexOf(msg)-1]?.username.id) && <div className='usernamestylingchatbox'>
                                             {msg.username.username}

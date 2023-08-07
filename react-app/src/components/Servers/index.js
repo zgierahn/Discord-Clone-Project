@@ -76,6 +76,7 @@ function Servers({server}) {
                 {/* <div className="tooltiptext">Direct Messages</div> */}
                 <div className="server-logo">
                     <img className="solo-server-discord" src={soloDiscord} alt='server-logo' />
+
                 </div>
             </div>
             <div className="guildSeparator"></div>
@@ -134,7 +135,7 @@ function Servers({server}) {
                 <span className="userLogoutDiv">
                     <div id="userNameDiv">
                         <div className="memberListUserPhoto">
-                            <img className='userImageBG' src={soloDiscord} alt="user-photo"/>
+                            {userState[0]?.userPhoto?<img className='memberListUserPhoto' src={userState[0]?.userPhoto} alt="user-photo"/>:<img className='userImageBG' src={soloDiscord} alt="user-photo"/>}
                             {/* //src={userState[0]?.userPhoto} */}
                         </div>
                         {userState[0]?.username}
@@ -151,10 +152,10 @@ function Servers({server}) {
                 <div>Members</div>
                 {server && server.owner && server.owner.map((owner) => {
                     return <div className="memberlistUserPhotoDiv" key={owner.id}>
-                        <div className="memberListUserPhoto">
-                            <img className='userImageBG' src={soloDiscord} alt="user-photo"/>
+                        {/* <div className="memberListUserPhoto"> */}
+                            {owner.userPhoto?<img className='memberListUserPhoto' src={owner.userPhoto} alt="user-photo"/>:<img className='userImageBG' src={soloDiscord} alt="user-photo"/>}
                             {/* //src={userState[0]?.userPhoto} */}
-                        </div>
+                        {/* </div> */}
                         {/* <img className='memberListUserPhoto' src={owner.userPhoto} alt="user-photo"/> */}
                         {owner.username}
                         </div>
