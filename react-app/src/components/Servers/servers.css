@@ -16,10 +16,9 @@ background-color: rgb(53, 55, 60);
   height: 92.5vh;
   align-items: center;
   overflow-y: scroll;
-<<<<<<< HEAD
+
   width: 55px;
-=======
->>>>>>> matt
+
 }
 
 
@@ -28,7 +27,7 @@ background-color: rgb(53, 55, 60);
   /* position: relative; */
   display: inline-block;
   cursor: pointer;
-  
+
 }
 
 
