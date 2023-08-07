@@ -18,7 +18,7 @@ let socket;
 
 const Chat = () => {
     const [chatInput, setChatInput] = useState("");
-    // const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState([]);
     const { channelId } = useParams()
     // const { serverId } = useParams()
     const history = useHistory()
@@ -77,13 +77,6 @@ const Chat = () => {
         return () => { window.removeEventListener("click", handleClick) };
     }, []);
 
-    // useEffect(() => {
-    //     messagesEndRef.current?.scrollIntoView()//POSSIBLE FIX USE MSGARRLENGTH SO WHEN ADDING REACTION TO TOP MESSAGE IT DEOSNT AUTO SCROLL DOWN
-    // }, [messages])
-
-    useEffect(() => {
-        messagesEndRef.current?.scrollIntoView()
-    }, [])
     useEffect(() => {
         // open socket connection
         // create websocket
@@ -94,8 +87,8 @@ const Chat = () => {
 
         socket.on("chat", (chat) => {
             let old_msg = dispatch(thunkGetAllMsg(user.id, channelId))
-            // old_msg = Object.values(old_msg)
-            // setMessages(messages => [...old_msg])
+            old_msg = Object.values(old_msg)
+            setMessages(messages => [...old_msg])
         })
 
         // when component unmounts, disconnect
@@ -105,6 +98,13 @@ const Chat = () => {
         })
     }, [channelId]);
 
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView()//POSSIBLE FIX USE MSGARRLENGTH SO WHEN ADDING REACTION TO TOP MESSAGE IT DEOSNT AUTO SCROLL DOWN
+    }, [messages,Object.values(msgs).length])
+
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView()
+    }, [])
 
     if (Object.values(msgs) == undefined) {
         return <></>
@@ -179,7 +179,7 @@ const Chat = () => {
                             )
                         })
                         }
-                        <div ref={messagesEndRef}></div>
+                        <div className='pleasework' ref={messagesEndRef}></div>
                     </div>
                 </div>
                 {/* keep for reference PLEASE */}
