@@ -46,3 +46,44 @@ flask run
 - Allowing the user to update a message
 - Allowing the user to update a reaction
 - Allowing the user to update a user photo
+
+
+
+
+This is a view of the top of the Landing Page
+![Top of landing page](/starter-images/top-landing-page.png)
+
+
+
+
+
+This is a view of the bottom of the Landing Page
+![Bottom of landing page](/starter-images/bottom-landing-page.png)
+
+
+
+
+
+This is our Login page
+![Login Page](/starter-images/login-page.png)
+
+
+
+
+
+This is the main servers and channels area
+![Main servers area](/starter-images/server-channels.png)
+
+
+
+
+
+This is the modal that pops up when you right click on a server to either edit or delete
+![Edit Server Modal](/starter-images/edit-server.png)
+
+
+
+
+
+This is the modal that pops up to create a server when you select the create a server button
+![Create Server Modal](/starter-images/create-server.png)
