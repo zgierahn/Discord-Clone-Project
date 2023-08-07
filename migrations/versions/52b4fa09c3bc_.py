@@ -1,26 +1,18 @@
 """empty message
 
-<<<<<<<< HEAD:migrations/versions/fe6091982d58_.py
-Revision ID: fe6091982d58
-Revises: 
-Create Date: 2023-08-05 13:39:16.088226
-========
-Revision ID: 4c89e463e885
-Revises: 
-Create Date: 2023-08-05 11:28:51.844449
->>>>>>>> 8baa843 (servers):migrations/versions/4c89e463e885_.py
+Revision ID: 52b4fa09c3bc
+Revises:
+Create Date: 2023-08-06 20:10:09.101550
 
 """
 from alembic import op
 import sqlalchemy as sa
-
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-<<<<<<<< HEAD:migrations/versions/fe6091982d58_.py
-revision = 'fe6091982d58'
-========
-revision = '4c89e463e885'
->>>>>>>> 8baa843 (servers):migrations/versions/4c89e463e885_.py
+revision = '52b4fa09c3bc'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -36,6 +28,9 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE servers SET SCHEMA {SCHEMA};")
+
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
@@ -46,6 +41,9 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
     op.create_table('channels',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=40), nullable=False),
@@ -54,6 +52,8 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE channels SET SCHEMA {SCHEMA};")
     op.create_table('reactions',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -61,6 +61,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE reactions SET SCHEMA {SCHEMA};")
     op.create_table('server_user',
     sa.Column('servers', sa.Integer(), nullable=False),
     sa.Column('users', sa.Integer(), nullable=False),
@@ -68,6 +70,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['users'], ['users.id'], ),
     sa.PrimaryKeyConstraint('servers', 'users')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE server_user SET SCHEMA {SCHEMA};")
     op.create_table('messages',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('content', sa.Text(), nullable=False),
@@ -77,6 +81,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE messages SET SCHEMA {SCHEMA};")
     op.create_table('message_reactions',
     sa.Column('messages', sa.Integer(), nullable=False),
     sa.Column('reactions', sa.Integer(), nullable=False),
@@ -84,6 +90,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['reactions'], ['reactions.id'], ),
     sa.PrimaryKeyConstraint('messages', 'reactions')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE message_reactions SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
