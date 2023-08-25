@@ -1,6 +1,6 @@
 # Discords
 
-View our site live: https://discord-flask-clone.onrender.com/
+View our site live: https://group-clone.onrender.com
 Discords is a real time communication website inspired by Discord. This website is written in Flask and React/Redux.
 
 
