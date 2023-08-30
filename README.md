@@ -1,10 +1,10 @@
 # Discords Project
 
 This was a group project where we decided to make a clone of the popular Discord website. You can view our site live: [Discords](https://group-clone.onrender.com).
-Discords is a real time communication site with different chat communities, "Servers", with individual chatrooms within the Servers called "Channels." 
-We have made it possible to sign up and create a user, join servers, and chat live in different Channels.
+Discords is a real time communication site with different chat communities called "Servers", with individual chatrooms within the Servers, called "Channels." 
+We have made it possible to sign up and create a user, join servers, and chat live in different Channels all while styled like the original Discord website.
 
-## ⚡ Technologies We used:
+## ⚡ Technologies We Used:
 ![Socket.io](https://img.shields.io/badge/Socket.io-010101.svg?style=for-the-badge&logo=socketdotio&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=JavaScript&logoColor=black)
 ![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)
@@ -16,17 +16,53 @@ We have made it possible to sign up and create a user, join servers, and chat li
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6.svg?style=for-the-badge&logo=CSS3&logoColor=white)
 
 
-
 ## Index
-- [MVP Core Feautures](https://github.com/zgierahn/Discord-Clone-Project/wiki/User-Story)
+- [Link to our Wiki](https://github.com/zgierahn/Discord-Clone-Project/wiki)
 
-- [Features List and Database Schema](https://github.com/zgierahn/Discord-Clone-Project/wiki)
+- [User Story](https://github.com/zgierahn/Discord-Clone-Project/wiki/User-Story)
 
 - [Frontend and Backend Routes](https://github.com/zgierahn/Discord-Clone-Project/wiki/Routes)
 
 - [React Components List](https://github.com/zgierahn/Discord-Clone-Project/wiki/React-Component-List)
 
 - [Redux Store State Tree](https://github.com/zgierahn/Discord-Clone-Project/wiki/Redux-store-state-tree)
+
+# Features 
+
+## Servers
+* Users can create a Server
+* Users can read/view other Servers
+* Users can update their Server
+* Users can delete their Server
+
+## Channels
+* Users can create Channels within their Servers
+* Users can read/view all of the Channels within a Server
+* Users can delete Channels within a Server they have created
+
+## ChatSocket.io
+Logged-in Users can
+* chat with live message data being transmitted in real time
+
+# Photos
+### Landing Page
+![top-landing-page](https://github.com/zgierahn/Discord-Clone-Project/assets/122756763/7046b928-cf5f-46f4-8750-5435e7f3f052)
+
+### Landing Page Footer
+![bottom-landing-page](https://github.com/zgierahn/Discord-Clone-Project/assets/122756763/b4ee65dd-eb01-4344-9c09-36be19a95ab9)
+
+### Login page
+![login-page](https://github.com/zgierahn/Discord-Clone-Project/assets/122756763/2fd792c5-edcc-4626-b49c-d77452509fa8)
+
+### Create a Server Modal
+![create-server](https://github.com/zgierahn/Discord-Clone-Project/assets/122756763/c7c77898-63f8-4fe0-b62e-b0ec0abf595f)
+
+### Right Click to Edit or Delete a Server
+![edit-server](https://github.com/zgierahn/Discord-Clone-Project/assets/122756763/f762224d-b8e3-485b-9568-7e10c9a7a58f)
+
+### Chat Room Screen-Shot
+![server-channels](https://github.com/zgierahn/Discord-Clone-Project/assets/122756763/22c35a70-5a1a-41a7-a4f3-05a0a7f594e1)
+
 
 
 ## Installation Instructions
