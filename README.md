@@ -1,17 +1,32 @@
-# Discords
+# Discords Project
 
-View our site live: https://group-clone.onrender.com
-Discords is a real time communication website inspired by Discord. This website is written in Flask and React/Redux.
+This was a group project where we decided to make a clone of the popular Discord website. You can view our site live: [Discords](https://group-clone.onrender.com).
+Discords is a real time communication site with different chat communities, "Servers", with individual chatrooms within the Servers called "Channels." 
+We have made it possible to sign up and create a user, join servers, and chat live in different Channels.
+
+## ⚡ Technologies We used:
+![Socket.io](https://img.shields.io/badge/Socket.io-010101.svg?style=for-the-badge&logo=socketdotio&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=JavaScript&logoColor=black)
+![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)
+![Redux](https://img.shields.io/badge/Redux-764ABC.svg?style=for-the-badge&logo=Redux&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000.svg?style=for-the-badge&logo=Flask&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1.svg?style=for-the-badge&logo=PostgreSQL&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26.svg?style=for-the-badge&logo=HTML5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6.svg?style=for-the-badge&logo=CSS3&logoColor=white)
+
 
 
 ## Index
-- Features List and Database Schema: https://github.com/zgierahn/Discord-Clone-Project/wiki
+- [MVP Core Feautures](https://github.com/zgierahn/Discord-Clone-Project/wiki/User-Story)
 
-- Frontend and Backend Routes: https://github.com/zgierahn/Discord-Clone-Project/wiki/Routes
+- [Features List and Database Schema](https://github.com/zgierahn/Discord-Clone-Project/wiki)
 
-- React Components List: https://github.com/zgierahn/Discord-Clone-Project/wiki/React-Component-List
+- [Frontend and Backend Routes](https://github.com/zgierahn/Discord-Clone-Project/wiki/Routes)
 
-- Redux Store State Tree: https://github.com/zgierahn/Discord-Clone-Project/wiki/Redux-store-state-tree
+- [React Components List](https://github.com/zgierahn/Discord-Clone-Project/wiki/React-Component-List)
+
+- [Redux Store State Tree](https://github.com/zgierahn/Discord-Clone-Project/wiki/Redux-store-state-tree)
 
 
 ## Installation Instructions
