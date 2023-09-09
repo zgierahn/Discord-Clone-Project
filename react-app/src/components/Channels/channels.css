@@ -21,18 +21,7 @@ body{
 
 .channelnamebutton:hover{
     color:white;
-
-    overflow: visible;
     background:rgb(68, 70, 75);
-    /* display:flex; */
-    /* overflow-wrap: break-word; */
-    /* flex-wrap: wrap; */
-    /* white-space: normal; */
-    /* width: auto; */
-    /* word-wrap: break-word; */
-
-    /* overflow: visible; */
- 
 
 
 }
@@ -73,7 +62,7 @@ body{
     right: -54px;
     bottom: 30px;
     position: absolute;
-    z-index: 1;
+    z-index: 10;
 }
 
 

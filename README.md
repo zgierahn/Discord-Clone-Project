@@ -1,148 +1,140 @@
-# Flask React Project
+# Discords Project
 
-This is the starter for the Flask React project.
+This was a group project where we decided to make a clone of the popular Discord website. You can view our site live: [Discords](https://group-clone.onrender.com).
+Discords is a real time communication site with different chat communities called "Servers", with individual chatrooms within the Servers, called "Channels." 
+We have made it possible to sign up and create a user, join servers, and chat live in different Channels all while styled like the original Discord website.
 
-## Getting started
-1. Clone this repository (only this branch)
+## ⚡ Technologies We Used:
+![Socket.io](https://img.shields.io/badge/Socket.io-010101.svg?style=for-the-badge&logo=socketdotio&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=JavaScript&logoColor=black)
+![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)
+![Redux](https://img.shields.io/badge/Redux-764ABC.svg?style=for-the-badge&logo=Redux&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000.svg?style=for-the-badge&logo=Flask&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1.svg?style=for-the-badge&logo=PostgreSQL&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26.svg?style=for-the-badge&logo=HTML5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6.svg?style=for-the-badge&logo=CSS3&logoColor=white)
 
-2. Install dependencies
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+## Index
+- [Link to our Wiki](https://github.com/zgierahn/Discord-Clone-Project/wiki)
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+- [User Story](https://github.com/zgierahn/Discord-Clone-Project/wiki/User-Story)
 
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+- [Frontend and Backend Routes](https://github.com/zgierahn/Discord-Clone-Project/wiki/Routes)
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
+- [React Components List](https://github.com/zgierahn/Discord-Clone-Project/wiki/React-Component-List)
+
+- [Redux Store State Tree](https://github.com/zgierahn/Discord-Clone-Project/wiki/Redux-store-state-tree)
+
+# Features 
+
+## Servers
+* Users can create a Server
+* Users can read/view other Servers
+* Users can update their Server
+* Users can delete their Server
+
+## Channels
+* Users can create Channels within their Servers
+* Users can read/view all of the Channels within a Server
+* Users can delete Channels within a Server they have created
+
+## ChatSocket.io
+Logged-in Users can
+* chat with live message data being transmitted in real time
+
+# Photos
+### Landing Page
+![top-landing-page](https://github.com/zgierahn/Discord-Clone-Project/assets/122756763/7046b928-cf5f-46f4-8750-5435e7f3f052)
+
+### Landing Page Footer
+![bottom-landing-page](https://github.com/zgierahn/Discord-Clone-Project/assets/122756763/b4ee65dd-eb01-4344-9c09-36be19a95ab9)
+
+### Login page
+![login-page](https://github.com/zgierahn/Discord-Clone-Project/assets/122756763/2fd792c5-edcc-4626-b49c-d77452509fa8)
+
+### Create a Server Modal
+![create-server](https://github.com/zgierahn/Discord-Clone-Project/assets/122756763/c7c77898-63f8-4fe0-b62e-b0ec0abf595f)
+
+### Right Click to Edit or Delete a Server
+![edit-server](https://github.com/zgierahn/Discord-Clone-Project/assets/122756763/f762224d-b8e3-485b-9568-7e10c9a7a58f)
+
+### Chat Room Screen-Shot
+![server-channels](https://github.com/zgierahn/Discord-Clone-Project/assets/122756763/22c35a70-5a1a-41a7-a4f3-05a0a7f594e1)
+
+
+
+## Installation Instructions
+
+1. Install dependencies
+```bash
+pipenv install -r requirements.txt
+```
+2. Create a **.env** file based on the example with proper settings for your development environment
+
+4. Replace the value for `SCHEMA` with a unique name, **making sure you use the snake_case convention**.
 
 6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
 
-   ```bash
-   pipenv shell
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
+```bash
+pipenv shell
+```
+```bash
+flask db upgrade
+```
+```bash
+flask seed all
+```
+```bash
+flask run
+```
 
 7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
 
 
-## Deployment through Render.com
+## To-dos/Future Features
+- Allowing the user to update a message
+- Allowing the user to update a reaction
+- Allowing the user to update a user photo
 
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
 
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
 
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
 
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
+This is a view of the top of the Landing Page
+https://github.com/zgierahn/Discord-Clone-Project/wiki/Images
 
-### Part A: Configure the Start and Build Commands
 
-Start by giving your application a name.
 
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
 
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
 
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
+This is a view of the bottom of the Landing Page
+https://github.com/zgierahn/Discord-Clone-Project/wiki/Images
 
-For your Flask project, enter the following command into the Build field, all in
-one line:
 
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
-flask seed all
-```
 
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
 
-Now, add your start command in the Start field:
 
-```shell
-# start script
-gunicorn app:app
-```
+This is our Login page
+https://github.com/zgierahn/Discord-Clone-Project/wiki/Images
 
-_If you are using websockets, use the following start command instead for increased performance:_
 
-`gunicorn --worker-class eventlet -w 1 app:app`
 
-### Part B: Add the Environment Variables
 
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
 
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
+This is the main servers and channels area
+https://github.com/zgierahn/Discord-Clone-Project/wiki/Images
 
-Add the following keys and values in the Render GUI form:
 
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
 
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
 
-Add the following keys and values:
 
-- DATABASE_URL (copy value from Internal Database URL field)
+This is the modal that pops up when you right click on a server to either edit or delete
+https://github.com/zgierahn/Discord-Clone-Project/wiki/Images
 
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
 
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
 
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
 
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
 
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+This is the modal that pops up to create a server when you select the create a server button
+https://github.com/zgierahn/Discord-Clone-Project/wiki/Images

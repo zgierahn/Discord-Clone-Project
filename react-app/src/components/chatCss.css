@@ -7,6 +7,10 @@
     border-radius: 5px;
 }
 
+#figureouttooltipstuff {
+
+}
+
 .ChatContainer{
     position: absolute;
     width: -webkit-fill-available;
@@ -136,4 +140,8 @@
     display: flex;
     position: relative;
     left: 25px;
+}
+
+.pleasework{
+    height:20px;
 }

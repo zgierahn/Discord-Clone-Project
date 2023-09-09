@@ -89,7 +89,7 @@ h1 {
 .SecondContainer {
     height: 650px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 
@@ -130,7 +130,7 @@ h2 {
 .ThirdContainer {
     height: 550px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     background-color: rgb(244, 244, 244);
 }
 

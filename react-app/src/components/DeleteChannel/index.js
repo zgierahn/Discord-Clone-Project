@@ -26,6 +26,7 @@ export default function DeleteChannel ({closeModal1,channel}) {
             <button className="createChannelBtn"onClick={(e) => {
                 deleteChannel()
                 .then(closeModal1(false))
+                .then(history.push(`/${userId}/servers/${serverId}`))
             }}
             >Delete Channel</button>
         </div>

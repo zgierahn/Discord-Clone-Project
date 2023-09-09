@@ -16,15 +16,18 @@ background-color: rgb(53, 55, 60);
   height: 92.5vh;
   align-items: center;
   overflow-y: scroll;
+
   width: 55px;
+
 }
 
 
 
 .tooltip {
-  position: relative;
+  /* position: relative; */
   display: inline-block;
   cursor: pointer;
+
 }
 
 
@@ -115,6 +118,11 @@ background-color: rgb(53, 55, 60);
     gap: 6px
 }
 
+.userImageBG {
+  height: 15px;
+  width: auto;
+}
+
 #userChannelLogout {
   background-color: #313338;
   border: none;
@@ -152,9 +160,13 @@ background-color: rgb(53, 55, 60);
 }
 
 .memberListUserPhoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 30px;
   width: 30px;
   border-radius: 50px;
+  background-color: rgb(1,150,163);
 }
 
 .memberlistUserPhotoDiv {
@@ -187,6 +199,12 @@ background-color: rgb(53, 55, 60);
 
 .DevTeamLink {
   cursor: pointer;
+  padding: 8px 120px;
+}
+
+.DevTeamLink:hover {
+  background-color: rgb(89, 96, 97);
+  border-radius: 50px;
 }
 
 
