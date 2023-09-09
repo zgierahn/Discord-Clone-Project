@@ -93,7 +93,6 @@ const Chat = () => {
 
         // when component unmounts, disconnect
         return (() => {
-            console.log('disconnected')
             socket.disconnect()
         })
     }, [channelId]);
@@ -134,8 +133,8 @@ const Chat = () => {
                     <div className='ChatMessagesContainer' >
                         {msg_arr.map((msg) => {
 
-                            {console.log('index of message current',msg_arr.indexOf(msg))}
-                            {console.log('index of message previous',msg_arr[msg_arr.indexOf(msg)-1]?.username.id)}
+                            // {console.log('index of message current',msg_arr.indexOf(msg))}
+                            // {console.log('index of message previous',msg_arr[msg_arr.indexOf(msg)-1]?.username.id)}
                             return (
                                 <div className='CreateReadDelete-ForMsgAndEmoji' >
                                 <div value={msg.id} className='Msg-Emoji-Container'
@@ -148,8 +147,6 @@ const Chat = () => {
                                     setPoints({ x: e.pageX, y: e.pageY });
                                     helperForToolKit() }}>
                                 <div className='divholdingprofileimageandmessage' key={msg.id} value={msg.id} >
-                                    {/* {console.log('this is message last one?',msg_arr[msg_arr.length-1].username.id)} */}
-                                    {/* {console.log('this is is of current message',msg.username.id)} */}
                                     {/* {msg.username.id === msg_arr[msg_arr.length-1].username.id && <div>{<img className='profileimageinchatboxmessages' src={`${msg.username.userPhoto}`}></img>}
                                     </div>} */}
                                     <div className='divholdingprofileimageinchatbox'>{(msg.username.id !==msg_arr[msg_arr.indexOf(msg)-1]?.username.id) && <img className='profileimageinchatboxmessages' src={`${msg.username.userPhoto}`}></img>}</div>

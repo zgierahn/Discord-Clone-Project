@@ -62,7 +62,6 @@ function Servers({server}) {
 
     useEffect(() => {
         dispatch(thunkGetServers(userId))
-        console.log('getting servers')
     }, [dispatch,userId])
     useEffect(() => {
         // setTest(true)
@@ -160,7 +159,6 @@ function Servers({server}) {
                         {owner.username}
                         </div>
                 })}
-                {/* {console.log(server, 'hereeeeeeeeee')} */}
             </div>
         </main>
             <footer className="developerfooter">

@@ -24,7 +24,6 @@ function SingleChannel() {
     const server = useSelector(state => state.servers.singleServer)
 
     const channel = useSelector(state => state.channels.singleChannel)
-    console.log('CHANNEL',channel)
     return (
         <div>
             <Servers server={server} />

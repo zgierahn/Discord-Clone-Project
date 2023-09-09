@@ -34,7 +34,6 @@ function RightClickServer() {
           x: e.pageX,
           y: e.pageY,
         });
-        console.log("Right Click", e.pageX, e.pageY,points.x);
       }}
 
 {clicked && (

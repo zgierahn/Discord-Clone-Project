@@ -32,12 +32,10 @@ const getSingleChannel = (channel) => ({
 })
 
 export const thunkGetChannels = (id, serverId) => async(dispatch) => {
-    console.log('serverId',serverId)
     const res = await fetch(`/api/channels/${id}/${serverId}`)
     if (res.ok) {
         const data = await res.json()
         dispatch(getChannel(data))
-        console.log('data', data)
         return data
     }
     else {
@@ -99,7 +97,6 @@ export const thunkGetSingleChannel = (channelId) => async(dispatch) => {
 
 export const thunkEditChannel = (channelId,name) => async (dispatch) => {
 
-        console.log('are we in the thiunk')
         const response = await fetch(`/api/channels/edit/${channelId}`, {
             method:'PUT',
             headers:{"Content-Type":"application/json"},
@@ -153,7 +150,6 @@ export default function reducer(state = initialState, action) {
         }
         case EDIT_CHANNEL: {
             const newState = {...state, singleChannel:{...state.singleChannel},allChannels:{...state.allChannels}}
-            console.log('editchannelstate', newState)
             newState.singleChannel = action.data
             return newState
         }

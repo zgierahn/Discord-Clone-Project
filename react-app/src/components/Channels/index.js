@@ -17,7 +17,6 @@ function Channels({server}) {
     const { userId, serverId} = useParams()
     const [openModal,setOpenModal] = useState(false)
     const history = useHistory()
-    console.log(serverId, '-----------------')
 
     useEffect(() => {
         dispatch(thunkGetChannels(userId, serverId))
