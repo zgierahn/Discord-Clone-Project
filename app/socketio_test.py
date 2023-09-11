@@ -6,8 +6,8 @@ from .models import Message, db
 # configure cors_allowed_origins
 if os.environ.get('FLASK_ENV') == 'production':
     origins = [
-        'http://flaskcord-clone.onrender.com/',
-        'https://flaskcord-clone.onrender.com/',
+        'http://flaskcord-clone.onrender.com',
+        'https://flaskcord-clone.onrender.com',
         'http://group-clone.onrender.com',
         'https://group-clone.onrender.com'
     ]
@@ -22,7 +22,6 @@ socketio = SocketIO(cors_allowed_origins=origins)
 @socketio.on("chat")
 def handle_chat(data):
     if data:
-        print(data, '=============')
         new_msg = Message(
                 content = data['content'],
                 user_id = data['user_id'],
