@@ -7,7 +7,9 @@ from .models import Message, db
 if os.environ.get('FLASK_ENV') == 'production':
     origins = [
         'http://flaskcord-clone.onrender.com/',
-        'https://flaskcord-clone.onrender.com/'
+        'https://flaskcord-clone.onrender.com/',
+        'http://group-clone.onrender.com',
+        'https://group-clone.onrender.com'
     ]
 else:
     origins = "*"
