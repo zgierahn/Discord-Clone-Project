@@ -23,7 +23,7 @@ function DevTeam() {
                 <h3 className='white'>Emily Breininger</h3>
                 <ul className='lineUpLinks'>
                     <li className='white'>
-                        <a className='anchorLinks' href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank">LinkdIn</a>
+                        <a className='anchorLinks' href="https://www.linkedin.com/in/emily-breininger" target="_blank">LinkdIn</a>
                     </li>
                     <li className='white'>
                         <a className='anchorLinks' href="https://github.com/rainy-dayz" target="_blank">GitHub</a>
@@ -34,7 +34,7 @@ function DevTeam() {
                 <h3 className='white'>Matt Boyer</h3>
                 <ul className='lineUpLinks'>
                     <li className='white'>
-                        <a className='anchorLinks' href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank">LinkdIn</a>
+                        <a className='anchorLinks' href="https://www.linkedin.com/in/matt-boyer-90884924" target="_blank">LinkdIn</a>
                     </li>
                     <li className='white'>
                         <a className='anchorLinks' href="https://github.com/Matt-Boyer" target="_blank">GitHub</a>
@@ -45,7 +45,7 @@ function DevTeam() {
                 <h3 className='white'>Mike Oyola</h3>
                 <ul className='lineUpLinks'>
                     <li className='white'>
-                        <a className='anchorLinks' href="" target="_blank">LinkdIn</a>
+                        <a className='anchorLinks' href="https://www.linkedin.com/in/michael-oyola/" target="_blank">LinkdIn</a>
                     </li>
                     <li className='white'>
                         <a className='anchorLinks' href="https://github.com/mmike1717" target="_blank">GitHub</a>
